@@ -163,8 +163,8 @@
     :init (add-hook 'after-init-hook #'global-ycmd-mode)
     ;; (add-hook 'c++-mode-hook #'ycmd-mode)
     :config
-    (set-variable 'ycmd-server-command '("/usr/local/opt/python@3.8/bin/python3" "/Users/yang/Documents/ycmd/ycmd/"))
-    (set-variable 'ycmd-global-config "/Users/yang/Documents/ycmd/examples/.ycm_extra_conf.py"))
+    (set-variable 'ycmd-server-command '("/usr/local/opt/python@3.8/bin/python3" "/Users/yang/ycmd/ycmd/"))
+    (set-variable 'ycmd-global-config "/Users/yang/ycmd/examples/.ycm_extra_conf.py"))
 
     ;; (set-variable 'ycmd-extra-conf-whitelist '("~/todo/*")))
 

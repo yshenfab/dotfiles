@@ -113,7 +113,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-YANGBIN=$HOME/Documents/yangbin
+YANGBIN=$HOME/yangbin
 export PATH=${YANGBIN}:$PATH
 
 alias grep='grep --color=auto'
