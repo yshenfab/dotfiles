@@ -103,7 +103,7 @@ shift + alt - x : yabai -m space --mirror x-axis
 shift + alt - y : yabai -m space --mirror y-axis
 
 # open a terminal
-cmd - return : /Applications/iTerm.app/Contents/MacOS/iTerm2 --single-instance -d ~
+cmd + shift  - return : /Applications/iTerm.app/Contents/MacOS/iTerm2 --single-instance -d ~
 
 # restart yabai
 alt + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
