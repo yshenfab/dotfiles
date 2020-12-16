@@ -1,5 +1,8 @@
 ;; [[file:~/.emacs.d/myinit.org::*Basic][Basic:1]]
-(setq python-shell-interpreter "/usr/local/opt/python@3.8/bin/python3")
+(setq default-directory "~/" )
+;;(setq python-shell-interpreter "/usr/local/opt/python@3.8/bin/python3"
+(setq python-shell-interpreter "python3"
+      python-shell-interpreter-args "-i")
 ;;personal information
 (setq user-full-name "Yang Shen")
 (setq user-mail-address "yangfields@gmail.com")
@@ -56,6 +59,8 @@
 (global-set-key [M-down] 'windmove-down)
 ;;close current buffer
 (global-set-key (kbd "C-x 4") 'delete-window)
+;; electric pair
+(electric-pair-mode t)
 ;;comment code
 (global-set-key [?\C-c ?\C-/] 'comment-or-uncomment-region)
 (defun my-comment-or-uncomment-region (beg end &optional arg)  
@@ -71,27 +76,25 @@
        (split-window-vertically)
        (eshell))
 (global-set-key [(f1)] 'open-eshell-other-buffer)
+(setq semantic-mode t)
 ;; Basic:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*ido][ido:1]]
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-everywhere t)
-;; (ido-mode 1)
 (use-package ido                        ; Better minibuffer completion
 :init (progn
-      (ido-mode)
-      (ido-everywhere))
-      :config
-      (setq ido-enable-flex-matching t      ; Match characters if string doesn't match
-      ido-create-new-buffer 'always   ; Create a new buffer if nothing matches
-      ido-use-filename-at-point 'guess
-      ;; Visit buffers and files in the selected window
-      ido-default-file-method 'selected-window
-      ido-default-buffer-method 'selected-window
-      ido-use-faces nil))             ; Prefer flx ido faces
+(ido-mode)
+(ido-everywhere))
+:config
+(setq ido-enable-flex-matching t      ; Match characters if string doesn't match
+ido-create-new-buffer 'always   ; Create a new buffer if nothing matches
+ido-use-filename-at-point 'guess
+;; Visit buffers and files in the selected window
+ido-default-file-method 'selected-window
+ido-default-buffer-method 'selected-window
+ido-use-faces nil))             ; Prefer flx ido faces
 ;; ido:1 ends here
 
-;; [[file:~/.emacs.d/myinit.org::*ivy%20+%20conunsel%20+%20swiper][ivy + conunsel + swiper:1]]
+;; [[file:~/.emacs.d/myinit.org::*ivy + conunsel + swiper][ivy + conunsel + swiper:1]]
 (use-package counsel
   :after ivy
   :config (counsel-mode))
@@ -118,7 +121,7 @@
   :bind ("M-x" . smex))
 ;; smex:1 ends here
 
-;; [[file:~/.emacs.d/myinit.org::*color%20theme%20+%20modeline][color theme + modeline:1]]
+;; [[file:~/.emacs.d/myinit.org::*color theme + modeline][color theme + modeline:1]]
 (use-package monokai-pro-theme
   :ensure t
   :config (load-theme 'monokai-pro t))
@@ -130,7 +133,8 @@
 
 ;; [[file:~/.emacs.d/myinit.org::*ace-jump][ace-jump:1]]
 (use-package ace-jump-mode
-:bind ("C-c SPC" . ace-jump-mode))
+  :ensure t
+  :bind ("C-c SPC" . ace-jump-mode))
 ;; ace-jump:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*company][company:1]]
@@ -150,14 +154,15 @@
 :diminish company-mode)
 ;; company:1 ends here
 
-;; [[file:~/.emacs.d/myinit.org::*ycmd%20+%20company-ycmd%20+%20flycheck-ycmd][ycmd + company-ycmd + flycheck-ycmd:1]]
+;; [[file:~/.emacs.d/myinit.org::*ycmd + company-ycmd + flycheck-ycmd][ycmd + company-ycmd + flycheck-ycmd:1]]
 (use-package ycmd
 :ensure t
 :init (add-hook 'after-init-hook #'global-ycmd-mode)
 ;; (add-hook 'c++-mode-hook #'ycmd-mode)
 :config
-(set-variable 'ycmd-server-command '("/usr/local/opt/python@3.8/bin/python3" "/Users/yang/Documents/ycmd/ycmd/"))
-(set-variable 'ycmd-global-config "/Users/yang/Documents/ycmd/examples/.ycm_extra_conf.py"))
+(set-variable 'ycmd-server-command '("/usr/local/opt/python@3.9/bin/python3" "/Users/yang/ycmd/ycmd/"))
+;;(set-variable 'ycmd-server-command '("python3" "/Users/yang/ycmd/ycmd/"))
+(set-variable 'ycmd-global-config "/Users/yang/ycmd/examples/.ycm_extra_conf.py"))
 
 ;; (set-variable 'ycmd-extra-conf-whitelist '("~/todo/*")))
 
@@ -194,26 +199,63 @@
 ("C-x 5 4" . langtool-correct-buffer)))
 ;; langtool:1 ends here
 
-;; [[file:~/.emacs.d/myinit.org::*yasnippet][yasnippet:1]]
+;; [[file:~/.emacs.d/myinit.org::*Yasnippet][Yasnippet:1]]
 (use-package yasnippet
   :ensure t
   :diminish yas-minor-mode
   :init (yas-global-mode 1))
-;; yasnippet:1 ends here
+;; Yasnippet:1 ends here
 
-;; [[file:~/.emacs.d/myinit.org::*LaTeX%20(auctex%20+%20reftex%20+%20ivy-bibtex%20+%20pdf-tools)][LaTeX (auctex + reftex + ivy-bibtex + pdf-tools):1]]
+;; [[file:~/.emacs.d/myinit.org::*SmartParens][SmartParens:1]]
+(use-package smartparens
+  :ensure t
+  :config
+  (setq sp-show-pair-from-inside nil)
+  (require 'smartparens-config)
+  :diminish smartparens-mode)
+;; SmartParens:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Neotree][Neotree:1]]
+;; (add-to-list 'load-path "~/.emacs.d/elpa/neotree-20200324.1946")
+;; (require 'neotree)
+;; (global-set-key [f8] 'neotree-toggle)
+(use-package neotree
+  :ensure t
+  :bind ("<f8>" . 'neotree-toggle)
+  :init
+  (setq inhibit-compacting-font-caches t) ;; slow rendering
+  ;;(setq neo-theme (if (display-graphic-p) 'icons 'arrow)) ;; set icons theme
+  (setq neo-smart-open t) ;; find current file and jump to node
+  (setq-default neo-show-hidden-files t) ;; show hidden files
+)
+;; Neotree:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Projectile][Projectile:1]]
+(use-package projectile
+  :ensure t
+  :init
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  :config
+  (projectile-global-mode)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+  ;;(projectile-mode +1)
+;; Projectile:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*LaTeX (auctex + reftex + ivy-bibtex + pdf-tools)][LaTeX (auctex + reftex + ivy-bibtex + pdf-tools):1]]
 (use-package tex-site
 ;(use-package auctex
 :defer t
 :ensure auctex
 :mode ("\\.tex\\'" . latex-mode)
 :config
-(setq TeX-auto-save t)
+(setq TeX-auto-save nil)
 (setq TeX-parse-self t)
+;; (setq-default TeX-PDF-mode t)
 (setq-default TeX-master nil)
 
 (turn-on-auto-fill)
-;(pdf-tools-install)
+;;(pdf-tools-install)
 (setq TeX-engine 'xetex)
 (setq TeX-show-completion t)
 (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
@@ -222,17 +264,31 @@
 '(progn
 (TeX-global-PDF-mode t)))
 
-(setq TeX-view-program-selection '((output-pdf "pdf-tools"))
+;; (add-hook 'TeX-mode-hook
+;; (lambda ()
+;;    (add-to-list 'TeX-output-view-style
+;;        '("^pdf$" "."
+;;          "/Applications/Skim.app/Contents/SharedSupport/displayline %n %o %b"))))
+
+;; (setq TeX-view-program-list
+;;     '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+
+;; (add-hook 'LaTeX-mode-hook
+;;       #'(lambda ()
+;;           (add-to-list 'TeX-command-list '("pdfLaTeX" "%`pdflatex -synctex=1%(mode)%' %t" TeX-run-TeX nil t))
+;;           (setq TeX-command-extra-options "-file-line-error -shell-escape")
+;;           (setq TeX-command-default "pdfLaTeX")
+;;           (setq TeX-save-query  nil ) ;; 不需要保存即可编译
+;;           ))
+
+(setq TeX-view-program-selection
+'((output-pdf "pdf-tools"))
     TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view"))
     TeX-source-correlate-mode t
     TeX-source-correlate-start-server t)
 
 (add-hook 'TeX-after-compilation-finished-functions
         #'TeX-revert-document-buffer)
-
-;(global-set-key (kbd "C-c C-g") 'pdf-sync-forward-search)
-;(setq mouse-wheel-follow-mouse t)
-;(setq pdf-view-resize-factor 1.10)
 
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (setq reftex-plug-into-AUCTeX t)
@@ -265,9 +321,9 @@
 (setq bibtex-completion-pdf-field "File")
 
 ;;open pdf with external viwer okular
-(setq bibtex-completion-pdf-open-function
-      (lambda (fpath)
-        (call-process "/usr/bin/okular" nil 0 nil fpath)))
+;; (setq bibtex-completion-pdf-open-function
+;;      (lambda (fpath)
+;;        (call-process "/usr/bin/okular" nil 0 nil fpath)))
 
 (setq ivy-bibtex-default-action 'ivy-bibtex-insert-citation))
 
@@ -295,9 +351,16 @@
 	    (google-make-newline-indent)))
 :config
 (c-set-offset 'statement-case-open 0)))
+;; change tab indent width as 4
+(defun my-c-mode-hook ()
+(setq c-basic-offset 4          ;; 基本缩进宽度
+    indent-tabs-mode t        ;; 禁止空格替换Tab
+    default-tab-width 4))     ;; 默认Tab宽度
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
 ;; C/C++:1 ends here
 
-;; [[file:~/.emacs.d/myinit.org::*python%20(add%20more)][python (add more):1]]
+;; [[file:~/.emacs.d/myinit.org::*python (add more)][python (add more):1]]
 (use-package python
 :mode ("\\.py\\'|wscript" . python-mode)
 :interpreter ("python" . python-mode))
@@ -307,7 +370,9 @@
 :defer t
 :init
 (advice-add 'python-mode :before 'elpy-enable)
-:config (flycheck-mode))
+:config
+(setq elpy-rpc-python-command "python3")
+(flycheck-mode))
 
 (use-package py-autopep8
 :ensure t

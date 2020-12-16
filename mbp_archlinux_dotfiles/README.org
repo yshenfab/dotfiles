@@ -1,0 +1,17 @@
+#+TITLE: My Arch Linux dotfiles for MacBook Pro
+
+* Introduction
+Some of my configuration files for arch linux on a MBP.
+* Config List
+Here is a list for the config files.
+| List                | File                                         | Explaination                                                                    |
+|---------------------+----------------------------------------------+---------------------------------------------------------------------------------|
+| i3-wm               | .config/i3/                                  | With conky, dunst, compton and [[https://github.com/tobi-wan-kenobi/bumblebee-status][bumblebee-status]]                                 |
+| Emacs               | .emacs                                       | need to install add-ons by "M-x list-package"                                   |
+| Zsh                 | .zshrc                                       | You may be using bash.                                                          |
+| Mutt                | .muttrc, .msmtprc, .mailcap and .mutt/       | I put three email config here.                                                  |
+| libinput-gestures   | libinput-gestures.conf                       | Define some finger gestures for your laptop touchpad.                           |
+| yangbin             | yangbin/                                     | Some scripts, have a try! xD                                                    |
+| urxvt, locale, etc. | .Xdefaults, .Xresources, .xprofile, .xinitrc | dpi:220 is for my MBP with resolution 2560x1080, for 1920x1080 change it to 96. |
+| tmux                | .tmux.conf                                   | basic ops                                                                       |
+| Aria2               | TBD                                          | TBD                                                                             |

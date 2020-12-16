@@ -77,7 +77,7 @@ ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    fasd
+    #fasd
     autojump
     osx
     extract
@@ -118,16 +118,18 @@ export PATH=${YANGBIN}:$PATH
 
 alias grep='grep --color=auto'
 alias cls='printf "\033c"'
-alias gam="git add . ; git commit -m "
+alias bu='brew update && brew upgrade'
+# alias gam="git add . ; git commit -m "
+alias mcbuild='mkdir build && cd build'
 
 #powerline-daemon -q
 #POWERLINE_BASH_CONTINUATION=1
 #POWERLINE_BASH_SELECT=1
-#. /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh
+#. /usr/lib/python3.9/site-packages/powerline/bindings/zsh/powerline.zsh
 
 neofetch
 
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+export PATH="/usr/local/opt/python@3.9/bin:$PATH"
 
 # zsh-completions
 if type brew &>/dev/null; then
@@ -146,3 +148,35 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 # zsh-syntax-highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/sbin:$PATH"
+export GPG_TTY=$(tty)
+export PATH="/usr/local/opt/qt/bin:$PATH"
+# export http_proxy=http://127.0.0.1:1087
+# export https_proxy=http://127.0.0.1:1087
+
+export STG=$HOME/stg
+export DYLD_LIBRARY_PATH=$STG/lib
+export PATH=$STG/bin:$PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/yang/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/yang/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/yang/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/yang/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig/"
+
+# lua 5.3
+export PATH="/usr/local/opt/lua@5.3/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/lua@5.3/lib"
+export CPPFLAGS="-I/usr/local/opt/lua@5.3/include"
+export PKG_CONFIG_PATH="/usr/local/opt/lua@5.3/lib/pkgconfig"

@@ -1,0 +1,28 @@
+#!/usr/bin/python
+import datetime
+import math
+import os
+
+os.system('cowsay Hello,Yang!')
+birth = '1990-10-01'
+print("\nYour birthday is: " + birth)
+ret = datetime.datetime.strptime(birth,'%Y-%m-%d')
+today = datetime.datetime.now()
+print("You have lived " + (str(today-ret).split(','))[0] + '.')
+
+deltat = 5000
+# specialDay = []
+
+for i in range(1,7):
+    x = ret + datetime.timedelta(days=5000*i)
+    # specialDay.append(x)
+    print(str(5000*i) + " day of your life: " + str(x).split(' ')[0])
+
+years = [70, 80, 90]
+for x in years:
+    die = ret + datetime.timedelta(weeks=x*52)
+    print("If you live up to " + str(x) + ", you now have:")
+    daysLeft = str(die-today).split(' ')[0]
+    print(daysLeft + " days/" + str(math.floor(int(daysLeft)/7)) + " weeks " + "left.")
+
+

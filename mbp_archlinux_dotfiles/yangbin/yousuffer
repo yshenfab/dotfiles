@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+import vlc
+import time
+
+def play():
+    player = vlc.MediaPlayer("~/Music/YouSuffer.mp3")
+    player.play()
+    time.sleep(1.5)
+    player.stop()
+
+if __name__ == '__main__':
+    play()

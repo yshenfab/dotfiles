@@ -1,0 +1,11 @@
+urxvt --help 2>&1| sed -n '/:  /s/^ */! URxvt*/gp' >> ~/.Xresources
+
+! retina screen 220dpi (mbp) / 96dpi (LG29) / 82 (LG34) / 92dpi (24) / 100dpi (22) / 157dpi (samsung 3840x2160 28inch)
+! www.sven.de/dpi/
+Xft.dpi:157
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb

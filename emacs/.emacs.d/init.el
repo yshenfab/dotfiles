@@ -11,10 +11,10 @@
 ;;                          ;; ("marmalade" . "https://marmalade-repo.org/packages/")
 ;;                          ))
 
-(setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
-                         ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
-                         ("melpa-stable" . "https://mirrors.ustc.edu.cn/elpa/melpa-stable/")
-                         ("org" . "https://mirrors.ustc.edu.cn/elpa/org/")))
+(setq package-archives '(("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                         ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
+                         ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 (package-initialize)
 
@@ -36,14 +36,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/todo/gtd/gtd.org" "~/todo/gtd/tickler.org")))
+ '(org-agenda-files '("~/todo/gtd/gtd.org" "~/todo/gtd/tickler.org"))
  '(package-selected-packages
-   (quote
-    (ox-gfm google-c-style dash-at-point counsel ace-jump-mode yasnippet use-package))))
+   '(markdown-preview-mode matlab-mode neotree ox-gfm google-c-style dash-at-point counsel ace-jump-mode yasnippet use-package)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :family "Inconsolata")))))
+ '(default ((t (:stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :family "Source Code Pro")))))
