@@ -3,6 +3,8 @@
 * Basic
   #+BEGIN_SRC emacs-lisp
   (setq default-directory "~/" )
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+  (setq exec-path (append exec-path '("/usr/local/bin")))
   ;;(setq python-shell-interpreter "/usr/local/opt/python@3.8/bin/python3"
   (setq python-shell-interpreter "python3"
         python-shell-interpreter-args "-i")
