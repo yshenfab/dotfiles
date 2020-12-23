@@ -390,6 +390,21 @@
   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
   (add-hook 'python-mode-hook 'py-autopep8-enable-on-save))
   #+END_SRC
+** MATLAB
+#+BEGIN_SRC emacs-lisp
+  (use-package matlab
+    :ensure matlab-mode
+    :config
+    (add-to-list 'auto-mode-alist
+       '("\\.m\\'" . matlab-mode))
+    (setq matlab-indent-function t)
+    (setq matlab-shell-command "matlab"))
+
+   ;; (setq auto-mode-alist
+   ;;    (cons
+   ;;     '("\\.m$" . octave-mode)
+   ;;     auto-mode-alist))
+#+END_SRC
 ** org-mode
   #+BEGIN_SRC emacs-lisp
   (use-package org
