@@ -253,6 +253,8 @@
 #+END_SRC
 ** LaTeX (auctex + reftex + ivy-bibtex + pdf-tools)
   #+BEGIN_SRC emacs-lisp
+    (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))  
+    (setq exec-path (append exec-path '("/Library/TeX/texbin/")))
     (use-package tex-site
     ;(use-package auctex
     :defer t
@@ -425,7 +427,7 @@
   ;; org-mode for GTD
   (defun gtd ()
       (interactive)
-      (find-file "~/github/GTD/gtd.org"))
+      (find-file "~/repos/GTD/gtd.org"))
 
    (setq org-agenda-files '("~/github/GTD/inbox.org"
                             "~/github/GTD/gtd.org"
