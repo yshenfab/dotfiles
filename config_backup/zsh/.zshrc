@@ -16,8 +16,7 @@ export ZSH="/Users/yang/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-# ZSH_THEME="ys"
+ZSH_THEME="ys"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -84,7 +83,6 @@ plugins=(
     extract
     web-search
     sudo
-    zsh-autosuggestions
     macports
     git)
 
@@ -112,26 +110,17 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 YANGBIN=$HOME/yangbin
 export PATH=${YANGBIN}:$PATH
 
-# aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias grep='grep --color=auto'
 alias cls='printf "\033c"'
 alias bu='brew update && brew upgrade'
-alias vim='/usr/local/bin/vim'
-alias cat='bat'
-alias ls='exa'
-# alias man='tldr'
-alias py3='python3'
-alias ssh-1080='ssh yang@10.16.12.102'
-alias ssh-3090='ssh yang@10.16.11.108'
-alias ssh-3090-2='ssh yang@10.16.12.103'
-alias ssh-tesla-k80='ssh yang@10.20.94.184'
-alias ssh-72='ssh yang@10.20.101.189'
+# alias gam="git add . ; git commit -m "
+alias mcbuild='mkdir build && cd build'
 
 #powerline-daemon -q
 #POWERLINE_BASH_CONTINUATION=1
@@ -191,8 +180,3 @@ export PATH="/usr/local/opt/lua@5.3/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/lua@5.3/lib"
 export CPPFLAGS="-I/usr/local/opt/lua@5.3/include"
 export PKG_CONFIG_PATH="/usr/local/opt/lua@5.3/lib/pkgconfig"
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
-
-# export CPATH=`xcrun --show-sdk-path`/usr/include
-# export LDFLAGS="-L//Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
-# export CPPFLAGS="-I//Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"

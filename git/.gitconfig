@@ -1,0 +1,30 @@
+[user]
+	name = yshen
+	email = 287049745@qq.com
+	signingKey = FEE2409554FEBE576B2580A32CCCE89ACB4B64F3
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	pmain = push origin HEAD:main
+	psm = push origin HEAD:master
+[color]
+	ui = true
+[core]
+	editor = vim
+[pull]
+	ff = only
+[url "https://mirrors.ustc.edu.cn/homebrew-core.git"]
+	insteadOf = https://github.com/Homebrew/homebrew-core
+[url "https://mirrors.ustc.edu.cn/linuxbrew-core.git"]
+	insteadOf = https://github.com/Homebrew/linuxbrew-core
+[url "https://mirrors.ustc.edu.cn/brew.git"]
+	insteadOf = https://github.com/Homebrew/brew

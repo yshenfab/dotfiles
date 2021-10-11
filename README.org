@@ -1,12 +1,14 @@
 #+TITLE:  dotfiles for macOS Catalina 10.15.5
 
 * Introduction
-Some mbp configuration files. I use GNU Stow to manager these dotfiles.
+Some osx config files. I use GNU Stow (symlink) to manager these dotfiles.
+* Brew
+  - getting brew list: brew leaveas > brew.txt
+  - install from list file: xargs brew install < brew.txt
 * Config List
 Here is a list for the config files.
 | Name         | Description                     |
 |--------------+---------------------------------|
-| yabai + skhd | tiling window manager for macOS |
 | zsh          | zsh + oh my zsh + iTerm2        |
 | tmux         | .tmux.conf                      |
 | emacs        | my favourite tool               |
