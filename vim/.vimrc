@@ -5,17 +5,17 @@ execute pathogen#infect()
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive' "git plugin
 Plugin 'preservim/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
 Plugin 'valloric/youcompleteme'
 " Plugin 'scrooloose/syntastic'
-" Plugin 'edsono/vim-matchit'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-scripts/a.vim'
-Plugin 'tpope/vim-surround'
+Plugin 'dense-analysis/ale'
+Plugin 'easymotion/vim-easymotion' "default leader \\
+Plugin 'vim-scripts/a.vim' "quick cmds to switch src and header files, example :A
+" Plugin 'tpope/vim-surround'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -23,29 +23,27 @@ Plugin 'tpope/vim-markdown'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'jceb/vim-orgmode'
 Plugin 'tomasr/molokai'
-Plugin 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim' "search tool
 Plugin 'yegappan/grep'
 Plugin 'junegunn/fzf'
-Plugin 'Yggdroot/indentLine' 
-Plugin 'tpope/vim-speeddating'
-Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'Yggdroot/indentLine' "display vertical lines at indentation for codes indented with spaces
 Plugin 'preservim/nerdcommenter'
+" Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'google/yapf'
-Plugin 'dense-analysis/ale'
-Plugin 'Chiel92/vim-autoformat'
+" Plugin 'Chiel92/vim-autoformat'
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
 " Plugin 'google/vim-colorscheme-primary'
 call vundle#end()
+call glaive#Install()
 
-" YCM (make YCM compatible with UltiSnips using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" nerdtree
-map <F2> :NERDTreeToggle<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" nerdtree (file system explorer)
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <F2> :NERDTreeToggle<CR>
 let NERDTreeShowLineNumbers=1
 let NERDTreeAutoCenter=1
 let NERDTreeShowHidden=1
@@ -56,7 +54,94 @@ let NERDTreeShowBookmarks=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeMinimalUI=1
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-airline (status/tabline for vim)
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" display all buffers when there's only one tab open
+let g:airline#extensions#tabline#enabled = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" tagbar (display ctags-generated tags of current file)
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F8> :TagbarToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" supertab (use <Tab> for all insert completion needs) 
+" YCM (make YCM compatible with UltiSnips using supertab)
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap gi :YcmCompleter GoToInclude<CR>
+nmap gm :YcmCompleter GoToImprecise<CR>
+nmap gr :YcmCompleter GoToReferences<CR>
+nmap fi :YcmCompleter FixIt<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ale (syntax checker and linter)
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_fixers = {
+\    'python' : ['prettier'],
+\    'c++' : ['prettier'],
+\    }
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'python': ['flake8'],
+\   'go': ['go', 'golint', 'errcheck']
+\}
+" disable highlighting
+let g:ale_set_highlights=0
+" only run linting when saving the file
+let g:ale_lint_on_text_changed='never'
+let g:ale_lint_on_enter=0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" syntastic
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" easymotion
+""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+" move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+" move to word
+map <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp (full path fuzzy file, buffer, mru, tag, ... finder for vim)
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_working_path_mode = 0
+" quickly find and open a file in current working directory
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" map <leader>j :CtrlP<cr>
+" quickly find and open a buffer
+" map <leader>b :CtrlPBuffer<cr>
+
+let g:ctrlp_max_height = 20
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " color theme molokai
+""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:molokai_original = 1
 let g:rehash256 = 1
 
@@ -66,27 +151,22 @@ let g:rehash256 = 1
 " set background=dark
 " colorscheme primary
 
-" vim-markdown
+" vim-markdown by tpope
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:markdown_syntax_conceal = 0
 let g:markdown_minlines = 100
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " ultisnips
+""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
-" syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerdcommenter
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " let mapleader=','
 let g:NERDCreateDefaultMappings=1
 let g:NERDSpaceDelims=1
@@ -97,24 +177,42 @@ let g:NERDCommentEmptyLines=1
 let g:NERDTrimTrailingWhitespace=1
 let g:NERDToggleCheckAllLines=1
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " yapf (google tool for auto format python)
+""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 " isort (sort the python import)
 autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 
-" Ale
-let g:ale_fixers = {
-            \    'python' : ['prettier'],
-            \    'c++' : ['prettier'],
-            \    }
-
 " vim-autoformat
 " noremap <F3> :Autoformat<CR>
 " au BufWrite * :Autoformat
-let g:autoformat_autoindent=0
-let g:autoformat_retab=0
-let g:autoformat_remove_trailing_spaces=0
+" let g:autoformat_autoindent=0
+" let g:autoformat_retab=0
+" let g:autoformat_remove_trailing_spaces=0
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" google vim-codefmt (code formatting with maktaba and glaive)
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>fc :FormatCode<CR>
+nnoremap <leader>fl :FormatLines<CR>
+
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType rust AutoFormatBuffer rustfmt
+  autocmd FileType vue AutoFormatBuffer prettier
+augroup END
+
+
+" Basic Config
 filetype plugin indent on
 syntax on
 

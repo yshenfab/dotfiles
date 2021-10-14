@@ -77,17 +77,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    #fasd
-    autojump
-    osx
-    extract
-    web-search
-    sudo
-    zsh-autosuggestions
-    macports
-    git)
-
+plugins=(autojump osx extract web-search sudo zsh-autosuggestions copydir history macports git)
+#fasd
+    
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
