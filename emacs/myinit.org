@@ -360,18 +360,9 @@
     :ensure t
     :init
     (add-hook 'c-mode-common-hook
-	      (lambda ()
-		(google-set-c-style)
-		(google-make-newline-indent)))
-    :config
-    (c-set-offset 'statement-case-open 0)))
-    ;; change tab indent width as 4
-    (defun my-c-mode-hook ()
-    (setq c-basic-offset 4          ;; 基本缩进宽度
-        indent-tabs-mode t        ;; 禁止空格替换Tab
-        default-tab-width 4))     ;; 默认Tab宽度
-    (add-hook 'c-mode-hook 'my-c-mode-hook)
-    (add-hook 'c++-mode-hook 'my-c-mode-hook)
+              (lambda ()
+                (google-set-c-style)
+                (google-make-newline-indent)))))
   #+END_SRC
 ** TODO python (add more)
   #+BEGIN_SRC emacs-lisp
