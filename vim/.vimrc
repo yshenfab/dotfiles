@@ -200,6 +200,8 @@ Plugin 'tpope/vim-markdown'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'jceb/vim-orgmode'
 Plugin 'tomasr/molokai'
+" Plugin 'arzg/vim-colors-xcode'
+" Plugin 'morhetz/gruvbox'
 Plugin 'mileszs/ack.vim' "search tool
 Plugin 'yegappan/grep'
 Plugin 'junegunn/fzf'
@@ -213,6 +215,7 @@ Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 " Plugin 'google/vim-colorscheme-primary'
+Plugin 'google/vim-searchindex'
 Plugin 'fisadev/vim-isort'
 call vundle#end()
 call glaive#Install()
@@ -319,12 +322,17 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" color theme molokai
+" color theme
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:molokai_original = 1
 let g:rehash256 = 1
 
-" vim-markdown by tpope
+" colorscheme xcodedarkhc
+" colorscheme gruvbox
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-markdown
+""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:markdown_syntax_conceal = 0
 let g:markdown_minlines = 100
