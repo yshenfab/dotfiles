@@ -77,7 +77,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump osx extract web-search sudo zsh-autosuggestions copydir history macports git)
+plugins=(autojump macos extract web-search sudo zsh-autosuggestions copypath history macports git)
 #fasd
     
 source $ZSH/oh-my-zsh.sh
@@ -111,6 +111,7 @@ export PATH=${YANGBIN}:$PATH
 # aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ll='ls -al'
 alias grep='grep --color=auto'
 alias cls='printf "\033c"'
 alias bu='brew update && brew upgrade'
@@ -122,8 +123,12 @@ alias py3='python3'
 alias ssh-1080='ssh yang@10.16.12.102'
 alias ssh-3090='ssh yang@10.16.11.108'
 alias ssh-3090-2='ssh yang@10.16.12.103'
-alias ssh-tesla-k80='ssh yang@10.20.94.184'
+alias ssh-tesla-k80='ssh yang@10.20.19.10'
 alias ssh-72='ssh yang@10.20.101.189'
+
+my_scp_3090() {
+    scp "$1" yang@10.16.11.108:~
+}
 
 #powerline-daemon -q
 #POWERLINE_BASH_CONTINUATION=1
@@ -153,8 +158,8 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/sbin:$PATH"
 export GPG_TTY=$(tty)
 export PATH="/usr/local/opt/qt/bin:$PATH"
-# export http_proxy=http://127.0.0.1:1087
-# export https_proxy=http://127.0.0.1:1087
+# export http_proxy=http://127.0.0.1:7891
+# export https_proxy=http://127.0.0.1:7891
 
 export STG=$HOME/stg
 export DYLD_LIBRARY_PATH=$STG/lib
@@ -188,3 +193,24 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottl
 # export CPATH=`xcrun --show-sdk-path`/usr/include
 # export LDFLAGS="-L//Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
 # export CPPFLAGS="-I//Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+
+function proxy_on() {
+    export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+    export http_proxy="http://127.0.0.1:7890"
+    export https_proxy=$http_proxy
+    export all_proxy=socks5://127.0.0.1:7891
+    # curl www.google.com
+    echo -e "proxy turned on"
+}
+
+function proxy_off(){
+    unset http_proxy
+    unset https_proxy
+    unset all_proxy
+    echo -e "proxy turned off"
+}
+
+
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+# export GOPROXY=https://mirrors.aliyun.com/goproxy/

@@ -25,7 +25,8 @@ set backupdir=$HOME/.vim/files/backup/
 set directory=$HOME/.vim/files/swap//
 set undodir=$HOME/.vim/files/undo/
 set viewdir=$HOME/.vim/files/view
-set viminfo='100,n$HOME/.vim/files/info/viminfo
+" set viminfo='100,n$HOME/.vim/files/info/viminfo
+set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/files/info/viminfo
 
 " Navigation
 set cursorline
@@ -43,6 +44,8 @@ set smartcase
 set tagcase=match
 " nnoremap <C-Left> :tabprevious<CR>
 " nnoremap <C-Right> :tabnext<CR>
+" nnoremap <C-j> :tabprevious<CR>
+" nnoremap <C-k> :tabnext<CR>
 
 " Miscellaneous settings
 set autoread
@@ -123,9 +126,12 @@ map <F1> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
     exec "w"
     if &filetype == 'c'
-        exec "!g++ % -o %<"
+        exec "!gcc % -o %<"
         exec "!time ./%<"
-    else if &filetype == 'cpp'
+    elseif &filetype == 'cc'
+        exec "!g++ --std=c++11 % -o %<"
+        exec "!time ./%<"
+    elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
         exec "!time ./%<"
     elseif &filetype == 'sh'
@@ -196,7 +202,10 @@ Plugin 'vim-scripts/a.vim' "quick cmds to switch src and header files, example :
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-markdown'
+" Plugin 'tpope/vim-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'preservim/vim-markdown'
+Plugin 'iamcco/markdown-preview.nvim' 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'jceb/vim-orgmode'
 Plugin 'tomasr/molokai'
@@ -217,6 +226,7 @@ Plugin 'google/vim-glaive'
 " Plugin 'google/vim-colorscheme-primary'
 Plugin 'google/vim-searchindex'
 Plugin 'fisadev/vim-isort'
+Plugin 'lervag/vimtex'
 call vundle#end()
 call glaive#Install()
 
@@ -333,9 +343,39 @@ let g:rehash256 = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " vim-markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-let g:markdown_syntax_conceal = 0
-let g:markdown_minlines = 100
+" let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+" let g:markdown_syntax_conceal = 0
+" let g:markdown_minlines = 100
+let g:vim_markdown_math = 1
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" markdown-preview
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0
+    \ }
+let g:mkdp_page_title = '「${name}」'
+let g:mkdp_filetypes = ['markdown']
+
+nmap <C-s> <Plug>MarkdownPreview
+nmap <M-s> <Plug>MarkdownPreviewStop
+nmap <C-p> <Plug>MarkdownPreviewToggle
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " ultisnips
@@ -392,7 +432,6 @@ augroup autoformat_settings
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " vim-isort (sort python imports)
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -402,3 +441,9 @@ augroup IsortMappings
     autocmd FileType python vnoremap <buffer> <Leader>si :Isort<CR>
 augroup END
 " call isort#Isort(1, line('$'), function('codefmt#FormatBuffer'))
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" vimtex (latex config)
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_method = 'latexrun'
