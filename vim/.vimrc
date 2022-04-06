@@ -321,7 +321,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
 " quickly find and open a file in current working directory
-let g:ctrlp_map = '<C-p>'
+let g:ctrlp_map = '<C-p>' " <c-f> and <c-b> to cycle between modes
 let g:ctrlp_cmd = 'CtrlP'
 " map <leader>j :CtrlP<cr>
 " quickly find and open a buffer
