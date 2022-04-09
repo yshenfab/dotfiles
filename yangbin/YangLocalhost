@@ -4,10 +4,11 @@ import sys
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 import BaseHTTPServer
 
+
 def test(HandlerClass=SimpleHTTPRequestHandler, ServerClass=BaseHTTPServer.HTTPServer):
     protocol = "HTTP/1.1"
-    host=''
-    port=8000
+    host = ''
+    port = 8000
     if len(sys.argv) > 1:
         arg = sys.argv[1]
         if ':' in arg:
@@ -26,6 +27,7 @@ def test(HandlerClass=SimpleHTTPRequestHandler, ServerClass=BaseHTTPServer.HTTPS
     sa = httpd.socket.getsockname()
     print "Serving HTTP on", sa[0], "port", sa[1], "..."
     httpd.serve_forever()
+
 
 if __name__ == '__main__':
     test()

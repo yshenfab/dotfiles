@@ -214,3 +214,5 @@ function proxy_off(){
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 # export GOPROXY=https://mirrors.aliyun.com/goproxy/
+
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.1.0/bin:$PATH"

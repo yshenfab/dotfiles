@@ -14,8 +14,8 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
-	pmain = push origin HEAD:main
 	psm = push origin HEAD:master
+	pmain = push origin HEAD:main
 [color]
 	ui = true
 [core]

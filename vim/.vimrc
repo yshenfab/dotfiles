@@ -446,4 +446,5 @@ augroup END
 " vimtex (latex config)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " let g:vimtex_view_method = 'zathura'
-let g:vimtex_compiler_method = 'latexrun'
+" let g:vimtex_compiler_method = 'latexmk'
+" https://ejmastnak.github.io/tutorials/vim-latex/vimtex.html#how-to-read-vimtexs-documentation-of-mappings

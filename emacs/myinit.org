@@ -422,21 +422,21 @@
       (interactive)
       (find-file "~/repos/GTD/gtd.org"))
 
-   (setq org-agenda-files '("~/github/GTD/inbox.org"
-                            "~/github/GTD/gtd.org"
-			        "~/github/GTD/tickler.org"))
+   (setq org-agenda-files '("~/repos/GTD/inbox.org"
+                            "~/repos/GTD/gtd.org"
+			        "~/repos/GTD/tickler.org"))
 
    ;; C-cc to capture
    (setq org-capture-templates
-      '(("t" "Todo [inbox]" entry (file+headline "~/github/GTD/inbox.org" "Tasks")
+      '(("t" "Todo [inbox]" entry (file+headline "~/repos/GTD/inbox.org" "Tasks")
          "* TODO %i%?")
-         ("T" "Tickler" entry (file+headline "~/github/GTD/tickler.org")
+         ("T" "Tickler" entry (file+headline "~/repos/GTD/tickler.org")
           "* %i%? \n %U")))
    ;; moving entry to appropriate place
-   (setq org-refile-targets '(("~/github/GTD/gtd.org" :maxlevel . 3)
-                              ("~/github/GTD/someday.org" :level . 1)
-                              ("~/github/GTD/tickler.org" :maxlevel . 2)
-			          ("~/Documents/Study/note/booknote.org" :maxlevel . 3)))
+   (setq org-refile-targets '(("~/repos/GTD/gtd.org" :maxlevel . 3)
+                              ("~/repos/GTD/someday.org" :level . 1)
+                              ("~/repos/GTD/tickler.org" :maxlevel . 2)
+			          ("~/repos/StudyNote/booknote.org" :maxlevel . 3)))
 
    ;; set todo keywords
    (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))

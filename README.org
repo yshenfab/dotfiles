@@ -1,15 +1,33 @@
-#+TITLE:  dotfiles for macOS Catalina 10.15.5
+#+TITLE:  dotfiles
 
 * Introduction
-Some osx config files. I use GNU Stow (symlink) to manager these dotfiles.
-* Brew
-  - getting brew list: brew leaveas > brew.txt
-  - install from list file: xargs brew install < brew.txt
-* Config List
-Here is a list for the config files.
-| Name         | Description                     |
-|--------------+---------------------------------|
-| zsh          | zsh + oh my zsh + iTerm2        |
-| tmux         | .tmux.conf                      |
-| emacs        | my favourite tool               |
-| aria2        | aria2.conf or use aria2GUI      |
+Used GNU Stow (symlink) to manage the dotfiles. DON'T waste too much time configing your tools.
+* Usage
+** Stow
+  - "stow xxx" in a terminal
+** Brew
+  - Getting brew list: brew leaves > brew_leaves.txt
+  - Install from list file: xargs brew install < brew_leaves.txt
+* List for dotfiles
+** In use
+| Name    | Description                     |
+|---------+---------------------------------|
+| zsh     | zsh + oh my zsh + iTerm2        |
+| vim     | .vimrc                          |
+| tmux    | .tmux.conf                      |
+| git     | a simple git config             |
+| emacs   | used a org file for config      |
+| aria2   | aria2.conf or use just aria2GUI |
+| yangbin | some scripts, xD                |
+** Deprecated
+Most of this part are dotfiles from my old Linux machine. I even installed Archlinux on my Macbook. Now I'm
+using OSX, so I didn't put the dotfiles in this repo since I'm not maintaining it. Ask me for a copy if you want one.
+| Name                | Description                                                                 |
+|---------------------+-----------------------------------------------------------------------------|
+| yabai+skhd          | tiling wm for osx                                                           |
+| i3wm                | tiling wm for linux, along with conky, dunst, compton and  [[https://github.com/tobi-wan-kenobi/bumblebee-status][bumblebee-status]] |
+| libinput-gestures   | define finger gestures for laptop touchpad                                  |
+| mutt                | too much config (.muttrc, .msmtprc, .mailcap and .mutt/)                    |
+| urxvt, locale, etc. | .Xdefaults, .Xresources, .xprofile, .xinitrc                                |
+
+
