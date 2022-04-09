@@ -1,4 +1,4 @@
-#+TITLE:  dotfiles
+#+TITLE: My dotfiles
 
 * Introduction
 Used GNU Stow (symlink) to manage the dotfiles. DON'T waste too much time configing your tools.
@@ -8,7 +8,7 @@ Used GNU Stow (symlink) to manage the dotfiles. DON'T waste too much time config
 ** Brew
   - Getting brew list: brew leaves > brew_leaves.txt
   - Install from list file: xargs brew install < brew_leaves.txt
-* List for dotfiles
+* List of dotfiles
 ** In use
 | Name    | Description                     |
 |---------+---------------------------------|
@@ -27,7 +27,7 @@ using OSX, so I didn't put the dotfiles in this repo since I'm not maintaining i
 | yabai+skhd          | tiling wm for osx                                                           |
 | i3wm                | tiling wm for linux, along with conky, dunst, compton and  [[https://github.com/tobi-wan-kenobi/bumblebee-status][bumblebee-status]] |
 | libinput-gestures   | define finger gestures for laptop touchpad                                  |
-| mutt                | too much config (.muttrc, .msmtprc, .mailcap and .mutt/)                    |
+| mutt                | .muttrc, .msmtprc, .mailcap and .mutt/                    |
 | urxvt, locale, etc. | .Xdefaults, .Xresources, .xprofile, .xinitrc                                |
 
 
