@@ -20,6 +20,7 @@
 	ui = true
 [core]
 	editor = vim
+	pager = 
 [pull]
 	ff = only
 [url "https://mirrors.ustc.edu.cn/homebrew-core.git"]
@@ -28,3 +29,5 @@
 	insteadOf = https://github.com/Homebrew/linuxbrew-core
 [url "https://mirrors.ustc.edu.cn/brew.git"]
 	insteadOf = https://github.com/Homebrew/brew
+[pager]
+	branch = false
