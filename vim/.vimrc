@@ -44,8 +44,6 @@ set smartcase
 set tagcase=match
 " nnoremap <C-Left> :tabprevious<CR>
 " nnoremap <C-Right> :tabnext<CR>
-" nnoremap <C-j> :tabprevious<CR>
-" nnoremap <C-k> :tabnext<CR>
 
 " Miscellaneous settings
 set autoread
@@ -182,7 +180,10 @@ endfunction
 let pyindent_nested_paren="&sw*2"
 let pyindent_open_paren="&sw*2"
 
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup vimrc
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
 
 " Vundle & plugins
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -194,32 +195,26 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
 Plugin 'valloric/youcompleteme'
-" Plugin 'scrooloose/syntastic'
 Plugin 'dense-analysis/ale'
-Plugin 'easymotion/vim-easymotion' "default leader \\
+Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-scripts/a.vim' "quick cmds to switch src and header files, example :A
 " Plugin 'tpope/vim-surround'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'tpope/vim-markdown'
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
 Plugin 'iamcco/markdown-preview.nvim' 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'jceb/vim-orgmode'
 Plugin 'tomasr/molokai'
-" Plugin 'arzg/vim-colors-xcode'
-" Plugin 'morhetz/gruvbox'
-Plugin 'mileszs/ack.vim' "search tool
+Plugin 'mileszs/ack.vim' "search
 Plugin 'yegappan/grep'
 Plugin 'junegunn/fzf'
 Plugin 'Yggdroot/indentLine' "display vertical lines at indentation for codes indented with spaces
 Plugin 'preservim/nerdcommenter'
-" Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'google/yapf'
-" Plugin 'Chiel92/vim-autoformat'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
@@ -290,17 +285,6 @@ let g:ale_set_highlights=0
 let g:ale_lint_on_text_changed='never'
 let g:ale_lint_on_enter=0
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" syntastic
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " easymotion
@@ -308,7 +292,7 @@ let g:ale_lint_on_enter=0
 map <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 " s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
 " move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
@@ -334,18 +318,20 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " color theme
 """"""""""""""""""""""""""""""""""""""""""""""""""
-let g:molokai_original = 1
+" let g:molokai_original = 1
 let g:rehash256 = 1
+colorscheme molokai
 
-" colorscheme xcodedarkhc
-" colorscheme gruvbox
+" set background=dark
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " vim-markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+let g:markdown_fenced_languages = ['html', 'c++=cpp', 'viml=vim', 'python', 'bash=sh', 'csharp=cs']
 " let g:markdown_syntax_conceal = 0
-" let g:markdown_minlines = 100
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_math = 1
 
 
@@ -399,18 +385,11 @@ let g:NERDTrimTrailingWhitespace=1
 let g:NERDToggleCheckAllLines=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" yapf (google tool for auto format python)
+" yapf (python formatter for google open source projects)
 """"""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
+" autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 " isort (sort the python import)
-autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
-
-" vim-autoformat
-" noremap <F3> :Autoformat<CR>
-" au BufWrite * :Autoformat
-" let g:autoformat_autoindent=0
-" let g:autoformat_retab=0
-" let g:autoformat_remove_trailing_spaces=0
+" autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " google vim-codefmt (code formatting with maktaba and glaive)
@@ -427,7 +406,7 @@ augroup autoformat_settings
   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType python AutoFormatBuffer yapf
-  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  " autocmd FileType python AutoFormatBuffer autopep8
   autocmd FileType rust AutoFormatBuffer rustfmt
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
@@ -436,15 +415,22 @@ augroup END
 " vim-isort (sort python imports)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_isort_map = '<C-i>'
-augroup IsortMappings
-    autocmd FileType python nnoremap <buffer> <Leader>si :Isort<CR>
-    autocmd FileType python vnoremap <buffer> <Leader>si :Isort<CR>
-augroup END
+" augroup IsortMappings
+    " autocmd!
+    " autocmd FileType python nnoremap <buffer> <Leader>si :Isort<CR>
+    " autocmd FileType python vnoremap <buffer> <Leader>si :Isort<CR>
+" augroup END
 " call isort#Isort(1, line('$'), function('codefmt#FormatBuffer'))
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " vimtex (latex config)
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" let g:vimtex_view_method = 'zathura'
 " let g:vimtex_compiler_method = 'latexmk'
-" https://ejmastnak.github.io/tutorials/vim-latex/vimtex.html#how-to-read-vimtexs-documentation-of-mappings
+let g:vimtex_imaps_enabled=0 "disable insert mode mappings (e.g. if use Ultisnips)
+" let g:vimtex_syntax_enabled=0 "disable syntax conceal
+" let g:vimtex_syntax_conceal_disable=1 "disable syntax conceal
+augroup vimtex
+  autocmd!
+  autocmd InsertEnter *.tex set conceallevel=0
+  autocmd InsertLeave *.tex set conceallevel=2
+augroup END
