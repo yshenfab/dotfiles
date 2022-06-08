@@ -429,8 +429,10 @@ let g:vim_isort_map = '<C-i>'
 let g:vimtex_imaps_enabled=0 "disable insert mode mappings (e.g. if use Ultisnips)
 " let g:vimtex_syntax_enabled=0 "disable syntax conceal
 " let g:vimtex_syntax_conceal_disable=1 "disable syntax conceal
-augroup vimtex
+augroup conceal
   autocmd!
   autocmd InsertEnter *.tex set conceallevel=0
   autocmd InsertLeave *.tex set conceallevel=2
+  autocmd InsertEnter *.md set conceallevel=0
+  autocmd InsertLeave *.md set conceallevel=2
 augroup END
