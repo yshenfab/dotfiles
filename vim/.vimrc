@@ -1,3 +1,6 @@
+" For neovim do: 
+" ln -s ~/.vim ~/.config/nvim
+" ln -s ~/.vimrc ~/.config/nvim/init.vim
 set nocompatible
 execute pathogen#infect()
 
@@ -21,12 +24,11 @@ set nobackup
 set nowritebackup
 set undofile
 set swapfile
-set backupdir=$HOME/.vim/files/backup/
-set directory=$HOME/.vim/files/swap//
-set undodir=$HOME/.vim/files/undo/
-set viewdir=$HOME/.vim/files/view
-" set viminfo='100,n$HOME/.vim/files/info/viminfo
-set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/files/info/viminfo
+" set backupdir=$HOME/.vim/files/backup/
+" set directory=$HOME/.vim/files/swap//
+" set undodir=$HOME/.vim/files/undo/
+" set viewdir=$HOME/.vim/files/view
+" set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/files/info/viminfo
 
 " Navigation
 set cursorline
@@ -185,48 +187,46 @@ augroup vimrc
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
-" Vundle & plugins
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive' "git plugin
-Plugin 'preservim/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'majutsushi/tagbar'
-Plugin 'ervandew/supertab'
-Plugin 'valloric/youcompleteme'
-Plugin 'dense-analysis/ale'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-scripts/a.vim' "quick cmds to switch src and header files, example :A
-" Plugin 'tpope/vim-surround'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'preservim/vim-markdown'
-Plugin 'iamcco/markdown-preview.nvim' 
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'jceb/vim-orgmode'
-Plugin 'tomasr/molokai'
-Plugin 'mileszs/ack.vim' "search
-Plugin 'yegappan/grep'
-Plugin 'junegunn/fzf'
-Plugin 'Yggdroot/indentLine' "display vertical lines at indentation for codes indented with spaces
-Plugin 'preservim/nerdcommenter'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'google/yapf'
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
-" Plugin 'google/vim-colorscheme-primary'
-Plugin 'google/vim-searchindex'
-Plugin 'fisadev/vim-isort'
-Plugin 'lervag/vimtex'
-call vundle#end()
+" vim-plug & plugins
+" call plug#begin('~/.vim/plugged')
+" call plug#begin('~/.config/nvim/plugged')
+call plug#begin()
+Plug 'tpope/vim-sensible'
+" On-demand loading
+Plug 'preservim/nerdtree', {'on':'NERDTreeToggle'}
+Plug 'tpope/vim-fugitive' "git plugin
+Plug 'vim-airline/vim-airline'
+Plug 'majutsushi/tagbar'
+Plug 'ervandew/supertab'
+Plug 'valloric/youcompleteme'
+Plug 'dense-analysis/ale'
+Plug 'easymotion/vim-easymotion'
+Plug 'vim-scripts/a.vim' "quick cmds to switch src and header files, example :A
+Plug 'tpope/vim-surround'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim' 
+Plug 'jiangmiao/auto-pairs'
+Plug 'jceb/vim-orgmode'
+Plug 'tomasr/molokai'
+Plug 'mileszs/ack.vim'
+Plug 'yegappan/grep'
+Plug 'junegunn/fzf'
+Plug 'Yggdroot/indentLine'
+Plug 'preservim/nerdcommenter'
+Plug 'davidhalter/jedi-vim'
+Plug 'google/yapf'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+Plug 'google/vim-searchindex'
+Plug 'fisadev/vim-isort'
+Plug 'lervag/vimtex'
+call plug#end()
 call glaive#Install()
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerdtree (file system explorer)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <F2> :NERDTreeToggle<CR>
@@ -240,19 +240,16 @@ let NERDTreeShowBookmarks=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeMinimalUI=1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline (status/tabline for vim)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " display all buffers when there's only one tab open
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " tagbar (display ctags-generated tags of current file)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " supertab (use <Tab> for all insert completion needs) 
 " YCM (make YCM compatible with UltiSnips using supertab)
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -266,7 +263,6 @@ nmap gm :YcmCompleter GoToImprecise<CR>
 nmap gr :YcmCompleter GoToReferences<CR>
 nmap fi :YcmCompleter FixIt<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale (syntax checker and linter)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_fixers = {
@@ -285,8 +281,6 @@ let g:ale_set_highlights=0
 let g:ale_lint_on_text_changed='never'
 let g:ale_lint_on_enter=0
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " easymotion
 """"""""""""""""""""""""""""""""""""""""""""""""""
 map <Leader>f <Plug>(easymotion-bd-f)
@@ -300,7 +294,6 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctrlp (full path fuzzy file, buffer, mru, tag, ... finder for vim)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
@@ -315,7 +308,6 @@ let g:ctrlp_max_height = 20
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " color theme
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " let g:molokai_original = 1
@@ -324,7 +316,6 @@ colorscheme molokai
 
 " set background=dark
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:markdown_fenced_languages = ['html', 'c++=cpp', 'viml=vim', 'python', 'bash=sh', 'csharp=cs']
@@ -334,8 +325,6 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_math = 1
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " markdown-preview
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:mkdp_auto_start = 0
@@ -363,7 +352,6 @@ nmap <C-s> <Plug>MarkdownPreview
 nmap <M-s> <Plug>MarkdownPreviewStop
 nmap <C-p> <Plug>MarkdownPreviewToggle
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " ultisnips
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -371,7 +359,6 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerdcommenter
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " let mapleader=','
@@ -384,14 +371,12 @@ let g:NERDCommentEmptyLines=1
 let g:NERDTrimTrailingWhitespace=1
 let g:NERDToggleCheckAllLines=1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " yapf (python formatter for google open source projects)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 " isort (sort the python import)
 " autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " google vim-codefmt (code formatting with maktaba and glaive)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>fc :FormatCode<CR>
@@ -411,7 +396,6 @@ augroup autoformat_settings
   autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-isort (sort python imports)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_isort_map = '<C-i>'
@@ -422,7 +406,6 @@ let g:vim_isort_map = '<C-i>'
 " augroup END
 " call isort#Isort(1, line('$'), function('codefmt#FormatBuffer'))
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimtex (latex config)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " let g:vimtex_compiler_method = 'latexmk'
