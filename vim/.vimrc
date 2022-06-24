@@ -24,11 +24,11 @@ set nobackup
 set nowritebackup
 set undofile
 set swapfile
-" set backupdir=$HOME/.vim/files/backup/
-" set directory=$HOME/.vim/files/swap//
-" set undodir=$HOME/.vim/files/undo/
-" set viewdir=$HOME/.vim/files/view
-" set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/files/info/viminfo
+set backupdir=$HOME/.vim/files/backup/
+set directory=$HOME/.vim/files/swap//
+set undodir=$HOME/.vim/files/undo/
+set viewdir=$HOME/.vim/files/view
+set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/files/info/viminfo
 
 " Navigation
 set cursorline
@@ -192,6 +192,7 @@ augroup END
 " call plug#begin('~/.config/nvim/plugged')
 call plug#begin()
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-speeddating'
 " On-demand loading
 Plug 'preservim/nerdtree', {'on':'NERDTreeToggle'}
 Plug 'tpope/vim-fugitive' "git plugin
@@ -224,6 +225,7 @@ Plug 'google/vim-glaive'
 Plug 'google/vim-searchindex'
 Plug 'fisadev/vim-isort'
 Plug 'lervag/vimtex'
+Plug 'mhinz/vim-startify'
 call plug#end()
 call glaive#Install()
 

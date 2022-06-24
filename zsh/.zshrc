@@ -5,7 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-fortune
+fortune # random epigram
+neofetch # CLI sys info tool
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -16,8 +18,10 @@ export ZSH="/Users/yang/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-# ZSH_THEME="ys"
+# ZSH_THEME="random" # ys, robbyrussell
+ZSH_THEME="powerlevel10k/powerlevel10k"
+# if install powerlevel10k from Homebrew
+# source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -109,24 +113,23 @@ YANGBIN=$HOME/yangbin
 export PATH=${YANGBIN}:$PATH
 
 # aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -al'
 alias grep='grep --color=auto'
 alias cls='printf "\033c"'
-alias bu='brew update && brew upgrade'
-alias vim='/usr/local/bin/vim'
 alias cat='bat'
 alias ls='exa'
 # alias man='tldr'
-alias py='python3'
+alias bu='brew update && brew upgrade'
+alias buc='brew upgrade --cask'
+alias vim='/usr/local/bin/vim'
+# aliases for ssh
 alias ssh-1080='ssh yang@10.16.12.102'
-alias ssh-3090='ssh yang@10.16.11.108'
-alias ssh-3090-2='ssh yang@10.16.12.103'
+alias ssh-3090='ssh yang@10.16.12.103'
+alias ssh-3090-2='ssh yang@10.16.11.108'
 alias ssh-tesla-k80='ssh yang@10.20.19.10'
 alias ssh-72='ssh yang@10.20.101.189'
 
-my_scp_3090() {
+my_scp_3090_2() {
     scp "$1" yang@10.16.11.108:~
 }
 
@@ -134,8 +137,6 @@ my_scp_3090() {
 #POWERLINE_BASH_CONTINUATION=1
 #POWERLINE_BASH_SELECT=1
 #. /usr/lib/python3.9/site-packages/powerline/bindings/zsh/powerline.zsh
-
-neofetch
 
 export PATH="/usr/local/opt/python@3.9/bin:$PATH"
 
@@ -146,9 +147,6 @@ if type brew &>/dev/null; then
     autoload -Uz compinit
     compinit
 fi
-
-# powerlevel10k
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -164,21 +162,6 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 export STG=$HOME/stg
 export DYLD_LIBRARY_PATH=$STG/lib
 export PATH=$STG/bin:$PATH
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/yang/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/yang/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/yang/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/yang/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig/"
@@ -210,9 +193,25 @@ function proxy_off(){
     echo -e "proxy turned off"
 }
 
-
+# golang
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 # export GOPROXY=https://mirrors.aliyun.com/goproxy/
 
+# ruby gems
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.1.0/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
