@@ -28,7 +28,8 @@ set backupdir=$HOME/.vim/files/backup/
 set directory=$HOME/.vim/files/swap//
 set undodir=$HOME/.vim/files/undo/
 set viewdir=$HOME/.vim/files/view
-set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/files/info/viminfo
+" set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/files/info/viminfo
+set viminfo='1000,f1,\"500,:1000,%,n~/.viminfo
 
 " Navigation
 set cursorline
@@ -208,7 +209,8 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim' 
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'jiangmiao/auto-pairs'
 Plug 'jceb/vim-orgmode'
 Plug 'tomasr/molokai'
@@ -216,6 +218,7 @@ Plug 'mileszs/ack.vim'
 Plug 'yegappan/grep'
 Plug 'junegunn/fzf'
 Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'preservim/nerdcommenter'
 Plug 'davidhalter/jedi-vim'
 Plug 'google/yapf'
@@ -318,41 +321,53 @@ colorscheme molokai
 
 " set background=dark
 
+
+" LeaderF
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
+
+" should use `Leaderf gtags --update` first
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
 " vim-markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:markdown_fenced_languages = ['html', 'c++=cpp', 'viml=vim', 'python', 'bash=sh', 'csharp=cs']
-" let g:markdown_syntax_conceal = 0
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_math = 1
 
-" markdown-preview
+" vim-markdown-preview
 """"""""""""""""""""""""""""""""""""""""""""""""""
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 1
-let g:mkdp_refresh_slow = 0
-let g:mkdp_command_for_global = 0
-let g:mkdp_open_to_the_world = 0
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 0
-    \ }
-let g:mkdp_page_title = '「${name}」'
-let g:mkdp_filetypes = ['markdown']
-
-nmap <C-s> <Plug>MarkdownPreview
-nmap <M-s> <Plug>MarkdownPreviewStop
-nmap <C-p> <Plug>MarkdownPreviewToggle
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_github=1 "requires python grip
 
 " ultisnips
 """"""""""""""""""""""""""""""""""""""""""""""""""
