@@ -82,7 +82,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(autojump macos extract web-search sudo zsh-autosuggestions copypath history macports git)
-#fasd
     
 source $ZSH/oh-my-zsh.sh
 
