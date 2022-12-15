@@ -1,0 +1,147 @@
+{
+  "coc.preferences.extensionUpdateCheck": daily,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "*"
+  ],
+  "coc.preferences.semanticTokensHighlights": false,
+  "coc.preferences.enableFloatHighlight": true,
+  "suggest.noselect": true,
+  "suggest.enablePreselect": false,
+  "eslint.autoFixOnSave": false,
+  /* "prettier.printWidth": 100, */
+  /* "prettier.disableLanguages": [], */
+  /* "prettier.formatterPriority": 1, */
+  /* "prettier.useTabs": true, */
+  /* "prettier.trailingComma": "all", */
+  /* "prettier.singleQuote": false, */
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
+      "ignoredRootPaths": []
+    },
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": [
+        "compile_flags.txt",
+        "compile_commands.json"
+      ],
+      "filetypes": [
+        "c",
+        "cc",
+        "cpp",
+        "c++",
+        "objc",
+        "objcpp"
+      ]
+    },
+    "cmake": {
+      "command": "cmake-language-server",
+      "filetypes": [
+        "cmake"
+      ],
+      "rootPatterns": [
+        "build/"
+      ],
+      "initializationOptions": {
+        "buildDirectory": "build"
+      }
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": [
+        "dockerfile"
+      ],
+      "args": [
+        "--stdio"
+      ]
+    },
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "filetypes": [
+        "go"
+      ],
+      "trace.server": "verbose",
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint",
+        "usePlaceholders": true
+      }
+    },
+    "digestif": {
+      "command": "digestif",
+      "filetypes": [
+        "tex",
+        "plaintex",
+        "context"
+      ]
+    },
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": [
+        "lua"
+      ]
+    }
+    // "swift": {
+    //   "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+    //   "args": [],
+    //   "filetypes": [
+    //     "swift"
+    //   ],
+    //   "initializationOptions": {},
+    //   "settings": {}
+    // },
+  },
+  // diagnostic-languageserver
+  "diagnostic-languageserver.filetypes": {
+    "vim": "vint",
+    "email": "languagetool",
+    "markdown": [
+      "write-good",
+      "markdownlint"
+    ],
+    "sh": "shellcheck",
+    "elixir": [
+      "mix_credo",
+      "mix_credo_compile"
+    ],
+    "eelixir": [
+      "mix_credo",
+      "mix_credo_compile"
+    ],
+    "php": [
+      "phpstan",
+      "psalm"
+    ],
+    "yaml": [
+      "yamllint"
+    ],
+    "cmake": [
+      "cmake-lint",
+      "cmakelint"
+    ],
+    "systemd": "systemd-analyze"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "dart": "dartfmt",
+    "elixir": "mix_format",
+    "eelixir": "mix_format",
+    "python": [
+      "black",
+      "isort"
+    ],
+    "lua": "lua-format",
+    "sh": "shfmt",
+    "blade": "blade-formatter",
+    "cmake": "cmake-format"
+  }
+}

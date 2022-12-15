@@ -1,0 +1,97 @@
+urxvt --help 2>&1| sed -n '/:  /s/^ */! URxvt*/gp' >> ~/.Xresources
+
+! retina screen 220dpi (mbp) / 96dpi (LG29) / 82 (LG34) / 92dpi (24) / 100dpi (22) / 163dpi (dell 4K 27inch)
+! www.sven.de/dpi/
+Xft.dpi:163
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+! ROFI Color theme
+rofi.color-enabled: true
+rofi.color-window: argb:ee273238, #273238, argb:3a1e2529
+rofi.color-normal: argb:00273238, #c1c1c1, argb:3a273238, #394249, #ffffff
+rofi.color-active: argb:00273238, #80cbc4, argb:3a273238, #394249, #80cbc4
+rofi.color-urgent: argb:00273238, #ff1844, argb:3a273238, #394249, #ff1844
+
+
+! URxvt ------------------------------------------------
+URxvt.preeditType:Root
+!! input method
+URxvt.inputMethod:fcitx
+!! color
+URxvt.depth:32
+!! 90% transprancy
+URxvt.background:[90]#000000
+URxvt.foreground:#ffffff
+URxvt.colorBD:Gray95
+URxvt.colorUL:Green
+URxvt.color1:Red2
+URxvt.color4:RoyalBlue
+URxvt.color5:Magenta2
+URxvt.color8:Gray50
+URxvt.color10:Green2
+URxvt.color12:DodgerBlue
+URxvt.color14:Cyan2
+URxvt.color15:Gray95
+!! open URL
+URxvt.urlLauncher:google-chrome-stable
+URxvt.matcher.button:1
+Urxvt.perl-ext-common:matcher
+!! scroll bar
+URxvt.scrollBar:True
+URxvt.scrollBar_right:True
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+!! scroll screen
+URxvt.mouseWheelScrollPage:True
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+!! cursor
+URxvt.cursorBlink:True
+URxvt.saveLines:3000
+!! border
+URxvt.borderLess:False
+!! fonts
+! URxvt.font: xft:Iosevka:style=Regular:size=13
+! URxvt.boldFont: xft:Iosevka:style=Bold:size=13
+! URxvt.italicFont: xft:Iosevka:style=Italic:size=13
+! URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=13
+
+URxvt.font: xft:MesloLGS NF:style=Regular:size=13
+URxvt.boldFont: xft:MesloLGS NF:style=Bold:size=13
+URxvt.italicFont: xft:MesloLGS NF:style=Italic:size=13
+URxvt.boldItalicFont: xft:MesloLGS NF:style=Bold Italic:size=13
+
+! URxvt.font: xft:Menlo:style=Regular:size=13
+! URxvt.boldFont: xft:Menlo:style=Bold:size=13
+! URxvt.italicFont: xft:Menlo:style=Italic:size=13
+! URxvt.boldItalicFont: xft:Menlo:style=Bold Italic:size=13
+
+! URxvt.font:xft:Inconsolata:size=13:style=Medium:antialias=true,xft:AR PL UMing CN:regular:size=13:minspace=true
+! URxvt.boldfont:xft:Inconsolata for Powerline:size=11:style=Bold:antialias=true,xft:AR PL UMing CN:regular:size=13:minspace=true
+
+!! clipboard
+! URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+! URxvt.url-select.launcher:  chromium
+! URxvt.url-select.underline: true
+! URxvt.keysym.M-u:           perl:url-select:select_next
+! URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+! URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt.perl-ext-common: ...,clipboard
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+! 禁用到Ctrl+Shift的输入特殊字符功能
+!URxvt*iso14755_52: false
+
+!Native transparency
+URxvt*.transparent: true
+URxvt.shading: 70
+URxvt.letterSpace: -1

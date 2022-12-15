@@ -1,33 +1,31 @@
 #+TITLE: My dotfiles
 
 * Introduction
-Used GNU Stow (symlink) to manage the dotfiles. DON'T waste too much time configing your tools.
+My dotfiles for MacOS & Arch Linux.
+
 * Usage
 ** Stow
+Use GNU Stow (symlink) to manage the dotfiles.
+
   - "stow xxx" in a terminal
+
 ** Brew
   - Getting brew list: brew leaves > brew_leaves.txt
   - Install from list file: xargs brew install < brew_leaves.txt
+
 * List of dotfiles
-** In use
-| Name    | Description                     |
-|---------+---------------------------------|
-| zsh     | zsh + oh my zsh + iTerm2        |
-| vim     | .vimrc                          |
-| tmux    | .tmux.conf                      |
-| git     | a simple git config             |
-| emacs   | used a org file for config      |
-| aria2   | aria2.conf or use just aria2GUI |
-| yangbin | some scripts, xD                |
-** Deprecated
-Most of this part are dotfiles from my old Linux machine. I even installed Archlinux on my Macbook. Now I'm
-using OSX, so I didn't put the dotfiles in this repo since I'm not maintaining it. Ask me for a copy if you want one.
-| Name                | Description                                                                 |
-|---------------------+-----------------------------------------------------------------------------|
-| yabai+skhd          | tiling wm for osx                                                           |
-| i3wm                | tiling wm for linux, along with conky, dunst, compton and  [[https://github.com/tobi-wan-kenobi/bumblebee-status][bumblebee-status]] |
-| libinput-gestures   | define finger gestures for laptop touchpad                                  |
-| mutt                | .muttrc, .msmtprc, .mailcap and .mutt/                    |
-| urxvt, locale, etc. | .Xdefaults, .Xresources, .xprofile, .xinitrc                                |
-
-
+| Name              | Description                                                                |
+|-------------------+----------------------------------------------------------------------------|
+| yangbin           | some scripts, xD                                                           |
+| zsh               | zsh + oh my zsh                                                            |
+| vim               | .vimrc + init.vim                                                          |
+| tmux              | .tmux.conf                                                                 |
+| git               | .gitconfig                                                                 |
+| emacs             | init.el, myinit.el, myinit.org                                             |
+| aria2             | aria2.conf or use aria2GUI                                                 |
+| yabai+skhd        | tiling wm for osx                                                          |
+| i3wm              | tiling wm for linux, along with conky, dunst, compton and [[https://github.com/tobi-wan-kenobi/bumblebee-status][bumblebee-status]] |
+| mutt              | .muttrc, .msmtprc, .mailcap and .mutt/                                     |
+| urxvt             | .Xdefaults, .Xresources, .xprofile, .xinitrc, etc.                         |
+| alacritty         | alacritty.yml                                                                   |
+| libinput-gestures | define finger gestures for laptop touchpad                                 |
