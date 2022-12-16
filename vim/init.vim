@@ -199,9 +199,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-scripts/a.vim' "quick cmds to switch src and header files, example :A
 Plug 'ervandew/supertab'
-Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 Plug 'easymotion/vim-easymotion'
-" Plug 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'mbbill/undotree'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'junegunn/goyo.vim'
@@ -215,8 +214,8 @@ Plug 'Yggdroot/indentLine'
 " Plug 'majutsushi/tagbar'
 Plug 'ludovicchabant/vim-gutentags' " manage tags
 Plug 'skywind3000/gutentags_plus'
-" Plug 'github/copilot.vim' " run :Copilot setup
-Plug 'vim-test/vim-test' " for running tests
+" Plug 'github/copilot.vim'
+Plug 'vim-test/vim-test'
 " Plug 'puremourning/vimspector' " A multi-language debugging system
 " ==================== Search (ctrlp/ack/fzf/rg/ag) ====================
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
@@ -226,22 +225,16 @@ Plug 'mhinz/vim-startify'
 Plug 'tomasr/molokai'
 Plug 'luochen1990/rainbow'
 Plug 'theniceboy/nvim-deus'
-" ==================== Code Format ====================
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
-" Plug 'sbdchd/neoformat'
 " ==================== Git ====================
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-" ==================== Syntax & auto-completion (ycm, deoplete, coc) ====================
+" ==================== Syntax & auto-completion (ycm/deoplete/coc) ====================
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'sheerun/vim-polyglot' " syntax and indentation support
 Plug 'neomake/neomake' " Asynchronous linting and make framework
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
 Plug 'wellle/tmux-complete.vim'
-Plug 'davidhalter/jedi-vim' " autocompletion
 " Plug 'valloric/youcompleteme'
 " Plug 'dense-analysis/ale' " Asynchronous Lint Engine, LSP client
 " if has('nvim')
@@ -252,13 +245,17 @@ Plug 'davidhalter/jedi-vim' " autocompletion
 "   Plug 'roxma/vim-hug-neovim-rpc'
 " endif
 " Plug 'deoplete-plugins/deoplete-jedi'
+" ==================== Code Format ====================
+" Plug 'google/vim-maktaba'
+" Plug 'google/vim-codefmt'
+" Plug 'google/vim-glaive'
+Plug 'sbdchd/neoformat'
 " ==================== C/C++ ====================
 " ==================== Python ====================
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'davidhalter/jedi-vim'
 Plug 'fisadev/vim-isort'
 Plug 'KangOl/vim-pudb'
-Plug 'jpalardy/vim-slime' "C-c c
-Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 " ==================== Go ====================
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 " ==================== Swift ====================
@@ -272,10 +269,10 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jceb/vim-orgmode'
 call plug#end()
-call glaive#Install()
+" call glaive#Install()
 
 " ==================== Plugins Config ====================
-"
+" ========================================================
 " ==================== vim-easy-align ====================
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -284,9 +281,6 @@ nmap ga <Plug>(EasyAlign)
 
 " ==================== SuperTab ====================
 let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" ==================== tabular ====================
-vmap ga :Tabularize /
 
 " ==================== EasyMotion ====================
 " <Leader>f{char} to move to {char}
@@ -310,7 +304,7 @@ noremap <Leader>tm :TableModeToggle<CR>
 let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 
 " ==================== undotree ====================
-nnoremap <F3> :UndotreeToggle<CR>
+nnoremap <F4> :UndotreeToggle<CR>
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
@@ -377,17 +371,16 @@ let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 " ==================== vim-test ====================
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>v :TestVisit<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+" nmap <silent> <leader>l :TestLast<CR>
+" nmap <silent> <leader>v :TestVisit<CR>
 
 " ==================== vimspector ====================
-let g:vimspector_enable_mappings = 'HUMAN'
-let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
-
-" debug inspect (di)
-nmap <Leader>di <Plug>VimspectorBalloonEval
-xmap <Leader>di <Plug>VimspectorBalloonEval
+" let g:vimspector_enable_mappings = 'HUMAN'
+" let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
+" " debug inspect (di)
+" nmap <Leader>di <Plug>VimspectorBalloonEval
+" xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " ==================== LeaderF ====================
 " let g:Lf_WorkingDirectoryMode = 'AF'
@@ -445,25 +438,8 @@ colorscheme molokai
 " ==================== vim-rainbow ====================
 let g:rainbow_active = 1
 
-" ==================== Google vim-codefmt ====================
-nnoremap <leader>fc :FormatCode<CR>
-nnoremap <leader>fl :FormatLines<CR>
-
-augroup autoformat_settings
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
-  " autocmd FileType python AutoFormatBuffer autopep8
-  autocmd FileType rust AutoFormatBuffer rustfmt
-  autocmd FileType vue AutoFormatBuffer prettier
-augroup END
-
 " ==================== Treesitter ====================
+if has('nvim')
 lua <<EOF
 require "nvim-treesitter.configs".setup {
   ensure_installed = {"bash", "c", "go", "java", "lua", "swift"},
@@ -499,10 +475,13 @@ require "nvim-treesitter.configs".setup {
   }
 }
 EOF
-
 " toggle the tree using command :TSPlaygroundToggle
+map <F9> :TSPlaygroundToggle<CR>
 " show treesitter and syntax highlight groups under cursor
 map <F10> :TSHighlightCapturesUnderCursor<CR>
+else
+  " Do nothing
+endif
 
 " ==================== Neomake ====================
 " Asynchronous linting and make framework
@@ -527,7 +506,7 @@ let g:coc_global_extensions = [
 " nnoremap <c-c> :CocCommand<CR>
 
 " coc-diagnostic
-nnoremap <silent><nowait> <LEADER>d :CocList diagnostics<cr>
+nnoremap <silent><nowait> <Leader>d :CocList diagnostics<cr>
 " nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 " nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -547,18 +526,31 @@ vmap <Leader>tr <Plug>(coc-translator-pv)
 " trigger with <C-X><C-U>
 let g:tmuxcomplete#trigger = 'completefunc'
 
-" ==================== jedi-vim ====================
-" TODO: subject to change!
-" let g:jedi#use_tabs_not_buffers = 1
-" let g:jedi#goto_command = "<leader>d"
-" let g:jedi#goto_assignments_command = "<leader>g"
-" let g:jedi#goto_stubs_command = "<leader>s"
-" let g:jedi#goto_definitions_command = ""
-" let g:jedi#documentation_command = "K"
-" let g:jedi#usages_command = "<leader>n"
-" let g:jedi#completions_command = "<C-Space>"
-" let g:jedi#rename_command = "<leader>r"
+" ==================== python-mode ====================
+" let g:pymode_rope = 1
+" let g:pymode_lint = 1
+" let g:pymode_lint_checkers = [‘pyflakes’, ‘pep8’]
+" let g:pymode_lint_write = 1
+" let g:pymode_virtualenv = 1
+" let g:pymode_breakpoint = 1
+" let g:pymode_syntax = 1
+" let g:pymode_syntax_all = 1
+" let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+" let g:pymode_syntax_space_errors = g:pymode_syntax_all
+" let g:pymode_rope_goto_definition_bind = "<C-g>"
 
+" ==================== jedi-vim ====================
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+" let g:jedi#goto_stubs_command = "<leader>s"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+" let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+" if completion is too slow
+" let g:pymode_rope = 0
 " use deoplete-jedi (asynchronously), disable jedi-vim's completion
 " let g:jedi#completions_enabled = 0
 
@@ -572,16 +564,6 @@ augroup END
 " ==================== vim-pudb ====================
 nnoremap <F8> :TogglePudbBreakPoint<CR>
 inoremap <F8> <ESC>:TogglePudbBreakPoint<CR>a
-
-" ==================== vim-slime & vim-ipython-cell ====================
-let g:slime_target = "tmux"
-let g:slime_python_ipython = 1
-let g:slime_bracketed_paste = 1
-let g:slime_default_config = {
-            \ 'socket_name': get(split($TMUX, ','), 0),
-            \ 'target_pane': '{top-right}' }
-
-let g:slime_dont_ask_default = 1
 
 " ==================== vim-go ====================
 let g:go_echo_go_info = 0
@@ -633,7 +615,7 @@ let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_math = 1
 
 " ==================== vim-table-mode ====================
-noremap <LEADER>tm :TableModeToggle<CR>
+noremap <Leader>tm :TableModeToggle<CR>
 "let g:table_mode_disable_mappings = 1
 let g:table_mode_cell_text_object_i_map = 'k<Bar>' " k|
 
@@ -657,8 +639,32 @@ let g:mkdp_filetypes = ['markdown']
 let g:mkdp_theme = 'dark'
 nmap <C-s> <Plug>MarkdownPreviewToggle
 
+" ==================== neoformat ====================
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
+
+" ==================== Google vim-codefmt ====================
+" nnoremap <leader>fc :FormatCode<CR>
+" nnoremap <leader>fl :FormatLines<CR>
+"
+" augroup autoformat_settings
+"   autocmd FileType bzl AutoFormatBuffer buildifier
+"   autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+"   autocmd FileType dart AutoFormatBuffer dartfmt
+"   autocmd FileType go AutoFormatBuffer gofmt
+"   autocmd FileType gn AutoFormatBuffer gn
+"   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+"   autocmd FileType java AutoFormatBuffer google-java-format
+"   autocmd FileType python AutoFormatBuffer yapf
+"   " autocmd FileType python AutoFormatBuffer autopep8
+"   autocmd FileType rust AutoFormatBuffer rustfmt
+"   autocmd FileType vue AutoFormatBuffer prettier
+" augroup END
+
 " ==================== tagbar ====================
-" nmap <F4> :TagbarToggle<CR>
+" nmap <F6> :TagbarToggle<CR>
 
 " ==================== ctrlp ====================
 " full path fuzzy file, buffer, mru, tag, ... finder
