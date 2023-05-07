@@ -6,47 +6,30 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Driod Sans 10, FontAwesome
-#font pango:DejaVu Sans Mono, FontAwesome
-#font pango:Driod Sans 10, Font Awesome 5 Free
-
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:Droid Sans 10
 
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+# terminal
 # bindsym $mod+Return exec urxvt
-bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
-# start pcmanfm
+# file manager (ranger/pcmanfm)
+bindsym $mod+z exec kitty -e ranger
 bindsym $mod+x exec pcmanfm
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec " dmenu_run -nf '#F3F4F5' -nb '#2F343F' -sb '#1793D1' -sf '#f3f4f5' -fn 'monospace-10' -p 'exec:'"
+# dmenu
+bindsym $mod+d exec "dmenu_run -nf '#F3F4F5' -nb '#2F343F' -sb '#1793D1' -sf '#f3f4f5' -fn 'monospace-10' -p 'exec:'"
 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-
-# start rofi (dmenu mode)
-# bindsym $mod+z exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"'
-bindsym $mod+z exec alacritty -e ranger
-
-# start rofi (window mode)
+# rofi
 bindsym $mod+Tab exec rofi -show window -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"
 
 # change focus
@@ -61,8 +44,18 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# focus & move by hjkl
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -80,23 +73,25 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-#bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
+
+# set workspace
 set $WS1  1: 
-set $WS2  2: 
-set $WS3  3: 
-set $WS4  4: 
-set $WS5  5: 
+set $WS2  2: 
+set $WS3  3: 
+set $WS4  4: 
+set $WS5  5: 
 set $WS6  6: 
-set $WS7  7: 
-set $WS8  8: 
-set $WS9  9: 
-set $WS0 10: 
+set $WS7  7: 
+set $WS8  8: 
+set $WS9  9: 
+set $WS0 10: 
 
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
@@ -174,7 +169,7 @@ bar {
         font xft:Droid Sans Mono, FontAwesome 10
         position top
         # tray_output primary
-        status_command ~/.config/i3/bumblebee-status/bumblebee-status -m cpu memory disk:root pasink date time -p root.path=/home/yang time.format="%H:%M" time.locale="en_US.UTF-8" -t solarized-powerline
+        status_command ~/.config/i3/bumblebee-status/bumblebee-status -m cpu memory disk:root pasink caffeine date time -p root.path=/home/yang time.format="%H:%M" time.locale="en_US.UTF-8" -t solarized-powerline
         # status_command ~/.config/i3/bumblebee-status/bumblebee-status -m cpu memory disk:root pasink bluetooth2 date time -p root.path=/home/yang time.format="%H:%M" time.locale="en_US.UTF-8" -t solarized-powerline
         colors {
             background $bg-color
@@ -191,7 +186,7 @@ bar {
 # new_float normal
 # hide_edge_borders none
 
-bindsym $mod+Delete exec betterlockscreen -l $HOME/Downloads/sudo.jpeg
+bindsym $mod+Delete exec betterlockscreen -l $HOME/Downloads/wallpaper/sudo.jpeg
 
 # shut down, restart and locking features (requires i3exit script in /usr/bin)
 # bindsym $mod+Delete mode "$mode_system"
@@ -210,19 +205,20 @@ bindsym $mod+Delete exec betterlockscreen -l $HOME/Downloads/sudo.jpeg
 #     bindsym Escape mode "default"
 # }
 
-# hide a window
-bindsym $mod+Shift+h move scratchpad
+# hide/show a window
+bindsym $mod+Shift+d move scratchpad
 # show a window
 bindsym $mod+Shift+s scratchpad show
 
 # border
 for_window [class="Google-chrome"] border 1pixel
 for_window [class="Chromium"] border 1pixel
+
 # open applications on specific workspaces
 assign [class="Google-chrome"] $WS2
 #assign [class="Pcmanfm"] $WS4
 
-# autostarted applications
+# auto start applications
 exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
 exec --no-startup-id pa-applet
@@ -230,14 +226,11 @@ exec --no-startup-id pa-applet
 exec --no-startup-id compton --config ~/.config/i3/compton.conf -b
 exec --no-startup-id ~/.config/conky/start_conky
 
-# wallpaper (static)
-exec --no-startup-id feh --bg-fill $HOME/Downloads/sudo.jpeg
-exec --no-startup-id betterlockscreen -w $HOME/Downloads/sudo.jpeg
+# set wallpaper/lockscreen
+exec --no-startup-id feh --bg-fill $HOME/wallpaper/wallpaper.jpeg
+exec --no-startup-id betterlockscreen -w $HOME/wallpaper/wallpaper.jpeg
 # wallpaper (dynamic)
 # exec --no-startup-id ~/yangbin/random_wallpaper &
-
-# heroku shadowsocks
-# exec --no-startup-id node ~/heroku/shadowsocks-heroku-master/local.js -s secret-savannah-47494.herokuapp.com -l 1080 -m rc4 -k foobar -r 80 &
 
 # Other
 # exec --no-startup-id xset dpms 600
@@ -246,8 +239,9 @@ exec --no-startup-id dunst
 exec --no-startup-id redshift -l 31.23:121.47
 exec --no-startup-id albert
 exec --no-startup-id flameshot
+exec --no-startup-id clash
 
 # eDP1 2880x1800 220dpi, HDMI3 2560x1080 96dpi (my LG 29 inches monitor)
 # 3840x2160 157dpi (samsung 28inch)
-# Display size: 26.72" × 11.27" = 301.19in² (67.87cm × 28.63cm = 1943.17cm²) at 95.81 PPI, 0.2651mm dot pitch, 9180 PPI² 
+# Display size: 26.72" × 11.27" = 301.19in² (67.87cm × 28.63cm = 1943.17cm²) at 95.81 PPI, 0.2651mm dot pitch, 9180 PPI²
 # exec --no-startup-id xrandr --dpi 220

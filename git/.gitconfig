@@ -1,7 +1,6 @@
 [user]
-	name = yshen
+	name = yshenfab
 	email = 287049745@qq.com
-	signingKey = FEE2409554FEBE576B2580A32CCCE89ACB4B64F3
 [commit]
 	gpgsign = true
 [gpg]
@@ -13,22 +12,36 @@
 	br = branch
 	; hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	hist = log --oneline --graph
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	type = cat-file -t
 	dump = cat-file -p
 	psm = push origin HEAD:master
 	pmain = push origin HEAD:main
+	pdev = push -u origin dev
 [color]
 	ui = true
 [core]
-	editor = vim
-	pager = 
+	editor = nvim
+	excludesFile = ~/.gitignore
+	pager =
+	; pager = delta
+	; autocrlf = input
+[push]
+	default = current
 [pull]
-	ff = only
-[url "https://mirrors.ustc.edu.cn/homebrew-core.git"]
-	insteadOf = https://github.com/Homebrew/homebrew-core
-[url "https://mirrors.ustc.edu.cn/linuxbrew-core.git"]
-	insteadOf = https://github.com/Homebrew/linuxbrew-core
-[url "https://mirrors.ustc.edu.cn/brew.git"]
-	insteadOf = https://github.com/Homebrew/brew
+	rebase = true
+	; ff = only
 [pager]
 	branch = false
+[credential]
+	helper = store
+[http]
+	sslBackend = openssl
+	sslVerify = false
+	; proxy = socks5://127.0.0.1:7891
+        proxy = 127.0.0.1:7890
+[https]
+        ; proxy = socks5://127.0.0.1:7891
+        proxy = 127.0.0.1:7890
+[remote "origin"]
+        proxy = 127.0.0.1:7890
