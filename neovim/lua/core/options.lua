@@ -44,7 +44,7 @@ opt.timeout = true
 opt.timeoutlen = 300                      -- time to wait for a mapped key sequence
 opt.autowrite = true                      -- enable auto write
 opt.confirm = true                        -- confirm before exit if modified
-opt.formatoptions = "jcroqlnt"            -- tcqj
+opt.formatoptions = "jcroqlnt"            -- default: tcqj
 opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 opt.splitbelow = true                     -- split below instead of above
 opt.splitright = true                     -- split right instead of left
@@ -81,12 +81,12 @@ opt.expandtab = true
 
 opt.breakindent = true
 -- opt.showbreak = string.rep(" ", 3) -- long lines wrap smartly
-opt.showbreak = "↳ "
+-- opt.showbreak = "↳ "
 opt.linebreak = true
 opt.smartindent = true
 
-opt.foldmethod = "marker"
-opt.foldlevel = 0
+-- opt.foldmethod = "marker"
+-- opt.foldlevel = 0
 opt.modelines = 1
 
 -- Swap, backup, undo

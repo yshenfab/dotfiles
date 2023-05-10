@@ -91,7 +91,7 @@ return {
   -- table mode (<leader>tm or :TableModeToggle)
   'dhruvasagar/vim-table-mode',
   -- multi cursor
-  {
-    'mg979/vim-multi-cursor',
-  },
+  'mg979/vim-visual-multi',
+  -- isort
+  'fisadev/vim-isort',
 }

@@ -24,7 +24,7 @@ return {
       },
       autochdir = true,
     })
-    vim.cmd([[nnoremap <F2> :Neotree toggle<cr>]])
+    vim.cmd([[nnoremap \ :Neotree toggle<cr>]])
     -- vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
   end,
 }
