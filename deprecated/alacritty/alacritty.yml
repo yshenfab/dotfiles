@@ -114,51 +114,33 @@ scrolling:
   multiplier: 3
 
 # Font configuration
-font:
-  # Normal (roman) font face
-  normal:
-    # Font family
-    #
-    # Default:
-    #   - (macOS) Menlo
-    #   - (Linux/BSD) monospace
-    #   - (Windows) Consolas
-    family: MesloLGS NF
+# Font family
+# Default:
+#   - (macOS) Menlo
+#   - (Linux/BSD) monospace
+#   - (Windows) Consolas
 
-    # The `style` can be specified to pick a specific face.
+
+# JetBrainsMono NFM, MesloLGS NF
+font:
+  normal:
+    family: JetBrainsMono NFM
+    # family: MesloLGS NF
     style: Regular
 
-  # Bold font face
   bold:
-    # Font family
-    #
-    # If the bold family is not specified, it will fall back to the
-    # value specified for the normal font.
-    family: MesloLGS NF
-
-    # The `style` can be specified to pick a specific face.
+    family: JetBrainsMono NFM
+    # family: MesloLGS NF
     style: Bold
 
-  # Italic font face
   italic:
-    # Font family
-    #
-    # If the italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    family: MesloLGS NF
-
-    # The `style` can be specified to pick a specific face.
+    family: JetBrainsMono NFM
+    # family: MesloLGS NF
     style: Italic
 
-  # Bold italic font face
   bold_italic:
-    # Font family
-    #
-    # If the bold italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    family: MesloLGS NF
-
-    # The `style` can be specified to pick a specific face.
+    family: JetBrainsMono NFM
+    # family: MesloLGS NF
     style: Bold Italic
 
   # Point size

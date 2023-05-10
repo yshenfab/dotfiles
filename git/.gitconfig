@@ -1,6 +1,16 @@
 [user]
 	name = yshenfab
-	email = 287049745@qq.com
+	email = yshenfab@gmail.com
+[core]
+	editor = nvim
+	excludesFile = ~/.gitignore
+	pager =
+[pull]
+	rebase = true
+	; ff = only
+[push]
+	default = current
+
 [commit]
 	gpgsign = true
 [gpg]
@@ -10,9 +20,9 @@
 	ci = commit
 	st = status
 	br = branch
+	; hist = log --oneline --graph
 	; hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	hist = log --oneline --graph
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	type = cat-file -t
 	dump = cat-file -p
 	psm = push origin HEAD:master
@@ -20,17 +30,6 @@
 	pdev = push -u origin dev
 [color]
 	ui = true
-[core]
-	editor = nvim
-	excludesFile = ~/.gitignore
-	pager =
-	; pager = delta
-	; autocrlf = input
-[push]
-	default = current
-[pull]
-	rebase = true
-	; ff = only
 [pager]
 	branch = false
 [credential]
@@ -38,10 +37,6 @@
 [http]
 	sslBackend = openssl
 	sslVerify = false
-	; proxy = socks5://127.0.0.1:7891
-        proxy = 127.0.0.1:7890
+        ; proxy = 127.0.0.1:7890
 [https]
-        ; proxy = socks5://127.0.0.1:7891
-        proxy = 127.0.0.1:7890
-[remote "origin"]
-        proxy = 127.0.0.1:7890
+        ; proxy = 127.0.0.1:7890
