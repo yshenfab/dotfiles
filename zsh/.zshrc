@@ -59,10 +59,16 @@ alias yeet='paru -Rcs'
 alias icat='kitty +kitten icat' # display image in terminal
 alias d='kitty +kitten diff'
 
-# Proxy (clash)
+# Proxy
+# clash
 export http_proxy=127.0.0.1:7890
 export https_proxy=$http_proxy
 export socks_proxy=127.0.0.1:7891
+
+# v2ray
+# export http_proxy=127.0.0.1:20171
+# export https_proxy=$http_proxy
+# export socks_proxy=127.0.0.1:20170
 
 # Golang
 export GO111MODULE=on
