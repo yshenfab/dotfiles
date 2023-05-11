@@ -219,7 +219,7 @@ assign [class="Google-chrome"] $WS2
 #assign [class="Pcmanfm"] $WS4
 
 # auto start applications
-exec --no-startup-id fcitx
+exec --no-startup-id fcitx5 -d
 exec --no-startup-id nm-applet
 exec --no-startup-id pa-applet
 # exec --no-startup-id nitrogen --restore; sleep 1;
@@ -239,7 +239,6 @@ exec --no-startup-id dunst
 exec --no-startup-id redshift -l 31.23:121.47
 exec --no-startup-id albert
 exec --no-startup-id flameshot
-exec --no-startup-id clash
 
 # eDP1 2880x1800 220dpi, HDMI3 2560x1080 96dpi (my LG 29 inches monitor)
 # 3840x2160 157dpi (samsung 28inch)
