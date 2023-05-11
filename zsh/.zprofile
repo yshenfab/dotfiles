@@ -9,7 +9,7 @@ export DISPLAY=:0
 # Finished adapting your DISPLAY environment variable for use with MacPorts.
 
 # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/bottles
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
 
 # make tmux not to source /etc/profile
 if [ -f /etc/profile ]; then
