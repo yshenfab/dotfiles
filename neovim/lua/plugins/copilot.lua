@@ -1,4 +1,4 @@
--- AI pair programmmer
+-- AI Coding Assistant
 return {
   -- Github Copilot
   {
@@ -15,9 +15,9 @@ return {
       require("copilot_cmp").setup()
     end,
   },
-  -- tabnine
+  -- Tabnine
   {
-    'codota/tabnine-nvim',
+    'codota/tabnine-nvim', -- official plugin
     build = "./dl_binaries.sh",
     config = function()
       require('tabnine').setup()
@@ -27,5 +27,17 @@ return {
     'tzachar/cmp-tabnine',
     build = './install.sh',
     dependencies = 'hrsh7th/nvim-cmp',
+  },
+  -- Codeium
+  -- "Exafunction/codeium.vim", -- official plugin
+  {
+    "jcdickinson/codeium.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup({})
+    end
   },
 }

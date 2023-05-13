@@ -57,6 +57,7 @@ return {
         { name = 'path' },
         { name = 'copilot' },
         { name = 'cmp_tabnine' },
+        { name = "codeium" },
       },
     }
   end
