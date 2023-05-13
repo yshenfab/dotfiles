@@ -15,16 +15,10 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
 # Plugins
-plugins=(git autojump extract web-search archlinux sudo zsh-autosuggestions
-  zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+plugins=(zsh-autosuggestions sudo web-search copypath history git autojump extract archlinux)
 
 # User configuration
-
 # Language environment
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -41,6 +35,7 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# PATH
 YANGBIN=$HOME/yangbin
 export PATH=${YANGBIN}:$PATH
 
@@ -52,12 +47,18 @@ alias cat='bat'
 alias du='du -sh'
 alias fn='find . -name'
 alias cls='printf "\033c"'
+alias grep='grep --color=auto'
 # alias man='tldr'
 alias yeet='paru -Rcs'
-
 # kitty
 alias icat='kitty +kitten icat' # display image in terminal
 alias d='kitty +kitten diff'
+# ssh
+# alias ssh-1080='ssh yang@10.16.12.102'
+alias ssh-3090='ssh yang@10.16.11.108'
+alias ssh-3090-2='ssh yang@10.16.12.103'
+# alias ssh-tesla-k80='ssh yang@10.20.94.184'
+# alias ssh-72='ssh yang@10.20.101.189'
 
 # Proxy
 # clash
@@ -97,3 +98,7 @@ ros2_on(){
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# zsh-syntax-highlighting
+source $ZSH/oh-my-zsh.sh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

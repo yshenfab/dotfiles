@@ -1,0 +1,133 @@
+# Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# fortune # random epigram
+neofetch # CLI system info
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Theme
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+# spaceship prompt
+# source "/usr/local/opt/spaceship/spaceship.zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Plugins
+plugins=(zsh-autosuggestions sudo web-search copypath history git autojump extract macos)
+
+# User configuration
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# PATH
+YANGBIN=$HOME/yangbin
+export PATH=${YANGBIN}:$PATH
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/qt/bin:$PATH"
+export GPG_TTY=$(tty)
+
+# Aliases
+alias ls='exa'
+alias ll='ls -al'
+alias lsd='ls -d *(-/DN)'
+alias cat='bat'
+alias du='du -sh'
+alias fn='find . -name'
+alias cls='printf "\033c"'
+alias grep='grep --color=auto'
+# alias man='tldr'
+# homebrew
+alias bu='brew update && brew upgrade'
+alias buc='brew upgrade --cask'
+# kitty
+alias icat='kitty +kitten icat' # display image in terminal
+alias d='kitty +kitten diff'
+# ssh
+# alias ssh-1080='ssh yang@10.16.12.102'
+alias ssh-3090='ssh yang@10.16.11.108'
+alias ssh-3090-2='ssh yang@10.16.12.103'
+# alias ssh-tesla-k80='ssh yang@10.20.94.184'
+# alias ssh-72='ssh yang@10.20.101.189'
+
+# Proxy
+# clash
+export http_proxy=127.0.0.1:7890
+export https_proxy=$http_proxy
+export socks_proxy=127.0.0.1:7891
+# v2ray
+# export http_proxy=127.0.0.1:20171
+# export https_proxy=$http_proxy
+# export socks_proxy=127.0.0.1:20170
+
+# Golang
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+# export GOPROXY=https://mirrors.aliyun.com/goproxy/
+
+# Stage
+export STG=$HOME/stg
+export DYLD_LIBRARY_PATH=$STG/lib
+export PATH=$STG/bin:$PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# ROS2 Humble
+export ROS_DOMAIN_ID=42
+# source /opt/ros/humble/setup.zsh
+
+ros2_on(){
+     export ROS_DOMAIN_ID=42
+     export ROS_VERSION=2
+     export ROS_PYTHON_VERSION=3
+     export ROS_DISTRO=humble
+     source /opt/ros2/humble/setup.zsh
+}
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# homebrew (tuna)
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+export HOMEBREW_PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
+# brew tap --custom-remote --force-auto-update homebrew/core https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+# brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
+
+# homebrew (ustc)
+# export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+# export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+# export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+# export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
+# homebrew cask
+# brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.ustc.edu.cn/homebrew-cask.git
+
+# zsh-syntax-highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
