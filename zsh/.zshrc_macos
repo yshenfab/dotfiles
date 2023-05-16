@@ -19,7 +19,7 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Plugins
-plugins=(zsh-autosuggestions sudo web-search copypath history git autojump extract macos)
+plugins=(zsh-autosuggestions sudo web-search copypath history git z.lua extract macos)
 
 # User configuration
 # Preferred editor for local and remote sessions

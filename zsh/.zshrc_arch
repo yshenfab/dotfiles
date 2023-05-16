@@ -3,7 +3,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# fortune # random epigram
 neofetch # CLI system info
 
 # Path to your oh-my-zsh installation.
@@ -16,7 +15,7 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Plugins
-plugins=(zsh-autosuggestions sudo web-search copypath history git autojump extract archlinux)
+plugins=(zsh-autosuggestions sudo web-search copypath history git z.lua extract archlinux)
 
 # User configuration
 # Language environment
