@@ -1,0 +1,24 @@
+conky.config = {
+    -- window
+    alignment = 'top_right',
+    background = true,
+    own_window = true,
+    own_window_type = 'override',
+    -- font
+    font = 'Fira Code:size=12',
+    use_xft = true,
+    -- refresh
+    update_interval = 10,
+    double_buffer = true,
+    -- transparency
+    own_window_transparent = true,
+    own_window_argb_visual = true,
+    gap_x = 20,
+    gap_y = 50,
+}
+
+conky.text = [[
+${voffset 5}${font Xirod:size=9}${alignc}TODO
+${alignc}${cpubar cpu6 0, 600}
+${font Fira Code:size=10}${execpi 600 cat $HOME/todo.md | head -10}
+]]

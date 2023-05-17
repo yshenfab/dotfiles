@@ -2,4 +2,8 @@
 
 My dotfiles for Arch Linux & MacOS.
 
-Use GNU Stow (symlink) to manage the dotfiles.
+# Manager
+
+~~Use GNU Stow (symlink) to manage the dotfiles.~~
+
+Try chezmoi or dotbot.

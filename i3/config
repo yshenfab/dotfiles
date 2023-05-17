@@ -1,67 +1,53 @@
 # i3 Config File
-# Arc-Dark Themed
-
+# set mod key
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Driod Sans 10, FontAwesome
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Droid Sans 10
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# terminal
-# bindsym $mod+Return exec urxvt
-# bindsym $mod+Return exec alacritty
+# terminal (kitty, alacritty, urxvt)
 bindsym $mod+Return exec kitty
+
+# kill focused window
+bindsym $mod+Shift+q kill
 
 # file manager (ranger/pcmanfm)
 bindsym $mod+z exec kitty -e ranger
 bindsym $mod+x exec pcmanfm
 
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# dmenu
-bindsym $mod+d exec "dmenu_run -nf '#F3F4F5' -nb '#2F343F' -sb '#1793D1' -sf '#f3f4f5' -fn 'monospace-10' -p 'exec:'"
-
+# dmenu (program launcher)
+bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#F3F4F5' -nb '#2F343F' -sb '#1793D1' -sf '#f3f4f5' -fn 'monospace-10' -p 'exec:'"
 # rofi
 bindsym $mod+Tab exec rofi -show window -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"
 
 # change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# focus & move by hjkl
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# split in horizontal orientation
-# bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
+# split toggle (in horizontal/vertical orientation)
+bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
-# bindsym $mod+f fullscreen
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
@@ -73,7 +59,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -81,18 +67,39 @@ bindsym $mod+a focus parent
 # focus the child container
 # bindsym $mod+d focus child
 
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+bindsym $mod+minus scratchpad show
+
+# screenshot
+# bindsym $mod+p exec scrot ~/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+p exec flameshot gui
+
+# lockscreen
+bindsym $mod+Delete exec betterlockscreen -l $HOME/Downloads/wallpaper/sudo.jpeg
+
+# gaps
+# Inner gaps (space between two adjacent windows or split containers)
+gaps inner 5px
+# Outer gaps (space along the screen edges)
+gaps outer 5px
+# smart gaps: on|off|inverse_outer
+smart_gaps inverse_outer
+
 # set workspace
 set $WS1  1: 
-set $WS2  2: 
-set $WS3  3: 
-set $WS4  4: 
-set $WS5  5: 
+set $WS2  2: 
+set $WS3  3: 
+set $WS4  4: 
+set $WS5  5: 
 set $WS6  6: 
-set $WS7  7: 
+set $WS7  7: 
 set $WS8  8: 
 set $WS9  9: 
 set $WS0 10: 
 
+# switch to workspace
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
 bindsym $mod+3 workspace $WS3
@@ -116,11 +123,11 @@ bindsym $mod+Shift+8 move container to workspace $WS8
 bindsym $mod+Shift+9 move container to workspace $WS9
 bindsym $mod+Shift+0 move container to workspace $WS0
 
-# reload the configuration file
+# reload config file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+# exit i3 (log out of X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
@@ -131,10 +138,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -145,11 +152,13 @@ mode "resize" {
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-# define colors used
+# status bar
+# define colors
 set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
@@ -160,17 +169,12 @@ set $urgent-bg-color     #5294e2
 client.focused    #676E7D   #676E7D       #ffffff  #676E7D
 client.unfocused  #2f343f   #2f343f       #ffffff  #676E7D
 
-# screenshot
-# bindsym $mod+p exec scrot ~/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym $mod+p exec flameshot gui
-
 # i3 status
 bar {
         font xft:Droid Sans Mono, FontAwesome 10
         position top
         # tray_output primary
         status_command ~/.config/i3/bumblebee-status/bumblebee-status -m cpu memory disk:root pasink caffeine date time -p root.path=/home/yang time.format="%H:%M" time.locale="en_US.UTF-8" -t solarized-powerline
-        # status_command ~/.config/i3/bumblebee-status/bumblebee-status -m cpu memory disk:root pasink bluetooth2 date time -p root.path=/home/yang time.format="%H:%M" time.locale="en_US.UTF-8" -t solarized-powerline
         colors {
             background $bg-color
             separator #757575
@@ -180,13 +184,6 @@ bar {
             urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
         }
 }
-
-# window style
-# new_window pixel 2
-# new_float normal
-# hide_edge_borders none
-
-bindsym $mod+Delete exec betterlockscreen -l $HOME/Downloads/wallpaper/sudo.jpeg
 
 # shut down, restart and locking features (requires i3exit script in /usr/bin)
 # bindsym $mod+Delete mode "$mode_system"
@@ -205,34 +202,30 @@ bindsym $mod+Delete exec betterlockscreen -l $HOME/Downloads/wallpaper/sudo.jpeg
 #     bindsym Escape mode "default"
 # }
 
-# hide/show a window
-bindsym $mod+Shift+d move scratchpad
-# show a window
-bindsym $mod+Shift+s scratchpad show
-
-# border
+# border windows
 for_window [class="Google-chrome"] border 1pixel
 for_window [class="Chromium"] border 1pixel
 
 # open applications on specific workspaces
 assign [class="Google-chrome"] $WS2
-#assign [class="Pcmanfm"] $WS4
 
 # auto start applications
 exec --no-startup-id fcitx5 -d
 exec --no-startup-id nm-applet
 exec --no-startup-id pa-applet
-# exec --no-startup-id nitrogen --restore; sleep 1;
-exec --no-startup-id compton --config ~/.config/i3/compton.conf -b
-exec --no-startup-id ~/.config/conky/start_conky
+# transparency
+# exec --no-startup-id compton --config ~/.config/i3/compton.conf -b
+exec --no-startup-id picom -b
+# conky
+exec --no-startup-id conky -c ~/.config/conky/sys_status.conkyrc
+exec --no-startup-id conky -c ~/.config/conky/todo.conkyrc
 
-# set wallpaper/lockscreen
+# wallpaper/lockscreen
+# exec --no-startup-id nitrogen --no-recurse $HOME/wallpaper/
+# exec --no-startup-id nitrogen --restore; sleep 1;
 exec --no-startup-id feh --bg-fill $HOME/wallpaper/wallpaper.jpeg
 exec --no-startup-id betterlockscreen -w $HOME/wallpaper/wallpaper.jpeg
-# wallpaper (dynamic)
-# exec --no-startup-id ~/yangbin/random_wallpaper &
 
-# Other
 # exec --no-startup-id xset dpms 600
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 exec --no-startup-id dunst
