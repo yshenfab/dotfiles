@@ -14,6 +14,8 @@ return {
     -- preview native LSP's goto definition, type definition, implementation,
     -- and references calls in floating windows
     'rmagatti/goto-preview',
+    -- vscode-like icons for neovim built-in lsp
+    'onsails/lspkind-nvim',
   },
   config = function()
     --  This function gets run when an LSP connects to a particular buffer.
@@ -98,5 +100,13 @@ return {
       -- gP: close all preview windows
       default_mappings = true,
     }
+    -- lspkind
+    require('lspkind').init({
+      mode = 'symbol_text',
+      preset = 'codicons', -- require vscode-codicons font
+      symbol_map = {
+        Copilot = "",
+      },
+    })
   end
 }

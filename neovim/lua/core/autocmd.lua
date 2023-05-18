@@ -38,3 +38,9 @@ autocmd('BufWritePre', {
         vim.cmd('silent :Isort')
     end,
 })
+
+-- Disable auto-comment for new lines
+-- autocmd('InsertEnter', {
+--     pattern = '',
+--     command = "setlocal formatoptions-=cro"
+-- })

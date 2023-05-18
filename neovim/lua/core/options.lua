@@ -50,7 +50,6 @@ opt.splitbelow = true                     -- split below instead of above
 opt.splitright = true                     -- split right instead of left
 opt.spelllang = { "en" }
 opt.belloff = "all"                       -- turn the bell off
--- opt.colorcolumn = "80"               -- color column
 
 -- Cursorline highlighting control
 opt.cursorline = true -- Highlight the current line

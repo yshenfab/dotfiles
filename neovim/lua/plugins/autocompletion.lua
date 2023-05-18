@@ -5,14 +5,16 @@ return {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
+    'hrsh7th/cmp-nvim-lua',
     'saadparwaiz1/cmp_luasnip',
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
-    "tamago324/cmp-zsh",
+    'tamago324/cmp-zsh',
   },
   config = function()
     local cmp = require('cmp')
     local luasnip = require('luasnip')
+    local lspkind = require('lspkind')
     luasnip.config.setup {}
 
     cmp.setup {
@@ -20,6 +22,19 @@ return {
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
+      },
+      formatting = {
+        format = lspkind.cmp_format {
+          mode = 'symbol_text',
+          max_width = 50,
+          menu = {
+            buffer = "[buf]",
+            nvim_lsp = "[LSP]",
+            nvim_lua = "[api]",
+            path = "[path]",
+            luasnip = "[snip]",
+          },
+        },
       },
       mapping = cmp.mapping.preset.insert {
         ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -50,14 +65,20 @@ return {
           end
         end, { 'i', 's' }),
       },
+      -- the order of the sources matter
       sources = {
+        { name = "nvim_lua" },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'buffer' },
-        { name = 'path' },
+        -- AI powered autocompletion
         { name = 'copilot' },
         { name = 'cmp_tabnine' },
         { name = "codeium" },
+        -- path and buffer
+        { name = 'path' },
+        { name = 'buffer' },
+        -- latex symbols support
+        { name = "latex_symbols" },
       },
     }
   end
