@@ -1,0 +1,22 @@
+# Gmail Account
+
+# General Settings
+set from="yshenfab@gmail.com"
+set realname="Yang"
+
+# Gmail IMAP Settings
+set imap_user = "yshenfab@gmail.com"
+set folder = "imaps://imap.gmail.com"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+
+# Gmail SMTP Settings
+set smtp_url = "smtps://yshenfab@gmail.com@smtp.gmail.com:465/"
+
+# SSL/TLS Settings
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+# IMAP/SMTP passwords
+source "gpg -d ~/.config/neomutt/accounts/gmail_password.gpg |"

@@ -1,0 +1,77 @@
+# vim: filetype=muttrc
+
+# [[ Settings ]]
+set editor="nvim"
+set charset="utf-8"
+
+set imap_check_subscribed
+set sidebar_visible
+
+# Set preffered view modes
+# auto_view text/html text/calendar application/ics # view html automatically
+# alternative_order text/html text/enriched text/plain text/*
+
+# [[ Keybindings ]]
+# General bindings
+bind attach <return> view-mailcap
+
+# Vim keybindings
+# Moving around
+bind attach,browser,index       g   noop
+bind attach,browser,index       gg  first-entry
+bind attach,browser,index       G   last-entry
+bind pager                      g  noop
+bind pager                      gg  top
+bind pager                      G   bottom
+bind pager                      k   previous-line
+bind pager                      j   next-line
+
+# Scrolling
+bind attach,browser,pager,index \CF next-page
+bind attach,browser,pager,index \CB previous-page
+bind attach,browser,pager,index \Cu half-up
+bind attach,browser,pager,index \Cd half-down
+bind browser,pager              \Ce next-line
+bind browser,pager              \Cy previous-line
+bind index                      \Ce next-line
+bind index                      \Cy previous-line
+
+bind pager,index                d   noop
+bind pager,index                dd  delete-message
+
+# Mail & Reply
+# bind index                      \Cm list-reply # Doesn't work currently
+
+# Threads
+bind browser,pager,index        N   search-opposite
+bind pager,index                dT  delete-thread
+bind pager,index                dt  delete-subthread
+bind pager,index                gt  next-thread
+bind pager,index                gT  previous-thread
+bind index                      za  collapse-thread
+bind index                      zA  collapse-all # Missing :folddisable/foldenable
+
+# sidebar keybindings
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager B sidebar-toggle-visible
+
+# completion keybindings
+# bind editor <Tab> complete-query
+# bind editor ^T complete
+
+## Switch between accounts
+macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/gmail<enter><change-folder>!<enter>'
+# macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/163<enter><change-folder>!<enter>'
+# macro index,pager <f4> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/qq<enter><change-folder>!<enter>'
+
+# [[ Accounts ]]
+source ~/.config/neomutt/accounts/gmail
+folder-hook $folder 'source ~/.config/neomutt/accounts/gmail'
+
+# source ~/.config/neomutt/accounts/163
+# folder-hook $folder 'source ~/.config/neomutt/accounts/163'
+
+# source ~/.config/neomutt/accounts/qq
+# folder-hook $folder 'source ~/.config/neomutt/accounts/qq'
