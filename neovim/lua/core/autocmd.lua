@@ -40,7 +40,7 @@ autocmd('BufWritePre', {
 })
 
 -- Disable auto-comment for new lines
--- autocmd('InsertEnter', {
---     pattern = '',
---     command = "setlocal formatoptions-=cro"
--- })
+autocmd("BufEnter", {
+    pattern = '',
+    command = ":setlocal formatoptions-=cro"
+})
