@@ -15,7 +15,7 @@ return {
     -- and references calls in floating windows
     'rmagatti/goto-preview',
     -- vscode-like icons for neovim built-in lsp
-    'onsails/lspkind-nvim',
+    'onsails/lspkind.nvim',
   },
   config = function()
     --  This function gets run when an LSP connects to a particular buffer.
