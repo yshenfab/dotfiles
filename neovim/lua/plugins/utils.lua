@@ -4,8 +4,18 @@ return {
   "tpope/vim-sleuth",
   -- Dot-repeat
   "tpope/vim-repeat",
-  -- surround
-  "tpope/vim-surround",
+  -- add/delete/change surroundings
+  {
+    -- add: ys{motion}{char}
+    -- delete: ds{char}
+    -- change: cs{target}{replacement}
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({})
+    end
+  },
   -- Autopairs
   {
     'windwp/nvim-autopairs',
@@ -15,7 +25,7 @@ return {
       })
     end
   },
-  -- [[ Motions: hop (easymotion-like), leap ]]
+  -- [[ Motions: leap, filt, hop (easymotion-like) ]]
   -- Leap: jump to any positions in the visible editor area by entering a 2-character search
   -- s/S/gs{c1}{c2}
   {
