@@ -22,25 +22,11 @@ autocmd("FileType", {
 	end,
 })
 
--- Remove whitespace on save
-autocmd("BufWritePre", {
-	pattern = "",
-	command = ":%s/\\s\\+$//e",
-})
+-- Autoformat
+vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.format()")
 
 -- Disable auto-comment for new lines
 autocmd("BufEnter", {
 	pattern = "",
 	command = ":setlocal formatoptions-=cro",
-})
-
--- Autoformat
-vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.format()")
-
--- isort on save
-autocmd("BufWritePre", {
-	pattern = "*.py",
-	callback = function()
-		vim.cmd("silent :Isort")
-	end,
 })

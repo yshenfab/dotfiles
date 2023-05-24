@@ -31,8 +31,8 @@ return {
 	{
 		"ggandor/leap.nvim",
 		keys = {
-			{ "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
-			{ "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+			{ "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
+			{ "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
 			{ "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
 		},
 		config = function(_, opts)
@@ -102,6 +102,4 @@ return {
 	"dhruvasagar/vim-table-mode",
 	-- multi cursor
 	"mg979/vim-visual-multi",
-	-- isort
-	"fisadev/vim-isort",
 }

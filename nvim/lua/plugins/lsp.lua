@@ -9,7 +9,7 @@ return {
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
 			-- Useful status updates for LSP
-			{ "j-hui/fidget.nvim", opts = {} },
+			{ "j-hui/fidget.nvim",       opts = {} },
 			-- Additional lua configuration, makes nvim stuff amazing!
 			"folke/neodev.nvim",
 			-- preview native LSP's goto definition, type definition, implementation,
@@ -76,9 +76,8 @@ return {
 			-- install servers
 			local servers = {
 				clangd = {},
-				gopls = {},
 				pyright = {},
-				-- rust_analyzer = {},
+				gopls = {},
 				tsserver = {},
 				lua_ls = {
 					Lua = {
@@ -126,6 +125,7 @@ return {
 	-- null-ls
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("null-ls").setup({
 				sources = {
@@ -134,16 +134,38 @@ return {
 					-- completion
 					require("null-ls").builtins.completion.spell,
 					-- diagnostics
-					-- require("null-ls").builtins.diagnostics.selene, -- lua
-					-- require("null-ls").builtins.diagnostics.eslint, -- ts, js
+					require("null-ls").builtins.diagnostics.clang_check, -- llvm project
+					require("null-ls").builtins.diagnostics.cppcheck, -- static analysis
+					require("null-ls").builtins.diagnostics.cpplint, -- Google C++ style guide
+					require("null-ls").builtins.diagnostics.flake8,
+					-- require("null-ls").builtins.diagnostics.eslint,
+					-- require("null-ls").builtins.diagnostics.selene,
 					require("null-ls").builtins.diagnostics.markdownlint,
+					require("null-ls").builtins.diagnostics.chktex,
 					-- formatting
 					require("null-ls").builtins.formatting.clang_format,
-					require("null-ls").builtins.formatting.yapf,
+					require("null-ls").builtins.formatting.black,
 					require("null-ls").builtins.formatting.isort,
+					require("null-ls").builtins.formatting.shfmt,
 					require("null-ls").builtins.formatting.prettierd,
 					require("null-ls").builtins.formatting.stylua,
+					require("null-ls").builtins.formatting.google_java_format,
+					require("null-ls").builtins.formatting.gofmt,
+					require("null-ls").builtins.formatting.latexindent,
+					require("null-ls").builtins.formatting.markdownlint,
+					require("null-ls").builtins.formatting.markdown_toc,
+					require("null-ls").builtins.formatting.trim_whitespace,
 				},
+			})
+		end,
+	},
+	-- mason-null-ls
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("mason-null-ls").setup({
+				automatic_setup = true,
 			})
 		end,
 	},

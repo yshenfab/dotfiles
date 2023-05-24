@@ -4,7 +4,7 @@ return {
 	version = "*",
 	opts = {
 		size = 10,
-		open_mapping = [[<F7>]],
+		open_mapping = [[<F1>]],
 		shading_factor = 2,
 		direction = "float",
 		float_opts = {
