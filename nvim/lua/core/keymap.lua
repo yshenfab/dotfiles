@@ -1,9 +1,9 @@
 -- [[ Keymaps ]]
 
 local function map(mode, lhs, rhs, opts)
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    vim.keymap.set(mode, lhs, rhs, opts)
+	opts = opts or {}
+	opts.silent = opts.silent ~= false
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- local imap = function(tbl)
@@ -15,7 +15,7 @@ end
 -- end
 
 -- Keymaps for better default experience
-map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- better up/down
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -42,10 +42,10 @@ map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Diagnostic keymaps
-map('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-map('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-map('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-map('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- buffers (bufferline.nvim)
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
@@ -62,8 +62,12 @@ map("x", "<leader>p", [["_dP]])
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 --- Clear search, diff update and redraw
-map("n", "<leader>ur", "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-    { desc = "Redraw / clear hlsearch / diff update" })
+map(
+	"n",
+	"<leader>ur",
+	"<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+	{ desc = "Redraw / clear hlsearch / diff update" }
+)
 
 -- better indenting
 map("v", "<", "<gv")

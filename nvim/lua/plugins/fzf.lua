@@ -1,5 +1,5 @@
 -- fuzzy finder
 return {
-  { "junegunn/fzf",    build = "./install --all" },
-  { "junegunn/fzf.vim" },
+	{ "junegunn/fzf", build = "./install --all" },
+	{ "junegunn/fzf.vim" },
 }
