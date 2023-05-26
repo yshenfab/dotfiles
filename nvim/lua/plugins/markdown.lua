@@ -8,9 +8,4 @@ return {
 			vim.cmd([[nmap <C-p> :MarkdownPreviewToggle<cr>]])
 		end,
 	},
-	-- markdown-toc
-	-- :GenTocGFM   GFM (GitHub Flavored Markdown)
-	{
-		"mzlogin/vim-markdown-toc",
-	},
 }
