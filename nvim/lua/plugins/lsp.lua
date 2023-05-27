@@ -137,14 +137,17 @@ return {
 					require("null-ls").builtins.diagnostics.clang_check, -- llvm project
 					require("null-ls").builtins.diagnostics.cppcheck, -- static analysis
 					require("null-ls").builtins.diagnostics.cpplint, -- Google C++ style guide
-					require("null-ls").builtins.diagnostics.flake8,
+					require("null-ls").builtins.diagnostics.flake8, -- or use ruff
 					-- require("null-ls").builtins.diagnostics.eslint,
 					-- require("null-ls").builtins.diagnostics.selene,
 					require("null-ls").builtins.diagnostics.markdownlint,
 					require("null-ls").builtins.diagnostics.chktex,
 					-- formatting
 					require("null-ls").builtins.formatting.clang_format,
+					-- FIX: ruff not formatting properly (only has autoflake function)
+					require("null-ls").builtins.formatting.ruff,
 					require("null-ls").builtins.formatting.black,
+					-- require("null-ls").builtins.formatting.autoflake,
 					require("null-ls").builtins.formatting.isort,
 					require("null-ls").builtins.formatting.shfmt,
 					require("null-ls").builtins.formatting.prettierd,
