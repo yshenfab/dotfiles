@@ -18,39 +18,41 @@ return {
 			-- Enable telescope fzf native, if installed
 			pcall(require("telescope").load_extension, "fzf")
 
-			vim.keymap.set(
-				"n",
-				"<leader>?",
-				require("telescope.builtin").oldfiles,
-				{ desc = "[?] Find recently opened files" }
-			)
-			vim.keymap.set("n", "<leader>/", function()
-				require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+			local function nmap(lhs, rhs, opts)
+				opts = opts or {}
+				opts.silent = opts.silent ~= false
+				vim.keymap.set("n", lhs, rhs, opts)
+			end
+
+			local tele = require("telescope.builtin")
+
+			-- Fuzzy search
+			nmap("<leader>/", function()
+				tele.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 					winblend = 10,
 					previewer = false,
 				}))
-			end, { desc = "[/] Fuzzily search in current buffer" })
-			vim.keymap.set(
-				"n",
-				"<leader>sb",
-				require("telescope.builtin").buffers,
-				{ desc = "[S]earch existing [B]uffers" }
-			)
-			vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
-			vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
-			vim.keymap.set(
-				"n",
-				"<leader>sw",
-				require("telescope.builtin").grep_string,
-				{ desc = "[S]earch current [W]ord" }
-			)
-			vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
-			vim.keymap.set(
-				"n",
-				"<leader>sd",
-				require("telescope.builtin").diagnostics,
-				{ desc = "[S]earch [D]iagnostics" }
-			)
+			end, { desc = "[/] Fuzzy search in current buffer" })
+			-- MRU, files, buffers, etc.
+			nmap("<leader>fo", tele.oldfiles, { desc = "[F]ind [O]ldfiles (MRU)" })
+			nmap("<leader>ff", tele.find_files, { desc = "[F]ind [F]iles" })
+			nmap("<leader>fb", tele.buffers, { desc = "[F]ind [B]uffers" })
+			nmap("<leader>fw", tele.grep_string, { desc = "[F]ind [W]ord" })
+			nmap("<leader>fg", tele.live_grep, { desc = "[F]ind by [G]rep (rg)" })
+			nmap("<leader>fh", tele.help_tags, { desc = "[F]ind [H]elp tags" })
+			-- Diagnostics
+			nmap("<leader>fd", tele.diagnostics, { desc = "[F]ind [D]iagnostics" })
+			-- History
+			nmap("<leader>ch", tele.search_history, { desc = "[C]ommand [H]istory" })
+			nmap("<leader>sh", tele.search_history, { desc = "[S]earch [H]istory" })
+			-- Git
+			nmap("<leader>gf", tele.git_files, { desc = "[G]it [F]iles" })
+			nmap("<space>gs", tele.git_status, { desc = "[G]it [S]tatus" })
+			nmap("<space>gc", tele.git_commits, { desc = "[G]it [C]ommit" })
+			-- Treesittter
+			nmap("<leader>ts", tele.treesitter, { desc = "[T]reesitter [S]ymbols" })
+			-- Other
+			nmap("<leader>vo", tele.vim_options, { desc = "[V]im [O]ptions" })
 		end,
 	},
 	"nvim-telescope/telescope-file-browser.nvim",
