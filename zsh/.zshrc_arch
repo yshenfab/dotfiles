@@ -37,21 +37,21 @@ fi
 # PATH
 YANGBIN=$HOME/yangbin
 export PATH=${YANGBIN}:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Aliases
 alias ls='exa'
-alias ll='ls -al'
+alias ll='exa -al'
+alias lt='exa -T'
 alias lsd='ls -d *(-/DN)'
 alias cat='bat'
 alias du='du -sh'
-alias fn='find . -name'
-alias cls='printf "\033c"'
-alias grep='grep --color=auto'
-# alias man='tldr'
 alias yeet='paru -Rcs'
 # kitty
 alias icat='kitty +kitten icat' # display image in terminal
 alias d='kitty +kitten diff'
+# onedrive
+alias odsync='onedrive --synchronize'
 # ssh
 # alias ssh-1080='ssh yang@10.16.12.102'
 alias ssh-3090='ssh yang@10.16.11.108'
@@ -61,9 +61,9 @@ alias ssh-3090-2='ssh yang@10.16.12.103'
 
 # Proxy
 # clash
-export http_proxy=127.0.0.1:7890
+export http_proxy=http://127.0.0.1:7890
 export https_proxy=$http_proxy
-export socks_proxy=127.0.0.1:7891
+# export socks_proxy=127.0.0.1:7891
 
 # v2ray
 # export http_proxy=127.0.0.1:20171
