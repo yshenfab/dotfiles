@@ -2,7 +2,6 @@
 -- https://langserver.org/
 -- https://microsoft.github.io/language-server-protocol/implementors/servers/
 return {
-	-- nvim-lspconfig
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -10,7 +9,7 @@ return {
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
 			-- Useful status updates for LSP
-			{ "j-hui/fidget.nvim",       opts = {} },
+			{ "j-hui/fidget.nvim", opts = {} },
 			-- Additional lua configuration, makes nvim stuff amazing!
 			"folke/neodev.nvim",
 			-- preview native LSP's goto definition, type definition, implementation,
@@ -123,7 +122,6 @@ return {
 			})
 		end,
 	},
-
 	-- null-ls
 	{
 		"jose-elias-alvarez/null-ls.nvim",
@@ -164,7 +162,6 @@ return {
 			})
 		end,
 	},
-
 	-- mason-null-ls
 	{
 		"jay-babu/mason-null-ls.nvim",
@@ -176,6 +173,14 @@ return {
 		end,
 	},
 
+	-- symbols-outline: tree like view for symbols
+	{
+		"simrat39/symbols-outline.nvim",
+		cmd = "SymbolsOutline",
+		keys = { { "<leader>so", "<cmd>SymbolsOutline<cr>", desc = "[S]ymbols [O]utline" } },
+		config = true,
+	},
+
 	-- lspsaga: beautify the Neovim built-in LSP UI
 	{
 		"nvimdev/lspsaga.nvim",
@@ -183,7 +188,7 @@ return {
 			"nvim-treesitter/nvim-treesitter", -- optional
 			"nvim-tree/nvim-web-devicons", -- optional
 		},
-		event = "LspAttach",          -- lazy load
+		event = "LspAttach", -- lazy load
 		config = function()
 			require("lspsaga").setup({})
 		end,
@@ -195,13 +200,5 @@ return {
 		config = function()
 			require("lsp_signature").setup({})
 		end,
-	},
-
-	-- symbols-outline: tree like view for symbols
-	{
-		"simrat39/symbols-outline.nvim",
-		cmd = "SymbolsOutline",
-		keys = { { "<leader>so", "<cmd>SymbolsOutline<cr>", desc = "[S]ymbols [O]utline" } },
-		config = true,
 	},
 }
