@@ -1,5 +1,14 @@
--- UI related: lualine, bufferline, indent-blankline
+-- UI related
 return {
+	-- startup greeter
+	{
+		"goolord/alpha-nvim",
+		requires = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("alpha").setup(require("alpha.themes.dashboard").config)
+		end,
+	},
+
 	-- statusline
 	{
 		"nvim-lualine/lualine.nvim",
@@ -7,7 +16,7 @@ return {
 		opts = {
 			options = {
 				icons_enabled = false,
-				theme = "onedark",
+				theme = "tokyonight",
 				component_separators = "|",
 				section_separators = "",
 			},
@@ -16,6 +25,7 @@ return {
 			require("lualine").setup({})
 		end,
 	},
+
 	-- bufferline
 	{
 		"akinsho/bufferline.nvim",
@@ -33,6 +43,7 @@ return {
 			})
 		end,
 	},
+
 	-- indentation guides
 	{
 		"lukas-reineke/indent-blankline.nvim",

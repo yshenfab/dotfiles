@@ -1,5 +1,6 @@
--- Fuzzy Finder (files, lsp, etc)
+-- Telescope: Fuzzy Finder (files, lsp, etc)
 return {
+	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",
 		version = "*",
@@ -59,12 +60,6 @@ return {
 	"nvim-telescope/telescope-hop.nvim",
 	"nvim-telescope/telescope-ui-select.nvim",
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{
-		"ThePrimeagen/git-worktree.nvim",
-		config = function()
-			require("git-worktree").setup({})
-		end,
-	},
 	{
 		"AckslD/nvim-neoclip.lua",
 		config = function()

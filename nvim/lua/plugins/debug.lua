@@ -1,5 +1,6 @@
--- DAP (Debug Adapter Protocol)
+-- debugging
 return {
+	-- DAP (Debug Adapter Protocol)
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = {

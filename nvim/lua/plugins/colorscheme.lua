@@ -1,4 +1,5 @@
--- colorscheme, check https://vimcolorschemes.com/
+-- colorschemes
+-- https://vimcolorschemes.com/
 return {
 	{
 		"folke/tokyonight.nvim",
@@ -6,10 +7,10 @@ return {
 			vim.cmd.colorscheme("tokyonight")
 		end,
 	},
-	{ "catppuccin/nvim", name = "catppuccin" },
+	{ "catppuccin/nvim",         name = "catppuccin" },
 	{ "ellisonleao/gruvbox.nvim" },
 	{ "EdenEast/nightfox.nvim" },
-	{ "rose-pine/neovim", name = "rose-pine" },
+	{ "rose-pine/neovim",        name = "rose-pine" },
 	{ "tanvirtin/monokai.nvim" },
 	{ "navarasu/onedark.nvim" },
 }

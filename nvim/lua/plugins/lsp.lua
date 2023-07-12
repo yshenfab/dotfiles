@@ -2,6 +2,7 @@
 -- https://langserver.org/
 -- https://microsoft.github.io/language-server-protocol/implementors/servers/
 return {
+	-- nvim-lspconfig
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -122,6 +123,7 @@ return {
 			})
 		end,
 	},
+
 	-- null-ls
 	{
 		"jose-elias-alvarez/null-ls.nvim",
@@ -162,6 +164,7 @@ return {
 			})
 		end,
 	},
+
 	-- mason-null-ls
 	{
 		"jay-babu/mason-null-ls.nvim",
@@ -171,5 +174,34 @@ return {
 				automatic_setup = true,
 			})
 		end,
+	},
+
+	-- lspsaga: beautify the Neovim built-in LSP UI
+	{
+		"nvimdev/lspsaga.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
+		event = "LspAttach",          -- lazy load
+		config = function()
+			require("lspsaga").setup({})
+		end,
+	},
+
+	-- lsp_signature: show function signature hints when typing
+	{
+		"ray-x/lsp_signature.nvim",
+		config = function()
+			require("lsp_signature").setup({})
+		end,
+	},
+
+	-- symbols-outline: tree like view for symbols
+	{
+		"simrat39/symbols-outline.nvim",
+		cmd = "SymbolsOutline",
+		keys = { { "<leader>so", "<cmd>SymbolsOutline<cr>", desc = "[S]ymbols [O]utline" } },
+		config = true,
 	},
 }

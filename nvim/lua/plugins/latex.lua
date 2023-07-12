@@ -14,6 +14,7 @@ return {
 		end,
 		ft = "tex",
 	},
+
 	-- latex symbols support for nvim-cmp
 	"kdheepak/cmp-latex-symbols",
 }

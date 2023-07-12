@@ -1,4 +1,4 @@
--- toggleterm
+-- terminal
 return {
 	"akinsho/toggleterm.nvim",
 	version = "*",

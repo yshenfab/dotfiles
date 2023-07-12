@@ -1,5 +1,14 @@
--- org-mode
+-- note taking (markdown & org-mode)
 return {
+	-- markdown preview
+	{
+		"iamcco/markdown-preview.nvim",
+		build = "cd app && yarn install",
+		config = function()
+			vim.cmd([[nmap <C-p> :MarkdownPreviewToggle<cr>]])
+		end,
+	},
+
 	-- org-mode
 	{
 		"nvim-orgmode/orgmode",
