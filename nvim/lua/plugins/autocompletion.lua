@@ -87,6 +87,8 @@ return {
 					{ name = "buffer" },
 					-- latex symbols support
 					{ name = "latex_symbols" },
+					-- org-mode
+					{ name = "orgmode" },
 				},
 			})
 		end,
