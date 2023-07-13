@@ -2,7 +2,7 @@
 return {
 	-- fuzzy finder
 	{
-		{ "junegunn/fzf", build = "./install --all" },
+		{ "junegunn/fzf",    build = "./install --all" },
 		{ "junegunn/fzf.vim" },
 	},
 
@@ -42,4 +42,7 @@ return {
 			-- end
 		end,
 	},
+
+	-- vim tmux navigator
+	{ "christoomey/vim-tmux-navigator" },
 }
