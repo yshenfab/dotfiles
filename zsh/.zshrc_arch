@@ -17,6 +17,8 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Plugins
 plugins=(zsh-autosuggestions sudo web-search copypath history git z.lua extract archlinux)
 
+source $ZSH/oh-my-zsh.sh
+
 # User configuration
 # Language environment
 export LANG=en_US.UTF-8
@@ -34,12 +36,12 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# PATH
 YANGBIN=$HOME/yangbin
 export PATH=${YANGBIN}:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 # Aliases
+alias v='nvim'
 alias ls='exa'
 alias ll='exa -al'
 alias lt='exa -T'
@@ -63,9 +65,8 @@ alias ssh-3090-2='ssh yang@10.16.12.103'
 # clash
 export http_proxy=http://127.0.0.1:7890
 export https_proxy=$http_proxy
-# export socks_proxy=127.0.0.1:7891
 
-# v2ray
+# v2raya
 # export http_proxy=127.0.0.1:20171
 # export https_proxy=$http_proxy
 # export socks_proxy=127.0.0.1:20170
@@ -98,6 +99,24 @@ ros2_on(){
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# functions
+# nvim-switcher
+function nvims() {
+  items=("default" "NvChad" "LunarVim" "LazyVim" "AstroNvim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+
 # zsh-syntax-highlighting
-source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# OpenAI API Key
+export OPENAI_API_KEY="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"
+# HuggingFace API Token
+# export HF_API_TOKEN="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"
