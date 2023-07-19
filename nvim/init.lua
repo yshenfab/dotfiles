@@ -1,6 +1,6 @@
 -- Neovim config
 
--- [[ Vim Config ]]
+-- [[ Vim Config: options, keymaps, autocmd, etc. ]]
 require("core")
 
 -- [[ Plugin manager ]]
@@ -18,6 +18,27 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Plugins ]]
-require('lazy').setup({
-  { import = 'plugins' },
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+  },
+  -- defaults = { lazy = true },
+  performance = {
+    cache = {
+      enabled = true,
+    },
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 })

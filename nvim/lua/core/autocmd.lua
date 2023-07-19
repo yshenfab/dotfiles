@@ -1,32 +1,31 @@
--- [[ Autocmd ]]
+-- [[ autocmd ]]
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
--- Highlight on yank
+-- highlight on yank
 autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = augroup("YankHighlight", { clear = true }),
-	pattern = "*",
+  group = augroup("YankHighlight", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
--- Wrap and check for spell in text filetypes
+-- wrap and check for spell in text filetypes
 autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("wrap_spell", { clear = true }),
-	pattern = { "gitcommit" },
-	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
-	end,
+  group = augroup("wrap_spell", { clear = true }),
+  pattern = { "gitcommit" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
 })
 
--- Autoformat
-vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.format()")
-
--- Disable auto-comment for new lines
+-- disable auto-comment for new lines
 autocmd("BufEnter", {
-	pattern = "",
-	command = ":setlocal formatoptions-=cro",
+  pattern = "",
+  command = ":setlocal formatoptions-=cro",
 })
+
+-- auto-format on save
+vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.format()")
