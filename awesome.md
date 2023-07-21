@@ -1,6 +1,6 @@
 # Awesome Softwares
 
-List of the awesome softwares I use(d) for Arch Linux and MacOS.
+List of the awesome softwares I use(d) for Arch Linux and MacOS.💥 
 
 <!-- toc -->
 
@@ -16,6 +16,7 @@ List of the awesome softwares I use(d) for Arch Linux and MacOS.
 - [Communication](#communication)
 - [Email](#email)
 - [Cloud Storage](#cloud-storage)
+- [Note Taking](#note-taking)
 - [Other](#other)
 
 <!-- tocstop -->
@@ -26,7 +27,7 @@ List of the awesome softwares I use(d) for Arch Linux and MacOS.
 
 Arch Linux
 
-- [yay](https://github.com/Jguer/yay) -- Yet another Yogurt - An AUR Helper written in Go.
+- [yay](https://github.com/Jguer/yay) -- Yet another Yogurt, an AUR Helper written in Go.
 - [paru](https://github.com/Morganamilo/paru) -- Feature packed AUR helper written in Rust.
 
 MacOS
@@ -37,63 +38,78 @@ MacOS
 
 ## Terminal
 
-- [Kitty](https://sw.kovidgoyal.net/kitty/) - Fast, feature-rich, GPU based.
-- [Alacritty](https://alacritty.org/) - Sensible defaults, allow configuration, high performance.
-- [iTerm2](https://www.iterm2.com/) - A popular terminal emulator. Used for a long time on my MBP.
-- [Warp](https://www.warp.dev/) - Blazingly-fast modern Rust based GPU-accelerated terminal, with AI to make you more productive. MacOS only.
+- [Kitty](https://github.com/kovidgoyal/kitty) -- Fast, feature-rich, GPU based.
+- [Alacritty](https://github.com/alacritty/alacritty) -- Sensible defaults, allow configuration, high performance, in Rust.
+- [WezTerm](https://github.com/wez/wezterm) -- A GPU-accelerated cross-platform terminal emulator and multiplexer written in Rust.
+- [iTerm2](https://www.iterm2.com/) -- A popular terminal emulator. Used for a long time on my MBP.
+- [Warp](https://www.warp.dev/) -- Blazingly-fast modern Rust based GPU-accelerated terminal, with AI to make you more productive. MacOS only.
+- [WindTerm](https://github.com/kingToolbox/WindTerm) -- A professional cross-platform SSH/Sftp/Shell/Telnet/Serial terminal.
 
 ---
 
 ## CLI Tools
 
-- [zsh](https://www.zsh.org/) - The shell you love.
-- [tmux](https://github.com/tmux/tmux) - Terminal multiplexer.
-- [Oh My Zsh](https://ohmyz.sh/) - Framework for managing Zsh configurations.
-- [powerlevel10k](https://github.com/romkatv/powerlevel10k) - A Zsh theme.
-- [curl](https://curl.se/) - Transferring data with URLs.
-- [fzf](https://github.com/junegunn/fzf) - Fuzzy finder.
-- [fd](https://github.com/sharkdp/fd) - Fast and easy directory
-- [ripgrep (rg)](https://github.com/BurntSushi/ripgrep) - Fast text searching, faster than `ack`, silver search (`ag`) or `grep`.
-- [bat](https://github.com/sharkdp/bat) - A `cat(1)` clone with syntax highlighting and Git integration.
-- [exa](https://the.exa.website/) - Modern replacement for `ls`.
-- [htop](https://github.com/hishamhm/htop) - Interactive text-mode process viewer for Unix systems, a better `top`.
-- [thefuck](https://github.com/nvbn/thefuck) - Correct errors in previous console command.
-- [tldr](https://tldr.sh/) - Cheatsheets for console commands. (Too Long, Don't Read)
+- [zsh](https://www.zsh.org/) -- The shell you love.
+- [tmux](https://github.com/tmux/tmux) -- Terminal multiplexer.
+- [Oh My Zsh](https://ohmyz.sh/) -- Framework for managing Zsh configurations.
+- [powerlevel10k](https://github.com/romkatv/powerlevel10k) -- A Zsh theme.
+- [curl](https://curl.se/) -- Transferring data with URLs.
+- [fzf](https://github.com/junegunn/fzf) -- Fuzzy finder.
+- [thefuck](https://github.com/nvbn/thefuck) -- Correct errors in previous console command.
+- [tldr](https://tldr.sh/) -- Cheatsheets for console commands. (Too Long, Didn't Read)
+- [delta](https://github.com/dandavison/delta) -- A syntax-highlighting pager for git, diff, and grep output.
+- [mdBook](https://github.com/rust-lang/mdBook) -- Create modern online books from markdown files. Like Gitbook but implemented in Rust.
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) -- A youtube-dl fork with additional features and fixes.
+- [slides](https://maaslalani.com/slides/) -- Slides in your terminal.
+
+Alternatives (many are written in Rust 🦀)
+
+- [fd](https://github.com/sharkdp/fd) -- A simple, fast and user-friendly alternative to `find`.
+- [ripgrep (rg)](https://github.com/BurntSushi/ripgrep) -- Fast text searching, faster than `ack`, silver search (`ag`) or `grep`.
+- [ripgrep-all](https://github.com/phiresky/ripgrep-all) -- rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
+- [bat](https://github.com/sharkdp/bat) -- A `cat(1)` clone with syntax highlighting and Git integration.
+- [exa](https://the.exa.website/) -- Modern replacement for `ls`.
+- [htop](https://github.com/hishamhm/htop) -- Interactive text-mode process viewer for Unix systems, a better `top`.  
+- [bottom](https://github.com/ClementTsang/bottom) -- A customizable cross-platform graphical process/system monitor for the terminal.
+- [dust](https://github.com/bootandy/dust) -- A more intuitive version of `du` in Rust.
+- [z.lua](https://github.com/skywind3000/z.lua) -- 10x times faster than fasd and autojump, 3x times faster than z.sh.
+- [zoxide](https://github.com/ajeetdsouza/zoxide) -- A smarter `cd` command in Rust, inspired by z and autojump.
+- [procs](https://github.com/dalance/procs) -- A modern replacement for `ps` written in Rust.
+- [sd](https://github.com/chmln/sd) -- Intuitive find & replace CLI (`sed` alternative) in Rust.
+
 - Terminal file manager
 
-  [ranger](https://github.com/ranger/ranger) - Console file manager with VI key bindings.
+  [ranger](https://github.com/ranger/ranger) -- Console file manager with VI key bindings.
 
-  [joshuto](https://github.com/kamiyaa/joshuto) - Ranger-like terminal file manager written in Rust.
+  [joshuto](https://github.com/kamiyaa/joshuto) -- Ranger-like terminal file manager written in Rust.
 
-  [nnn](https://github.com/jarun/nnn) - n³ The unorthodox terminal file manager.
+  [nnn](https://github.com/jarun/nnn) -- n³ The unorthodox terminal file manager.
 
 - Git UI
 
-  [lazygit](https://github.com/jesseduffield/lazygit) - Simple terminal UI for git commands.
+  [lazygit](https://github.com/jesseduffield/lazygit) -- Simple terminal UI for git commands.
 
-  [gitui](https://github.com/extrawurst/gitui) - Blazing fast terminal-ui for git written in rust.
+  [gitui](https://github.com/extrawurst/gitui) -- Blazing fast terminal-ui for git written in rust.
 
-- [lazydocker](https://github.com/jesseduffield/lazydocker) - Simple terminal UI for both docker and docker-compose.
-- [slides](https://maaslalani.com/slides/) - Slides in your terminal.
+- [lazydocker](https://github.com/jesseduffield/lazydocker) -- Simple terminal UI for both docker and docker-compose.
 
 ### zsh plugins
 
-- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) - A zsh plugin to provide suggestions for the command line.
-- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - Syntax highlighting for zsh.
-- [z.lua](https://github.com/skywind3000/z.lua) - 10x times faster than fasd and autojump, 3x times faster than z.sh.
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) -- A zsh plugin to provide suggestions for the command line.
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) -- Syntax highlighting for zsh.
 
 MacOS
 
-- [Fig](https://github.com/withfig/autocomplete) - CLI autocomplete.
+- [Fig](https://github.com/withfig/autocomplete) -- CLI autocomplete.
 
 ---
 
 ## Editors
 
-- [Neovim](https://neovim.io/) - More of a lifestyle than an editor.
-- [Vim](http://www.vim.org/) - Use when ssh to remote servers.
-- [Emacs](https://www.gnu.org/software/emacs/) - An OS mistaken for an editor, brew your coffee with it. xD
-- [VSCode](https://code.visualstudio.com/) - The most popular one.
+- [Neovim](https://neovim.io/) -- More of a lifestyle than an editor.
+- [Vim](http://www.vim.org/) -- Use when ssh to remote servers.
+- [Emacs](https://www.gnu.org/software/emacs/) -- An OS mistaken for an editor, brew your coffee with it. xD
+- [VSCode](https://code.visualstudio.com/) -- The most popular one.
 
 ---
 
@@ -101,12 +117,12 @@ MacOS
 
 Arch Linux
 
-- [i3wm](https://i3wm.org/) - Tiling window manager (X11).
-- [Hyprland](https://hyprland.org/) - Dynamic tiling Wayland compositor.
+- [i3wm](https://i3wm.org/) -- Tiling window manager (X11).
+- [Hyprland](https://hyprland.org/) -- Dynamic tiling Wayland compositor.
 
 MacOS
 
-- [yabai](https://github.com/koekeishiya/yabai) - Tiling window manger for MacOS. Use with [skhd](https://github.com/koekeishiya/skhd) for keybindings.
+- [yabai](https://github.com/koekeishiya/yabai) -- Tiling window manger for MacOS. Use with [skhd](https://github.com/koekeishiya/skhd) for keybindings.
 
 ---
 
@@ -114,7 +130,7 @@ MacOS
 
 Arch
 
-- [Albert](https://albertlauncher.github.io/) - A fast and flexible keyboard launcher, C++/Qt based.
+- [Albert](https://albertlauncher.github.io/) -- A fast and flexible keyboard launcher, C++/Qt based.
 
 MacOS
 
@@ -122,50 +138,58 @@ MacOS
 
   Alternative:
 
-  [Alfred](https://www.alfredapp.com/) - Boosts your efficiency with hotkeys, keywords, text expansion and more.
+  [Alfred](https://www.alfredapp.com/) -- Boosts your efficiency with hotkeys, keywords, text expansion and more.
 
-- [Hammrespoon](https://www.hammerspoon.org/) - Powerful automation of macOS with Lua.
+- [Hammrespoon](https://www.hammerspoon.org/) -- Powerful automation of macOS with Lua.
 
 ---
 
 ## VPN
 
-- [Clash](https://dreamacro.github.io/clash/) - Cross-platform rule-based proxy. Use transparent proxy with Clash Premium/ClashX Pro.
-- [v2ray](https://www.v2fly.org/) - A platform for building proxies to bypass network restrictions. [GUI clients](https://www.v2fly.org/awesome/tools.html#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%9B%BE%E5%BD%A2%E5%AE%A2%E6%88%B7%E7%AB%AF).
-- [Shadowsocks](https://shadowsocks.org/) - A fast tunnel proxy that helps you bypass firewalls.
+- [Clash](https://dreamacro.github.io/clash/) -- Cross-platform rule-based proxy. Use transparent proxy with Clash Premium/ClashX Pro.
+- [v2ray](https://www.v2fly.org/) -- A platform for building proxies to bypass network restrictions. [GUI clients](https://www.v2fly.org/awesome/tools.html#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%9B%BE%E5%BD%A2%E5%AE%A2%E6%88%B7%E7%AB%AF).
+- [Shadowsocks](https://shadowsocks.org/) -- A fast tunnel proxy that helps you bypass firewalls.
 
 ---
 
 ## Academic
 
-- [Tex Live](https://www.tug.org/texlive/) - TeX system. Check [MacTex](https://www.tug.org/mactex/) for MacOS.
-- [Zotero](https://www.zotero.org/) - Collect, organize, annotate, cite, and share research. [Set webdav with Jianguoyun](https://help.jianguoyun.com/?p=3168).
+- [Tex Live](https://www.tug.org/texlive/) -- TeX system. Check [MacTex](https://www.tug.org/mactex/) for MacOS.
+- [Zotero](https://www.zotero.org/) -- Collect, organize, annotate, cite, and share research. [Set webdav with Jianguoyun](https://help.jianguoyun.com/?p=3168).
 
 ---
 
 ## Communication
 
-- [Telegram](https://desktop.telegram.org) - Messaging app with a focus on speed and security.
-- [Discord](https://discordapp.com/) - All-in-one voice and text chat for gamers that's free, secure.
-- [Skype](https://www.skype.com/) - Cross-platform application that provides video chat and voice call services. Users can exchange images, text, video and any other digital documents.
-- [Zoom](https://zoom.us/) - Online meetings, video conferencing, etc.
-- [WeChat](https://itunes.apple.com/app/wechat/id836500024?mt=12) - Official WeChat app for Mac.
+- [Telegram](https://desktop.telegram.org) -- Messaging app with a focus on speed and security.
+- [Discord](https://discordapp.com/) -- All-in-one voice and text chat for gamers that's free, secure.
+- [Skype](https://www.skype.com/) -- Cross-platform application that provides video chat and voice call services. Users can exchange images, text, video and any other digital documents.
+- [Zoom](https://zoom.us/) -- Online meetings, video conferencing, etc.
+- [WeChat](https://itunes.apple.com/app/wechat/id836500024?mt=12) -- Official WeChat app for Mac.
 
 ---
 
 ## Email
 
-- [Neomutt](https://neomutt.org/) - Command line mail reader (or MUA). It’s a fork of Mutt with added features.
-- [ThunderBird](https://www.mozilla.org/en-US/thunderbird/) - Email client by Mozilla.
+- [Neomutt](https://neomutt.org/) -- Command line mail reader (or MUA). It’s a fork of Mutt with added features.
+- [ThunderBird](https://www.mozilla.org/en-US/thunderbird/) -- Email client by Mozilla.
 
 ---
 
 ## Cloud Storage
 
-- [Dropbox](https://www.dropbox.com/) - By Dropbox.
-- [OneDrive](https://onedrive.live.com) - By Microsoft. Check [onedrive](https://github.com/abraunegg/onedrive/) for Linux support.
-- [Google Drive](https://drive.google.com/) - By Google. Check [grive2](https://github.com/vitalif/grive2) for Linux support.
-- [insync](https://www.insynchq.com/) - Manage Google Drive, OneDrive, and Dropbox files straight from your Desktop. Cross platform.
+- [Dropbox](https://www.dropbox.com/) -- By Dropbox.
+- [OneDrive](https://onedrive.live.com) -- By Microsoft. Check [onedrive](https://github.com/abraunegg/onedrive/) for Linux support.
+- [Google Drive](https://drive.google.com/) -- By Google. Check [grive2](https://github.com/vitalif/grive2) for Linux support.
+- [insync](https://www.insynchq.com/) -- Manage Google Drive, OneDrive, and Dropbox files straight from your Desktop. Cross platform.
+
+---
+
+## Note Taking
+
+- [Org Mode](https://orgmode.org/) -- Your life in plain text.
+- [neorg](https://github.com/nvim-neorg/neorg) -- Your New Life Organization Tool - All in Lua.
+- [Obsidian](https://obsidian.md/) -- Sharpen your thinking. Obsidian is the private and flexible note‑taking app that adapts to the way you think.
 
 ---
 
@@ -173,7 +197,7 @@ MacOS
 
 MacOS
 
-- [Dash](https://kapeli.com/dash) - API documentation browser and code snippet manager.
-- [CheatSheet](https://www.mediaatelier.com/CheatSheet/) - Cheatsheet.
+- [Dash](https://kapeli.com/dash) -- API documentation browser and code snippet manager.
+- [CheatSheet](https://www.mediaatelier.com/CheatSheet/) -- Cheatsheet.
 
 ---
