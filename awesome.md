@@ -2,6 +2,8 @@
 
 List of the awesome softwares I use(d) for Arch Linux and MacOS.💥 
 
+Check [rust repo](https://rustrepo.com/) for a curated list of awesome Rust resources.
+
 <!-- toc -->
 
 - [Package Manager](#package-manager)
