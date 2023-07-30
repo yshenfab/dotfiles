@@ -10,25 +10,21 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
-config.color_scheme = "tokyonight_moon"
-
 -- start my config
--- Set background to same color as neovim
-config.colors = {}
-config.colors.background = "#111111"
+config.color_scheme = "GitHub Dark" -- tokyonight_moon
 
 config.font = wezterm.font_with_fallback({
 	"FiraCode Nerd Font",
+	"JetBrains Mono",
 	"nonicons",
 })
+
+config.font_size = 13.0 -- default 12.0
 
 -- default is true, has more "native" look
 config.use_fancy_tab_bar = false
 
--- I don't like putting anything at the ege if I can help it.
+-- no padding around the edges of the terminal area
 config.enable_scroll_bar = false
 config.window_padding = {
 	left = 0,
@@ -38,7 +34,23 @@ config.window_padding = {
 }
 
 config.tab_bar_at_bottom = true
+config.hide_tab_bar_if_only_one_tab = true
 config.freetype_load_target = "HorizontalLcd"
+
+-- config.window_background_image = '/path/to/wallpaper.jpg'
+config.window_background_opacity = 0.8
+config.bold_brightens_ansi_colors = true
+
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 } -- similar to tmux
+config.keys = {
+	{ mods = "LEADER", key = "|", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ mods = "LEADER", key = "-", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ mods = "CTRL",   key = "k", action = wezterm.action.ActivatePaneDirection("Up") },
+	{ mods = "CTRL",   key = "j", action = wezterm.action.ActivatePaneDirection("Down") },
+	{ mods = "CTRL",   key = "l", action = wezterm.action.ActivatePaneDirection("Right") },
+	{ mods = "CTRL",   key = "h", action = wezterm.action.ActivatePaneDirection("Left") },
+}
+
 -- end my config
 
 -- and finally, return the configuration to wezterm
