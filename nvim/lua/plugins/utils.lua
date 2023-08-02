@@ -76,8 +76,19 @@ return {
     end,
   },
 
-  -- vim tmux navigator
-  { "christoomey/vim-tmux-navigator", event = "VeryLazy" },
+  -- navigator: navigate between neovim and multiplexers (tmux or wezterm)
+  {
+    "numToStr/Navigator.nvim",
+    keys = {
+      { "<C-h>", mode = { "n", "t" }, "<cmd>NavigatorLeft<cr>",  desc = "Navi left" },
+      { "<C-l>", mode = { "n", "t" }, "<cmd>NavigatorRight<cr>", desc = "Navi right" },
+      { "<C-k>", mode = { "n", "t" }, "<cmd>NavigatorUp<cr>",    desc = "Navi up" },
+      { "<C-j>", mode = { "n", "t" }, "<cmd>NavigatorDown<cr>",  desc = "Navi down" },
+    },
+    config = function()
+      require("Navigator").setup()
+    end,
+  },
 
   -- startup time
   {
