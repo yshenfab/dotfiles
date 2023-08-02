@@ -1,5 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 -- This table will hold the configuration.
 local config = {}
@@ -11,8 +12,8 @@ if wezterm.config_builder then
 end
 
 -- start my config
--- config.color_scheme = "GitHub Dark" -- tokyonight_moon
-config.color_scheme = "tokyonight_moon" -- tokyonight_moon
+config.color_scheme = "GitHub Dark" -- tokyonight_moon
+-- config.color_scheme = "tokyonight_moon" -- tokyonight_moon
 
 config.font = wezterm.font_with_fallback({
 	"JetBrains Mono", -- "JetBrainsMonoNL Nerd Font Mono",
@@ -38,18 +39,58 @@ config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 config.freetype_load_target = "HorizontalLcd"
 
--- config.window_background_image = '/path/to/wallpaper.jpg'
 config.window_background_opacity = 0.8
 config.bold_brightens_ansi_colors = true
 
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 } -- similar to tmux
+-- navigator.nvim, check https://github.com/numToStr/Navigator.nvim/wiki/WezTerm-Integration
+local function isViProcess(pane)
+	return pane:get_foreground_process_name():find("n?vim") ~= nil
+end
+
+local function conditionalActivatePane(window, pane, pane_direction, vim_direction)
+	if isViProcess(pane) then
+		window:perform_action(act.SendKey({ key = vim_direction, mods = "CTRL" }), pane)
+	else
+		window:perform_action(act.ActivatePaneDirection(pane_direction), pane)
+	end
+end
+
+wezterm.on("ActivatePaneDirection-right", function(window, pane)
+	conditionalActivatePane(window, pane, "Right", "l")
+end)
+wezterm.on("ActivatePaneDirection-left", function(window, pane)
+	conditionalActivatePane(window, pane, "Left", "h")
+end)
+wezterm.on("ActivatePaneDirection-up", function(window, pane)
+	conditionalActivatePane(window, pane, "Up", "k")
+end)
+wezterm.on("ActivatePaneDirection-down", function(window, pane)
+	conditionalActivatePane(window, pane, "Down", "j")
+end)
+
+-- make it similar to my tmux keybindings
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-	{ mods = "LEADER", key = "|", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ mods = "LEADER", key = "-", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ mods = "LEADER", key = "k", action = wezterm.action.ActivatePaneDirection("Up") },
-	{ mods = "LEADER", key = "j", action = wezterm.action.ActivatePaneDirection("Down") },
-	{ mods = "LEADER", key = "l", action = wezterm.action.ActivatePaneDirection("Right") },
-	{ mods = "LEADER", key = "h", action = wezterm.action.ActivatePaneDirection("Left") },
+	-- { mods = "CTRL", key = "h", action = act.ActivatePaneDirection("Left") },
+	-- { mods = "CTRL", key = "j", action = act.ActivatePaneDirection("Down") },
+	-- { mods = "CTRL", key = "k", action = act.ActivatePaneDirection("Up") },
+	-- { mods = "CTRL", key = "l", action = act.ActivatePaneDirection("Right") },
+	{ mods = "CTRL", key = "h", action = act.EmitEvent("ActivatePaneDirection-left") },
+	{ mods = "CTRL", key = "j", action = act.EmitEvent("ActivatePaneDirection-down") },
+	{ mods = "CTRL", key = "l", action = act.EmitEvent("ActivatePaneDirection-right") },
+	{ mods = "CTRL", key = "k", action = act.EmitEvent("ActivatePaneDirection-up") },
+	{ mods = "ALT",  key = "t", action = act.SpawnTab("CurrentPaneDomain") },
+	{ mods = "ALT",  key = "h", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ mods = "ALT",  key = "v", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ mods = "ALT",  key = "1", action = act.ActivateTab(0) },
+	{ mods = "ALT",  key = "2", action = act.ActivateTab(1) },
+	{ mods = "ALT",  key = "3", action = act.ActivateTab(2) },
+	{ mods = "ALT",  key = "4", action = act.ActivateTab(3) },
+	{ mods = "ALT",  key = "5", action = act.ActivateTab(4) },
+	{ mods = "ALT",  key = "6", action = act.ActivateTab(5) },
+	{ mods = "ALT",  key = "7", action = act.ActivateTab(6) },
+	{ mods = "ALT",  key = "8", action = act.ActivateTab(7) },
+	{ mods = "ALT",  key = "9", action = act.ActivateTab(-1) },
 }
 
 -- end my config
