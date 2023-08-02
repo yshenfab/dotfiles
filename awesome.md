@@ -9,7 +9,7 @@ Check [rust repo](https://rustrepo.com/) for a curated list of awesome Rust reso
 - [Package Manager](#package-manager)
 - [Terminal](#terminal)
 - [CLI Tools](#cli-tools)
-  * [zsh plugins](#zsh-plugins)
+  - [zsh plugins](#zsh-plugins)
 - [Editors](#editors)
 - [Window Manager](#window-manager)
 - [Productivity](#productivity)
@@ -19,6 +19,7 @@ Check [rust repo](https://rustrepo.com/) for a curated list of awesome Rust reso
 - [Email](#email)
 - [Cloud Storage](#cloud-storage)
 - [Note Taking](#note-taking)
+- [Translation](#translation)
 - [Other](#other)
 
 <!-- tocstop -->
@@ -192,6 +193,12 @@ MacOS
 - [Org Mode](https://orgmode.org/) -- Your life in plain text.
 - [neorg](https://github.com/nvim-neorg/neorg) -- Your New Life Organization Tool - All in Lua.
 - [Obsidian](https://obsidian.md/) -- Sharpen your thinking. Obsidian is the private and flexible note‑taking app that adapts to the way you think.
+
+---
+
+## Translation
+
+- [Bob](https://github.com/ripperhe/Bob) -- Translation & OCR, support many plugins.
 
 ---
 

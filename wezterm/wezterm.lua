@@ -11,11 +11,12 @@ if wezterm.config_builder then
 end
 
 -- start my config
-config.color_scheme = "GitHub Dark" -- tokyonight_moon
+-- config.color_scheme = "GitHub Dark" -- tokyonight_moon
+config.color_scheme = "tokyonight_moon" -- tokyonight_moon
 
 config.font = wezterm.font_with_fallback({
+	"JetBrains Mono", -- "JetBrainsMonoNL Nerd Font Mono",
 	"FiraCode Nerd Font",
-	"JetBrains Mono",
 	"nonicons",
 })
 
@@ -45,10 +46,10 @@ config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 } -- sim
 config.keys = {
 	{ mods = "LEADER", key = "|", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ mods = "LEADER", key = "-", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ mods = "CTRL",   key = "k", action = wezterm.action.ActivatePaneDirection("Up") },
-	{ mods = "CTRL",   key = "j", action = wezterm.action.ActivatePaneDirection("Down") },
-	{ mods = "CTRL",   key = "l", action = wezterm.action.ActivatePaneDirection("Right") },
-	{ mods = "CTRL",   key = "h", action = wezterm.action.ActivatePaneDirection("Left") },
+	{ mods = "LEADER", key = "k", action = wezterm.action.ActivatePaneDirection("Up") },
+	{ mods = "LEADER", key = "j", action = wezterm.action.ActivatePaneDirection("Down") },
+	{ mods = "LEADER", key = "l", action = wezterm.action.ActivatePaneDirection("Right") },
+	{ mods = "LEADER", key = "h", action = wezterm.action.ActivatePaneDirection("Left") },
 }
 
 -- end my config
