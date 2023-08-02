@@ -201,7 +201,10 @@ return {
   -- code runner
   {
     "michaelb/sniprun",
-    keys = { { "<leader>cR", "<cmd>SnipRun<cr>", desc = "Code Runner" } },
+    keys = {
+      { "<leader>cR", mode = { "n", "o" }, "<cmd>SnipRun<cr>",      desc = "Code Runner" },
+      { "<leader>cR", mode = { "x", "o" }, "<cmd>'<,'>SnipRun<cr>", desc = "Code Runner" },
+    },
   },
 
   -- symbols-outline: tree-like view for symbols
