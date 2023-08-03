@@ -38,14 +38,14 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/yang/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    if [ -f "/Users/yang/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/yang/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+        export PATH="/Users/yang/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -65,8 +65,10 @@ export GPG_TTY=$(tty)
 alias v='nvim'
 alias ls='exa'
 alias ll='exa -al'
+alias lt='exa -T'
 alias cat='bat'
 alias du='dust'
+alias sd='sed'
 alias grep='rg'
 alias fm='joshuto'
 # homebrew
@@ -87,11 +89,6 @@ alias ssh-3090-2='ssh yang@10.16.12.103'
 export http_proxy=127.0.0.1:7890
 export https_proxy=$http_proxy
 # export socks_proxy=127.0.0.1:7891
-
-# v2ray
-# export http_proxy=127.0.0.1:20171
-# export https_proxy=$http_proxy
-# export socks_proxy=127.0.0.1:20170
 
 # Golang
 export GO111MODULE=on
@@ -118,21 +115,11 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # homebrew (tuna)
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
-export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
 export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+# export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
 export HOMEBREW_PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
-# brew tap --custom-remote --force-auto-update homebrew/core https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
-# brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
-
-# homebrew (ustc)
-# export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
-# export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
-# export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
-# export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
-# homebrew cask
-# brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.ustc.edu.cn/homebrew-cask.git
 
 # functions
 # nvim-switcher
