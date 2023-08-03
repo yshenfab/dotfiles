@@ -9,14 +9,14 @@ font pango:Driod Sans 10, FontAwesome
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# terminal (kitty, alacritty, urxvt)
-bindsym $mod+Return exec kitty
+# terminal
+bindsym $mod+Return exec wezterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# file manager (ranger/pcmanfm)
-bindsym $mod+z exec kitty -e ranger
+# file manager
+bindsym $mod+z exec wezterm -e joshuto
 bindsym $mod+x exec pcmanfm
 
 # dmenu (program launcher)
