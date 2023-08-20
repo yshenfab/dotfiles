@@ -76,7 +76,7 @@ return {
     end,
   },
 
-  -- navigator: navigate between neovim and multiplexers (tmux or wezterm)
+  -- navigator: navigate between neovim and multiplexers (tmux, kitty, wezterm)
   {
     "numToStr/Navigator.nvim",
     keys = {
