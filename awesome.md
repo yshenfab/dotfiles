@@ -1,6 +1,6 @@
 # Awesome Softwares
 
-List of the awesome softwares I use(d) for Arch Linux and MacOS.💥 
+List of the awesome softwares I use(d) for Arch Linux and MacOS.💥
 
 Check [rust repo](https://rustrepo.com/) for a curated list of awesome Rust resources.
 
@@ -9,7 +9,7 @@ Check [rust repo](https://rustrepo.com/) for a curated list of awesome Rust reso
 - [Package Manager](#package-manager)
 - [Terminal](#terminal)
 - [CLI Tools](#cli-tools)
-  - [zsh plugins](#zsh-plugins)
+  * [zsh plugins](#zsh-plugins)
 - [Editors](#editors)
 - [Window Manager](#window-manager)
 - [Productivity](#productivity)
@@ -72,7 +72,7 @@ Alternatives (many are written in Rust 🦀)
 - [ripgrep-all](https://github.com/phiresky/ripgrep-all) -- rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
 - [bat](https://github.com/sharkdp/bat) -- A `cat(1)` clone with syntax highlighting and Git integration.
 - [exa](https://the.exa.website/) -- Modern replacement for `ls`.
-- [htop](https://github.com/hishamhm/htop) -- Interactive text-mode process viewer for Unix systems, a better `top`.  
+- [htop](https://github.com/hishamhm/htop) -- Interactive text-mode process viewer for Unix systems, a better `top`.
 - [bottom](https://github.com/ClementTsang/bottom) -- A customizable cross-platform graphical process/system monitor for the terminal.
 - [dust](https://github.com/bootandy/dust) -- A more intuitive version of `du` in Rust.
 - [z.lua](https://github.com/skywind3000/z.lua) -- 10x times faster than fasd and autojump, 3x times faster than z.sh.
@@ -190,6 +190,8 @@ MacOS
 
 ## Note Taking
 
+Deprecated, now I use markdown only to keep notes.
+
 - [Org Mode](https://orgmode.org/) -- Your life in plain text.
 - [neorg](https://github.com/nvim-neorg/neorg) -- Your New Life Organization Tool - All in Lua.
 - [Obsidian](https://obsidian.md/) -- Sharpen your thinking. Obsidian is the private and flexible note‑taking app that adapts to the way you think.
@@ -198,7 +200,8 @@ MacOS
 
 ## Translation
 
-- [Bob](https://github.com/ripperhe/Bob) -- Translation & OCR, support many plugins.
+- [Bob](https://github.com/ripperhe/Bob) -- Translation & OCR, support many plugins. (MacOS only)
+- [pot](https://github.com/pot-app/pot-desktop) -- Cross-platform text translation.
 
 ---
 
