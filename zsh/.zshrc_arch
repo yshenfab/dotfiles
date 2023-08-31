@@ -15,9 +15,12 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Plugins
-plugins=(zsh-autosuggestions sudo web-search copypath history git z.lua extract archlinux)
+plugins=(zsh-autosuggestions sudo web-search copypath history git extract archlinux)
 
 source $ZSH/oh-my-zsh.sh
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # User configuration
 # Language environment
@@ -45,12 +48,13 @@ alias v='nvim'
 alias ls='exa'
 alias ll='exa -al'
 alias lt='exa -T'
+# alias lsd='ls -d *(-/DN)'
 alias cat='bat'
-alias du='dust'
-alias sd='sed'
 alias grep='rg'
+alias du='dust'
 alias fm='joshuto'
-# alias yeet='paru -Rcs'
+alias ps='procs'
+alias yeet='paru -Rcs'
 # kitty
 alias icat='kitty +kitten icat' # display image in terminal
 alias d='kitty +kitten diff'
@@ -68,6 +72,11 @@ alias ssh-3090-2='ssh yang@10.16.12.103'
 export http_proxy=http://127.0.0.1:7890
 export https_proxy=$http_proxy
 
+# v2raya
+# export http_proxy=127.0.0.1:20171
+# export https_proxy=$http_proxy
+# export socks_proxy=127.0.0.1:20170
+
 # Golang
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
@@ -79,7 +88,8 @@ export LD_LIBRARY_PATH=$STG/lib
 export PATH=$STG/bin:$PATH
 
 # Miniconda
-source /opt/miniconda/etc/profile.d/conda.sh
+source /opt/miniconda3/etc/profile.d/conda.sh
+# [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
 # ROS2 Humble
 export ROS_DOMAIN_ID=42

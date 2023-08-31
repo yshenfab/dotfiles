@@ -80,10 +80,10 @@ return {
   {
     "numToStr/Navigator.nvim",
     keys = {
-      { "<C-h>", mode = { "n", "t" }, "<cmd>NavigatorLeft<cr>",  desc = "Navi left" },
+      { "<C-h>", mode = { "n", "t" }, "<cmd>NavigatorLeft<cr>", desc = "Navi left" },
       { "<C-l>", mode = { "n", "t" }, "<cmd>NavigatorRight<cr>", desc = "Navi right" },
-      { "<C-k>", mode = { "n", "t" }, "<cmd>NavigatorUp<cr>",    desc = "Navi up" },
-      { "<C-j>", mode = { "n", "t" }, "<cmd>NavigatorDown<cr>",  desc = "Navi down" },
+      { "<C-k>", mode = { "n", "t" }, "<cmd>NavigatorUp<cr>", desc = "Navi up" },
+      { "<C-j>", mode = { "n", "t" }, "<cmd>NavigatorDown<cr>", desc = "Navi down" },
     },
     config = function()
       require("Navigator").setup()

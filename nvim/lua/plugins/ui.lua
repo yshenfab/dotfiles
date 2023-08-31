@@ -70,10 +70,10 @@ return {
 
       dashboard.section.header.val = vim.split(logo, "\n")
       dashboard.section.buttons.val = {
-        dashboard.button("<leader>ff", " " .. " Find file", ":Telescope find_files <CR>"),
-        -- dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("<leader>fo", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-        dashboard.button("<leader>fg", " " .. " Ripgrep (rg)", ":Telescope live_grep <CR>"),
+        dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
+        dashboard.button("o", " " .. " Recent files", ":Telescope oldfiles <CR>"),
+        dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
+        dashboard.button("g", " " .. " Ripgrep (rg)", ":Telescope live_grep <CR>"),
         -- dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
         -- dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
         dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),

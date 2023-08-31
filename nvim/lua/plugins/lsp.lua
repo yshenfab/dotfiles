@@ -8,7 +8,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
-      { "folke/neodev.nvim",  opts = {} }, -- additional lua configuration, makes nvim stuff amazing!
+      { "folke/neodev.nvim", opts = {} }, -- additional lua configuration, makes nvim stuff amazing!
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       -- vscode-like icons for neovim built-in lsp
@@ -105,7 +105,7 @@ return {
       { "gpt", mode = "n", desc = "preview type definition" },
       { "gpi", mode = "n", desc = "preview implementation" },
       { "gpr", mode = "n", desc = "preview references" },
-      { "gP",  mode = "n", desc = "close all preview windows" },
+      { "gP", mode = "n", desc = "close all preview windows" },
     },
     config = function()
       require("goto-preview").setup({
@@ -145,9 +145,9 @@ return {
           require("null-ls").builtins.completion.spell,
           -- diagnostics
           require("null-ls").builtins.diagnostics.clang_check, -- llvm project
-          require("null-ls").builtins.diagnostics.cppcheck,    -- static analysis
-          require("null-ls").builtins.diagnostics.cpplint,     -- Google C++ style guide
-          require("null-ls").builtins.diagnostics.flake8,      -- or use ruff
+          require("null-ls").builtins.diagnostics.cppcheck, -- static analysis
+          require("null-ls").builtins.diagnostics.cpplint, -- Google C++ style guide
+          require("null-ls").builtins.diagnostics.ruff, -- or flake8
           -- require("null-ls").builtins.diagnostics.eslint,
           -- require("null-ls").builtins.diagnostics.selene,
           require("null-ls").builtins.diagnostics.markdownlint,
@@ -157,10 +157,11 @@ return {
           require("null-ls").builtins.formatting.ruff,
           require("null-ls").builtins.formatting.black,
           -- require("null-ls").builtins.formatting.autoflake,
-          require("null-ls").builtins.formatting.isort,
+          require("null-ls").builtins.formatting.isort, -- or config in ruff
           require("null-ls").builtins.formatting.shfmt,
           require("null-ls").builtins.formatting.prettierd,
           require("null-ls").builtins.formatting.stylua,
+          require("null-ls").builtins.formatting.rustfmt,
           require("null-ls").builtins.formatting.gofmt,
           require("null-ls").builtins.formatting.latexindent,
           require("null-ls").builtins.formatting.markdownlint,
@@ -183,11 +184,11 @@ return {
   },
 
   -- lspsaga: beautify the Neovim built-in LSP UI
-  -- {
-  --   "nvimdev/lspsaga.nvim",
-  --   event = "LspAttach", -- lazy load
-  --   config = function()
-  --     require("lspsaga").setup()
-  --   end,
-  -- },
+  {
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach", -- lazy load
+    config = function()
+      require("lspsaga").setup()
+    end,
+  },
 }

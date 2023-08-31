@@ -12,8 +12,8 @@ if wezterm.config_builder then
 end
 
 -- start my config
-config.color_scheme = "GitHub Dark" -- tokyonight_moon
--- config.color_scheme = "tokyonight_moon" -- tokyonight_moon
+config.color_scheme = "GitHub Dark"
+-- config.color_scheme = "tokyonight_moon"
 
 config.font = wezterm.font_with_fallback({
 	"JetBrains Mono", -- "JetBrainsMonoNL Nerd Font Mono",
@@ -40,7 +40,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.freetype_load_target = "HorizontalLcd"
 
 config.window_background_opacity = 0.8
-config.bold_brightens_ansi_colors = true
+config.bold_brightens_ansi_colors = true -- default
 
 -- navigator.nvim, check https://github.com/numToStr/Navigator.nvim/wiki/WezTerm-Integration
 local function isViProcess(pane)
@@ -69,7 +69,7 @@ wezterm.on("ActivatePaneDirection-down", function(window, pane)
 end)
 
 -- make it similar to my tmux keybindings
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+-- config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 } -- I need C-a to move to beginning of line
 config.keys = {
 	-- { mods = "CTRL", key = "h", action = act.ActivatePaneDirection("Left") },
 	-- { mods = "CTRL", key = "j", action = act.ActivatePaneDirection("Down") },
@@ -79,18 +79,18 @@ config.keys = {
 	{ mods = "CTRL", key = "j", action = act.EmitEvent("ActivatePaneDirection-down") },
 	{ mods = "CTRL", key = "l", action = act.EmitEvent("ActivatePaneDirection-right") },
 	{ mods = "CTRL", key = "k", action = act.EmitEvent("ActivatePaneDirection-up") },
-	{ mods = "ALT",  key = "t", action = act.SpawnTab("CurrentPaneDomain") },
-	{ mods = "ALT",  key = "h", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ mods = "ALT",  key = "v", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ mods = "ALT",  key = "1", action = act.ActivateTab(0) },
-	{ mods = "ALT",  key = "2", action = act.ActivateTab(1) },
-	{ mods = "ALT",  key = "3", action = act.ActivateTab(2) },
-	{ mods = "ALT",  key = "4", action = act.ActivateTab(3) },
-	{ mods = "ALT",  key = "5", action = act.ActivateTab(4) },
-	{ mods = "ALT",  key = "6", action = act.ActivateTab(5) },
-	{ mods = "ALT",  key = "7", action = act.ActivateTab(6) },
-	{ mods = "ALT",  key = "8", action = act.ActivateTab(7) },
-	{ mods = "ALT",  key = "9", action = act.ActivateTab(-1) },
+	{ mods = "ALT", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
+	{ mods = "ALT", key = "h", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ mods = "ALT", key = "v", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ mods = "ALT", key = "1", action = act.ActivateTab(0) },
+	{ mods = "ALT", key = "2", action = act.ActivateTab(1) },
+	{ mods = "ALT", key = "3", action = act.ActivateTab(2) },
+	{ mods = "ALT", key = "4", action = act.ActivateTab(3) },
+	{ mods = "ALT", key = "5", action = act.ActivateTab(4) },
+	{ mods = "ALT", key = "6", action = act.ActivateTab(5) },
+	{ mods = "ALT", key = "7", action = act.ActivateTab(6) },
+	{ mods = "ALT", key = "8", action = act.ActivateTab(7) },
+	{ mods = "ALT", key = "9", action = act.ActivateTab(-1) },
 }
 
 -- end my config

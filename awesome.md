@@ -41,12 +41,12 @@ MacOS
 
 ## Terminal
 
+- [WezTerm](https://github.com/wez/wezterm) -- A GPU-accelerated cross-platform terminal emulator and multiplexer written in Rust.
 - [Kitty](https://github.com/kovidgoyal/kitty) -- Fast, feature-rich, GPU based.
 - [Alacritty](https://github.com/alacritty/alacritty) -- Sensible defaults, allow configuration, high performance, in Rust.
-- [WezTerm](https://github.com/wez/wezterm) -- A GPU-accelerated cross-platform terminal emulator and multiplexer written in Rust.
 - [iTerm2](https://www.iterm2.com/) -- A popular terminal emulator. Used for a long time on my MBP.
-- [Warp](https://www.warp.dev/) -- Blazingly-fast modern Rust based GPU-accelerated terminal, with AI to make you more productive. MacOS only.
 - [WindTerm](https://github.com/kingToolbox/WindTerm) -- A professional cross-platform SSH/Sftp/Shell/Telnet/Serial terminal.
+- [Warp](https://www.warp.dev/) -- Blazingly-fast modern Rust based GPU-accelerated terminal, with AI to make you more productive. MacOS only.
 
 ---
 
@@ -63,7 +63,9 @@ MacOS
 - [delta](https://github.com/dandavison/delta) -- A syntax-highlighting pager for git, diff, and grep output.
 - [mdBook](https://github.com/rust-lang/mdBook) -- Create modern online books from markdown files. Like Gitbook but implemented in Rust.
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) -- A youtube-dl fork with additional features and fixes.
-- [slides](https://maaslalani.com/slides/) -- Slides in your terminal.
+- [slides](https://maaslalani.com/slides/) -- Terminal slides.
+- [slidev](https://github.com/slidevjs/slidev) -- Presentation Slides for Developers.
+- [cloc](https://github.com/AlDanial/cloc) -- Count lines of code.
 
 Alternatives (many are written in Rust 🦀)
 
@@ -75,12 +77,11 @@ Alternatives (many are written in Rust 🦀)
 - [htop](https://github.com/hishamhm/htop) -- Interactive text-mode process viewer for Unix systems, a better `top`.
 - [bottom](https://github.com/ClementTsang/bottom) -- A customizable cross-platform graphical process/system monitor for the terminal.
 - [dust](https://github.com/bootandy/dust) -- A more intuitive version of `du` in Rust.
-- [z.lua](https://github.com/skywind3000/z.lua) -- 10x times faster than fasd and autojump, 3x times faster than z.sh.
-- [zoxide](https://github.com/ajeetdsouza/zoxide) -- A smarter `cd` command in Rust, inspired by z and autojump.
+- [zoxide](https://github.com/ajeetdsouza/zoxide) -- A smarter `cd` command in Rust, inspired by z and autojump. Or you can try [z.lua](https://github.com/skywind3000/z.lua).
 - [procs](https://github.com/dalance/procs) -- A modern replacement for `ps` written in Rust.
 - [sd](https://github.com/chmln/sd) -- Intuitive find & replace CLI (`sed` alternative) in Rust.
 
-- Terminal file manager
+- Terminal file manager (I've switch from ranger to joshuto)
 
   [ranger](https://github.com/ranger/ranger) -- Console file manager with VI key bindings.
 
@@ -103,7 +104,7 @@ Alternatives (many are written in Rust 🦀)
 
 MacOS
 
-- [Fig](https://github.com/withfig/autocomplete) -- CLI autocomplete.
+- [Fig](https://github.com/withfig/autocomplete) -- CLI autocomplete. (Just put it here, I don't use it.)
 
 ---
 
@@ -190,7 +191,7 @@ MacOS
 
 ## Note Taking
 
-Deprecated, now I use markdown only to keep notes.
+org-mode -> markdown
 
 - [Org Mode](https://orgmode.org/) -- Your life in plain text.
 - [neorg](https://github.com/nvim-neorg/neorg) -- Your New Life Organization Tool - All in Lua.
