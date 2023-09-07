@@ -2,6 +2,7 @@
 audio_default = [
   { command = "mpv", args = [ "--", ] },
   { command = "mediainfo", confirm_exit = true },
+  { command = "open" },
 ]
 
 image_default = [
@@ -9,9 +10,11 @@ image_default = [
   { command = "krita", args = [ "--", ], fork = true, silent = true },
   { command = "exiftool", confirm_exit = true },
   { command = "swappy", args = [ "-f", ], fork = true },
+  { command = "open" },
 ]
 
 video_default = [
+  { command = "vlc", args = [ "--", ], fork = true, silent = true },
   { command = "mpv", args = [ "--", ], fork = true, silent = true },
   { command = "mediainfo", confirm_exit = true },
   { command = "mpv", args = [ "--mute", "on", "--", ], fork = true, silent = true },
@@ -26,10 +29,12 @@ text_default = [
 
 reader_default = [
   { command = "evince", fork = true, silent = true },
+  { command = "open" },
 ]
 
 libreoffice_default = [
   { command = "libreoffice", fork = true, silent = true },
+  { command = "open" },
 ]
 
 [extension]
@@ -182,6 +187,7 @@ kra.app_list = [{ command = "krita", fork = true, silent = true }]
 kdenlive.app_list = [{ command = "kdenlive", fork = true, silent = true }]
 
 tex.app_list = [
+  { command = "nvim" },
   { command = "micro" },
   { command = "gedit", fork = true, silent = true },
   { command = "bat", confirm_exit = true },
