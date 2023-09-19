@@ -6,16 +6,10 @@ alt - up: yabai -m window --focus north
 alt - right : yabai -m window --focus east
 
 # swap managed window
-alt + shift - left : yabai -m window --swap west
-alt + shift - down : yabai -m window --swap south
-alt + shift - up : yabai -m window --swap north
-alt + shift - right : yabai -m window --swap east
-
-# move managed window (invalid)
-cmd + shift - left : yabai -m window --wrap west
-cmd + shift - down : yabai -m window --wrap south
-cmd + shift - up : yabai -m window --wrap north
-cmd + shift - right : yabai -m window --wrap east
+cmd + shift - h: yabai -m window --swap west
+cmd + shift - j: yabai -m window --swap south
+cmd + shift - k: yabai -m window --swap north
+cmd + shift - l: yabai -m window --swap east
 
 # balance size of windows
 shift + alt - 0 : yabai -m space --balance

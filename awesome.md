@@ -73,7 +73,7 @@ Alternatives (many are written in Rust 🦀)
 - [ripgrep (rg)](https://github.com/BurntSushi/ripgrep) -- Fast text searching, faster than `ack`, silver search (`ag`) or `grep`.
 - [ripgrep-all](https://github.com/phiresky/ripgrep-all) -- rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
 - [bat](https://github.com/sharkdp/bat) -- A `cat(1)` clone with syntax highlighting and Git integration.
-- [exa](https://the.exa.website/) -- Modern replacement for `ls`.
+- [eza](https://github.com/eza-community/eza) -- Modern replacement for `ls` since [exa](https://the.exa.website/) is unmaintained.
 - [htop](https://github.com/hishamhm/htop) -- Interactive text-mode process viewer for Unix systems, a better `top`.
 - [bottom](https://github.com/ClementTsang/bottom) -- A customizable cross-platform graphical process/system monitor for the terminal.
 - [dust](https://github.com/bootandy/dust) -- A more intuitive version of `du` in Rust.
@@ -101,10 +101,6 @@ Alternatives (many are written in Rust 🦀)
 
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) -- A zsh plugin to provide suggestions for the command line.
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) -- Syntax highlighting for zsh.
-
-MacOS
-
-- [Fig](https://github.com/withfig/autocomplete) -- CLI autocomplete. (Just put it here, I don't use it.)
 
 ---
 
@@ -212,5 +208,6 @@ MacOS
 
 - [Dash](https://kapeli.com/dash) -- API documentation browser and code snippet manager.
 - [CheatSheet](https://www.mediaatelier.com/CheatSheet/) -- Cheatsheet.
+- [CustomShortcuts](https://www.houdah.com/customShortcuts/) -- Customize Mac Menu Keyboard shortcuts, works with CheatSheet.
 
 ---
