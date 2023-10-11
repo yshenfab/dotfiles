@@ -209,5 +209,6 @@ MacOS
 - [Dash](https://kapeli.com/dash) -- API documentation browser and code snippet manager.
 - [CheatSheet](https://www.mediaatelier.com/CheatSheet/) -- Cheatsheet.
 - [CustomShortcuts](https://www.houdah.com/customShortcuts/) -- Customize Mac Menu Keyboard shortcuts, works with CheatSheet.
+- [Amphetamine](https://apps.apple.com/gb/app/amphetamine/id937984704?mt=12) -- Caffeinated, useful when using Macbook with external displays.
 
 ---
