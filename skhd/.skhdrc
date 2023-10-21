@@ -57,7 +57,7 @@ cmd + shift - 9 : yabai -m window --space 9
 cmd - e : yabai -m window --toggle split
 
 # fullscreen
-cmd - f : yabai -m window --toggle zoom-fullscreen
+cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 
 # float / unfloat window
 cmd + shift - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
