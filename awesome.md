@@ -1,6 +1,6 @@
 # Awesome Softwares
 
-List of the awesome softwares I use(d) for Arch Linux and MacOS.💥
+List of the awesome softwares I use(d) for MacOS and Arch Linux.💥
 
 Check [rust repo](https://rustrepo.com/) for a curated list of awesome Rust resources.
 
@@ -30,22 +30,26 @@ Check [rust repo](https://rustrepo.com/) for a curated list of awesome Rust reso
 
 Arch Linux
 
-- [yay](https://github.com/Jguer/yay) -- Yet another Yogurt, an AUR Helper written in Go.
-- [paru](https://github.com/Morganamilo/paru) -- Feature packed AUR helper written in Rust.
+- [yay](https://github.com/Jguer/yay) -- AUR Helper written in Go.
+- [paru](https://github.com/Morganamilo/paru) -- AUR helper written in Rust.
 
 MacOS
 
-- [Homebrew](https://brew.sh/) -- The Missing Package Manager for macOS (or Linux).
+- [Homebrew](https://brew.sh/) -- Package Manager for MacOS.
 
 ---
 
 ## Terminal
 
+Current
+
 - [WezTerm](https://github.com/wez/wezterm) -- A GPU-accelerated cross-platform terminal emulator and multiplexer written in Rust.
+
+Before
+
 - [Kitty](https://github.com/kovidgoyal/kitty) -- Fast, feature-rich, GPU based.
 - [Alacritty](https://github.com/alacritty/alacritty) -- Sensible defaults, allow configuration, high performance, in Rust.
 - [iTerm2](https://www.iterm2.com/) -- A popular terminal emulator. Used for a long time on my MBP.
-- [WindTerm](https://github.com/kingToolbox/WindTerm) -- A professional cross-platform SSH/Sftp/Shell/Telnet/Serial terminal.
 - [Warp](https://www.warp.dev/) -- Blazingly-fast modern Rust based GPU-accelerated terminal, with AI to make you more productive. MacOS only.
 
 ---
@@ -58,16 +62,15 @@ MacOS
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k) -- A Zsh theme.
 - [curl](https://curl.se/) -- Transferring data with URLs.
 - [fzf](https://github.com/junegunn/fzf) -- Fuzzy finder.
-- [thefuck](https://github.com/nvbn/thefuck) -- Correct errors in previous console command.
 - [tldr](https://tldr.sh/) -- Cheatsheets for console commands. (Too Long, Didn't Read)
+- [thefuck](https://github.com/nvbn/thefuck) -- Correct errors in previous console command.
 - [delta](https://github.com/dandavison/delta) -- A syntax-highlighting pager for git, diff, and grep output.
 - [mdBook](https://github.com/rust-lang/mdBook) -- Create modern online books from markdown files. Like Gitbook but implemented in Rust.
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) -- A youtube-dl fork with additional features and fixes.
 - [slides](https://maaslalani.com/slides/) -- Terminal slides.
-- [slidev](https://github.com/slidevjs/slidev) -- Presentation Slides for Developers.
 - [cloc](https://github.com/AlDanial/cloc) -- Count lines of code.
 
-Alternatives (many are written in Rust 🦀)
+Some alternatives (many are written in Rust 🦀)
 
 - [fd](https://github.com/sharkdp/fd) -- A simple, fast and user-friendly alternative to `find`.
 - [ripgrep (rg)](https://github.com/BurntSushi/ripgrep) -- Fast text searching, faster than `ack`, silver search (`ag`) or `grep`.
@@ -81,15 +84,15 @@ Alternatives (many are written in Rust 🦀)
 - [procs](https://github.com/dalance/procs) -- A modern replacement for `ps` written in Rust.
 - [sd](https://github.com/chmln/sd) -- Intuitive find & replace CLI (`sed` alternative) in Rust.
 
-- Terminal file manager (I've switch from ranger to joshuto)
-
-  [ranger](https://github.com/ranger/ranger) -- Console file manager with VI key bindings.
+- Terminal file manager (joshuto in use)
 
   [joshuto](https://github.com/kamiyaa/joshuto) -- Ranger-like terminal file manager written in Rust.
 
+  [ranger](https://github.com/ranger/ranger) -- Console file manager with VI key bindings.
+
   [nnn](https://github.com/jarun/nnn) -- n³ The unorthodox terminal file manager.
 
-- Git UI
+- Git UI (lazygit in use)
 
   [lazygit](https://github.com/jesseduffield/lazygit) -- Simple terminal UI for git commands.
 
@@ -108,7 +111,7 @@ Alternatives (many are written in Rust 🦀)
 
 - [Neovim](https://neovim.io/) -- More of a lifestyle than an editor.
 - [Vim](http://www.vim.org/) -- Use when ssh to remote servers.
-- [Emacs](https://www.gnu.org/software/emacs/) -- An OS mistaken for an editor, brew your coffee with it. xD
+- [Emacs](https://www.gnu.org/software/emacs/) -- An OS mistaken for an editor, brew coffee with it. xD
 - [VSCode](https://code.visualstudio.com/) -- The most popular one.
 
 ---
@@ -139,8 +142,6 @@ MacOS
   Alternative:
 
   [Alfred](https://www.alfredapp.com/) -- Boosts your efficiency with hotkeys, keywords, text expansion and more.
-
-- [Hammrespoon](https://www.hammerspoon.org/) -- Powerful automation of macOS with Lua.
 
 ---
 
@@ -208,7 +209,6 @@ MacOS
 
 - [Dash](https://kapeli.com/dash) -- API documentation browser and code snippet manager.
 - [CheatSheet](https://www.mediaatelier.com/CheatSheet/) -- Cheatsheet.
-- [CustomShortcuts](https://www.houdah.com/customShortcuts/) -- Customize Mac Menu Keyboard shortcuts, works with CheatSheet.
 - [Amphetamine](https://apps.apple.com/gb/app/amphetamine/id937984704?mt=12) -- Caffeinated, useful when using Macbook with external displays.
 
 ---
