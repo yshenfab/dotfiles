@@ -29,3 +29,6 @@ autocmd("BufEnter", {
 
 -- auto-format on save
 vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.format()")
+
+-- auto change current working directory
+vim.cmd("autocmd BufEnter * lcd %:p:h")
