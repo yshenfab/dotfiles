@@ -66,22 +66,21 @@ return {
 
   -- huggingface
   -- two commands: HFccSuggestion, HFccToggleAutoSuggest
-  {
-    "huggingface/hfcc.nvim",
-    opts = {
-      -- api_token = "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", -- folke
-      api_token = "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",
-      model = "bigcode/starcoder",
-      query_params = {
-        max_new_tokens = 200,
-        temperature = 0.2,
-        top_p = 0.95,
-        stop_token = "<|endoftext|>",
-      },
-    },
-    debounce_ms = 80,
-    -- accept_keymap = "<Tab>",
-    -- dismiss_keymap = "<S-Tab>",
-    keys = { { "<leader>cs", "<cmd>HFccSuggestion<cr>", desc = "Code Suggestion" } },
-  },
+  -- {
+  --   "huggingface/hfcc.nvim",
+  --   opts = {
+  --     api_token = "your_token",
+  --     model = "bigcode/starcoder",
+  --     query_params = {
+  --       max_new_tokens = 200,
+  --       temperature = 0.2,
+  --       top_p = 0.95,
+  --       stop_token = "<|endoftext|>",
+  --     },
+  --   },
+  --   debounce_ms = 80,
+  --   -- accept_keymap = "<Tab>",
+  --   -- dismiss_keymap = "<S-Tab>",
+  --   keys = { { "<leader>cs", "<cmd>HFccSuggestion<cr>", desc = "Code Suggestion" } },
+  -- },
 }
