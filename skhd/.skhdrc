@@ -4,7 +4,7 @@
 
 # === Launch commands ===
 # terminal
-cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm
+# cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm
 # finder
 cmd - g : open ~
 # system preferences
@@ -42,6 +42,11 @@ cmd - 4 : yabai -m space --focus 4
 # cmd - 8 : yabai -m space --focus 8
 # cmd - 9 : yabai -m space --focus 9
 
+# for my corne (three thumb keys)
+cmd - return : yabai -m space --focus 1
+cmd - backspace : yabai -m space --focus 2
+cmd - delete : yabai -m space --focus 3
+
 # move window to workspace
 cmd + shift - 1 : yabai -m window --space 1
 cmd + shift - 2 : yabai -m window --space 2
@@ -52,6 +57,11 @@ cmd + shift - 4 : yabai -m window --space 4
 # cmd + shift - 7 : yabai -m window --space 7
 # cmd + shift - 8 : yabai -m window --space 8
 # cmd + shift - 9 : yabai -m window --space 9
+
+# for my corne (three thumb keys)
+cmd + shift - return : yabai -m window --space 1
+cmd + shift - backspace : yabai -m window --space 2
+cmd + shift - delete : yabai -m window --space 3
 
 # toggle split (vertical / horizontal)
 cmd - e : yabai -m window --toggle split
@@ -83,7 +93,7 @@ resize < l: yabai -m window --resize right:50:0; \
 cmd + shift - n : yabai -m space --create
 
 # destroy current space
-cmd + shift - d : yabai -m space --destroy
+# cmd + shift - d : yabai -m space --destroy
 
 # close focused window
 cmd + shift - q : yabai -m window --close
@@ -92,12 +102,12 @@ cmd + shift - q : yabai -m window --close
 cmd - 0 : yabai -m space --balance
 
 # flip
-cmd + shift - y : yabai -m space --mirror y-axis
-cmd + shift - x : yabai -m space --mirror x-axis
+# cmd + shift - y : yabai -m space --mirror y-axis
+# cmd + shift - x : yabai -m space --mirror x-axis
 
 # rotate
-alt - r : yabai -m space --rotate 270
-alt + shift - r : yabai -m space --rotate 90
+# alt - r : yabai -m space --rotate 270
+# alt + shift - r : yabai -m space --rotate 90
 
 # restart yabai
 cmd + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
