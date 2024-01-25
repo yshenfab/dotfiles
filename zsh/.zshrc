@@ -33,15 +33,15 @@ else
   export EDITOR='nvim'
 fi
 
+export GPG_TTY=$TTY
+
 # PATH
 YANGBIN=$HOME/yangbin
 export PATH=${YANGBIN}:$PATH
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/qt/bin:$PATH"
-export PATH="~/.local/bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export GPG_TTY=$(tty)
+# export PATH="~/.local/bin:$PATH"
+# export GPG_TTY=$(tty)
 
 # Aliases
 alias v='nvim'
@@ -55,13 +55,12 @@ alias grep='rg'
 alias fm='ranger' # joshuto
 # homebrew
 alias bu='brew update && brew upgrade'
-alias buc='brew cu -a'
 alias bi='brew install'
 alias bic='brew install --cask'
 alias bs='brew search'
 # kitty
-alias icat='kitty +kitten icat' # display image in terminal
-alias d='kitty +kitten diff'
+# alias icat='kitty +kitten icat' # display image in terminal
+# alias d='kitty +kitten diff'
 # ssh
 # alias ssh-1080='ssh yang@10.16.12.102'
 alias ssh-3090='ssh yang@10.16.11.108'
