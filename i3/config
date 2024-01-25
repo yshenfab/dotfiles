@@ -79,14 +79,6 @@ bindsym $mod+p exec flameshot gui
 # lockscreen
 bindsym $mod+Delete exec betterlockscreen -l $HOME/Downloads/wallpaper/sudo.jpeg
 
-# gaps
-# Inner gaps (space between two adjacent windows or split containers)
-gaps inner 5px
-# Outer gaps (space along the screen edges)
-gaps outer 5px
-# smart gaps: on|off|inverse_outer
-smart_gaps inverse_outer
-
 # set workspace
 set $WS1  1: 
 set $WS2  2: 
