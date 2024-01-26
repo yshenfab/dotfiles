@@ -74,18 +74,18 @@ cmd-shift-k = 'move up'
 cmd-shift-l = 'move right'
 
 # switch to workspace
-alt-q = 'workspace 1'
-alt-w = 'workspace 2'
-alt-e = 'workspace 3'
-alt-r = 'workspace 4'
-alt-t = 'workspace 5'
+cmd-1 = 'workspace 1'
+cmd-2 = 'workspace 2'
+cmd-3 = 'workspace 3'
+cmd-4 = 'workspace 4'
+cmd-5 = 'workspace 5'
 
 # move focused node to workspace
-alt-shift-q = 'move-node-to-workspace 1'
-alt-shift-w = 'move-node-to-workspace 2'
-alt-shift-e = 'move-node-to-workspace 3'
-alt-shift-r = 'move-node-to-workspace 4'
-alt-shift-t = 'move-node-to-workspace 5'
+cmd-shift-1 = 'move-node-to-workspace 1'
+cmd-shift-2 = 'move-node-to-workspace 2'
+cmd-shift-3 = 'move-node-to-workspace 3'
+cmd-shift-4 = 'move-node-to-workspace 4'
+cmd-shift-5 = 'move-node-to-workspace 5'
 
 # fullscreen
 alt-f = 'fullscreen'
@@ -94,10 +94,12 @@ alt-f = 'fullscreen'
 cmd-shift-space = 'layout floating tiling'
 
 # reload config
-cmd-shift-r = 'reload-config'
+cmd-z = 'reload-config'
 
-# workspace-back-and-forth
+# quick switch workspace
 # alt-tab = 'workspace-back-and-forth'
+alt-h = 'workspace prev'
+alt-l = 'workspace next'
 
 # monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
