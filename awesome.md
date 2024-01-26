@@ -50,7 +50,6 @@ Before
 - [Kitty](https://github.com/kovidgoyal/kitty) -- Fast, feature-rich, GPU based.
 - [Alacritty](https://github.com/alacritty/alacritty) -- Sensible defaults, allow configuration, high performance, in Rust.
 - [iTerm2](https://www.iterm2.com/) -- A popular terminal emulator. Used for a long time on my MBP.
-- [Warp](https://www.warp.dev/) -- Blazingly-fast modern Rust based GPU-accelerated terminal, with AI to make you more productive. MacOS only.
 
 ---
 
@@ -84,7 +83,7 @@ Some alternatives (many are written in Rust 🦀)
 - [procs](https://github.com/dalance/procs) -- A modern replacement for `ps` written in Rust.
 - [sd](https://github.com/chmln/sd) -- Intuitive find & replace CLI (`sed` alternative) in Rust.
 
-- Terminal file manager (joshuto in use)
+- Terminal file manager (joshuto requires config for preview, ranger works out of the box)
 
   [joshuto](https://github.com/kamiyaa/joshuto) -- Ranger-like terminal file manager written in Rust.
 
@@ -125,6 +124,7 @@ Arch Linux
 
 MacOS
 
+- [AeroSpace](https://github.com/nikitabobko/AeroSpace) -- An i3-like twm for macOS.
 - [yabai](https://github.com/koekeishiya/yabai) -- Tiling window manger for MacOS. Use with [skhd](https://github.com/koekeishiya/skhd) for keybindings.
 
 ---
