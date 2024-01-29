@@ -1,6 +1,6 @@
 -- LSP Plugins
 -- https://langserver.org/
--- https://microsoft.github.io/language-server-protocol/implementors/servers/
+-- https://microsoft.github.io/language-server-protocol/implementers/servers/
 return {
   -- lspconfig
   {
@@ -57,19 +57,10 @@ return {
       -- mason-lspconfig
       local mason_lspconfig = require("mason-lspconfig")
       local servers = {
-        bashls = {},
         clangd = {},
-        dockerls = {},
         ruff_lsp = {},
         pyright = {},
-        gopls = {},
-        tsserver = {},
-        lua_ls = {
-          Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-          },
-        },
+        bashls = {},
       }
       mason_lspconfig.setup({
         ensure_installed = vim.tbl_keys(servers),
@@ -139,56 +130,107 @@ return {
     end,
   },
 
-  -- null-ls
+  -- conform (formatting)
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    opts = {
+      formatters_by_ft = {
+        c = { "clang_format" },
+        cpp = { "clang_format" },
+        python = { "isort", "black" },
+        -- python = function(bufnr)
+        --   if require("conform").get_formatter_info("ruff_format", bufnr).available then
+        --     return { "ruff_format" }
+        --   else
+        --     return { "isort", "black" }
+        --   end
+        -- end,
+        markdown = { { "prettierd", "prettier" } }, -- also for javascript, typescript, json, yaml, etc.
+        sh = { "shfmt" },
+        -- lua = { "stylua" },
+        ["*"] = { "codespell" },       -- "*": all filetypes.
+        ["_"] = { "trim_whitespace" }, -- "_": filetypes that don't have other formatters configured.
+      },
+      format_on_save = { lsp_fallback = true, async = false, timeout_ms = 500 },
+    },
+  },
+
+  -- nvim-lint (linting)
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" }, -- events = { "BufWritePost", "BufReadPost", "InsertLeave" },
     config = function()
-      require("null-ls").setup({
-        sources = {
-          -- code actions
-          require("null-ls").builtins.code_actions.gitsigns,
-          -- completion
-          require("null-ls").builtins.completion.spell,
-          -- diagnostics
-          require("null-ls").builtins.diagnostics.clang_check, -- llvm project
-          require("null-ls").builtins.diagnostics.cppcheck,    -- static analysis
-          require("null-ls").builtins.diagnostics.cpplint,     -- Google C++ style guide
-          require("null-ls").builtins.diagnostics.ruff,        -- or flake8
-          -- require("null-ls").builtins.diagnostics.eslint,
-          -- require("null-ls").builtins.diagnostics.selene,
-          require("null-ls").builtins.diagnostics.markdownlint,
-          require("null-ls").builtins.diagnostics.chktex,
-          -- formatting
-          require("null-ls").builtins.formatting.clang_format,
-          require("null-ls").builtins.formatting.ruff,
-          require("null-ls").builtins.formatting.black,
-          -- require("null-ls").builtins.formatting.autoflake,
-          require("null-ls").builtins.formatting.isort, -- or config in ruff
-          require("null-ls").builtins.formatting.shfmt,
-          require("null-ls").builtins.formatting.prettierd,
-          require("null-ls").builtins.formatting.stylua,
-          require("null-ls").builtins.formatting.rustfmt,
-          require("null-ls").builtins.formatting.gofmt,
-          require("null-ls").builtins.formatting.latexindent,
-          require("null-ls").builtins.formatting.markdownlint,
-          require("null-ls").builtins.formatting.markdown_toc,
-          require("null-ls").builtins.formatting.trim_whitespace,
-        },
+      local lint = require("lint")
+
+      lint.linters_by_ft = {
+        c = { "cpplint" },
+        cpp = { "cpplint" },
+        python = { "ruff" }, -- { "ruff", "pylint" },
+        markdown = { "markdownlint" },
+      }
+
+      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+      vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+        group = lint_augroup,
+        callback = function()
+          lint.try_lint()
+        end,
       })
     end,
   },
 
+  -- null-ls
+  -- {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   config = function()
+  --     require("null-ls").setup({
+  --       sources = {
+  --         -- code actions
+  --         require("null-ls").builtins.code_actions.gitsigns,
+  --         -- completion
+  --         require("null-ls").builtins.completion.spell,
+  --         -- diagnostics
+  --         require("null-ls").builtins.diagnostics.clang_check, -- llvm project
+  --         require("null-ls").builtins.diagnostics.cppcheck,    -- static analysis
+  --         require("null-ls").builtins.diagnostics.cpplint,     -- Google C++ style guide
+  --         require("null-ls").builtins.diagnostics.ruff,        -- or flake8
+  --         -- require("null-ls").builtins.diagnostics.eslint,
+  --         -- require("null-ls").builtins.diagnostics.selene,
+  --         require("null-ls").builtins.diagnostics.markdownlint,
+  --         -- require("null-ls").builtins.diagnostics.chktex,
+  --         -- formatting
+  --         require("null-ls").builtins.formatting.clang_format,
+  --         require("null-ls").builtins.formatting.ruff,
+  --         require("null-ls").builtins.formatting.black,
+  --         -- require("null-ls").builtins.formatting.autoflake,
+  --         require("null-ls").builtins.formatting.isort, -- or config in ruff
+  --         require("null-ls").builtins.formatting.shfmt,
+  --         require("null-ls").builtins.formatting.prettierd,
+  --         require("null-ls").builtins.formatting.stylua,
+  --         -- require("null-ls").builtins.formatting.rustfmt,
+  --         -- require("null-ls").builtins.formatting.gofmt,
+  --         -- require("null-ls").builtins.formatting.latexindent,
+  --         require("null-ls").builtins.formatting.markdownlint,
+  --         require("null-ls").builtins.formatting.markdown_toc,
+  --         require("null-ls").builtins.formatting.trim_whitespace,
+  --       },
+  --     })
+  --   end,
+  -- },
+
   -- mason-null-ls
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("mason-null-ls").setup({
-        automatic_setup = true,
-      })
-    end,
-  },
+  -- {
+  --   "jay-babu/mason-null-ls.nvim",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   config = function()
+  --     require("mason-null-ls").setup({
+  --       automatic_setup = true,
+  --     })
+  --   end,
+  -- },
 
   -- lspsaga: beautify the Neovim built-in LSP UI
   {

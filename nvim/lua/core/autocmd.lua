@@ -32,3 +32,11 @@ vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.format()")
 
 -- auto change current working directory
 vim.cmd("autocmd BufEnter * lcd %:p:h")
+
+-- linting
+-- autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+--   group = augroup("lint", { clear = true }),
+--   callback = function()
+--     require("lint").try_lint()
+--   end,
+-- })

@@ -34,11 +34,11 @@ return {
   --     })
   --   end,
   -- },
-  {
-    "tzachar/cmp-tabnine",
-    build = "./install.sh",
-    event = "InsertEnter",
-  },
+  -- {
+  --   "tzachar/cmp-tabnine",
+  --   build = "./install.sh",
+  --   event = "InsertEnter",
+  -- },
 
   -- Codeium
   -- "Exafunction/codeium.vim", -- official plugin
