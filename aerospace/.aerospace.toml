@@ -98,8 +98,8 @@ cmd-z = 'reload-config'
 
 # quick switch workspace
 # alt-tab = 'workspace-back-and-forth'
-alt-h = 'workspace prev'
-alt-l = 'workspace next'
+cmd-b = 'workspace prev'
+cmd-n = 'workspace next'
 
 # monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
