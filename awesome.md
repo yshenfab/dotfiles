@@ -1,6 +1,6 @@
-# Awesome Softwares
+# Awesome Software
 
-List of the awesome softwares I use(d) for MacOS and Arch Linux.💥
+List of the awesome software I use(d) for MacOS and Arch Linux.💥
 
 Check [rust repo](https://rustrepo.com/) for a curated list of awesome Rust resources.
 
@@ -9,7 +9,7 @@ Check [rust repo](https://rustrepo.com/) for a curated list of awesome Rust reso
 - [Package Manager](#package-manager)
 - [Terminal](#terminal)
 - [CLI Tools](#cli-tools)
-  * [zsh plugins](#zsh-plugins)
+  - [zsh plugins](#zsh-plugins)
 - [Editors](#editors)
 - [Window Manager](#window-manager)
 - [Productivity](#productivity)
@@ -23,6 +23,24 @@ Check [rust repo](https://rustrepo.com/) for a curated list of awesome Rust reso
 - [Other](#other)
 
 <!-- tocstop -->
+
+---
+
+## TL;DR
+
+I mainly use MacOS for now, here is a brief list.
+
+- Package manager: Homebrew
+- Terminal: WezTerm
+- Shell: zsh (ohmyzsh, powerlevel10k, and plugins)
+- CLI tools: joshuto, lazygit, fzf, curl, rg, fd, bat, eza, zoxide, tldr, yt-dlp, delta, yt-dlp, neofetch, slides, loc, gh, onefetch, htop, dust
+- Editor: Neovim
+- Window Manager: AeroSpace
+- Launcher: Raycast
+- Academic: Zotero
+- Audio/Video: mpv, ffmpeg, vlc, spotify, neteasemusic
+- Translation: bob (deepl)
+- Cloud Storage: iCloud, OneDrive
 
 ---
 
@@ -41,12 +59,7 @@ MacOS
 
 ## Terminal
 
-Current
-
 - [WezTerm](https://github.com/wez/wezterm) -- A GPU-accelerated cross-platform terminal emulator and multiplexer written in Rust.
-
-Before
-
 - [Kitty](https://github.com/kovidgoyal/kitty) -- Fast, feature-rich, GPU based.
 - [Alacritty](https://github.com/alacritty/alacritty) -- Sensible defaults, allow configuration, high performance, in Rust.
 - [iTerm2](https://www.iterm2.com/) -- A popular terminal emulator. Used for a long time on my MBP.
@@ -67,7 +80,9 @@ Before
 - [mdBook](https://github.com/rust-lang/mdBook) -- Create modern online books from markdown files. Like Gitbook but implemented in Rust.
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) -- A youtube-dl fork with additional features and fixes.
 - [slides](https://maaslalani.com/slides/) -- Terminal slides.
-- [cloc](https://github.com/AlDanial/cloc) -- Count lines of code.
+- [loc](https://github.com/cgag/loc) -- Count lines of code.
+- [gh](https://cli.github.com/) -- Take GitHub to the CLI.
+- [onefetch](https://github.com/o2sh/onefetch) -- Command-line Git information tool.
 
 Some alternatives (many are written in Rust 🦀)
 
@@ -125,7 +140,7 @@ Arch Linux
 MacOS
 
 - [AeroSpace](https://github.com/nikitabobko/AeroSpace) -- An i3-like twm for macOS.
-- [yabai](https://github.com/koekeishiya/yabai) -- Tiling window manger for MacOS. Use with [skhd](https://github.com/koekeishiya/skhd) for keybindings.
+- [yabai](https://github.com/koekeishiya/yabai) -- Tiling window manager for MacOS. Use with [skhd](https://github.com/koekeishiya/skhd) for keybindings.
 
 ---
 
@@ -202,6 +217,11 @@ org-mode -> markdown
 - [pot](https://github.com/pot-app/pot-desktop) -- Cross-platform text translation.
 
 ---
+
+## Video/Audio
+
+- [ffmpeg](https://ffmpeg.org/) -- A complete, cross-platform solution to record, convert and stream audio and video.
+- [vlc](https://www.videolan.org/) -- Free and open-source, portable, cross-platform media player software and streaming media server.
 
 ## Other
 

@@ -36,11 +36,9 @@ fi
 export GPG_TTY=$TTY
 
 # PATH
-YANGBIN=$HOME/yangbin
-export PATH=${YANGBIN}:$PATH
+export PATH="$HOME/yangbin/:$PATH"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="/usr/local/sbin:$PATH"
-# export PATH="~/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:/usr/local/sbin:$PATH"
 # export GPG_TTY=$(tty)
 
 # Aliases
@@ -52,21 +50,29 @@ alias cat='bat'
 alias du='dust'
 alias sd='sed'
 alias grep='rg'
-alias fm='ranger' # joshuto
+alias fm='joshuto'
+
 # homebrew
 alias bu='brew update && brew upgrade'
 alias bi='brew install'
 alias bic='brew install --cask'
 alias bs='brew search'
+
 # kitty
 # alias icat='kitty +kitten icat' # display image in terminal
 # alias d='kitty +kitten diff'
+
 # ssh
+# SUSTech
 # alias ssh-1080='ssh yang@10.16.12.102'
 alias ssh-3090='ssh yang@10.16.11.108'
 alias ssh-3090-2='ssh yang@10.16.12.103'
 # alias ssh-tesla-k80='ssh yang@10.20.94.184'
 # alias ssh-72='ssh yang@10.20.101.189'
+# UTS
+alias ssh-uts='ssh yangshen@access.ihpc.uts.edu.au'
+alias ssh-4090-yang='ssh yang@138.25.209.105'
+alias ssh-4090-fate='ssh fate@138.25.209.105'
 
 # clash
 # export http_proxy=127.0.0.1:7890
@@ -90,6 +96,19 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# function
+# kill python by search string
+killpy() {
+    if [ $# -ne 1 ]; then
+        echo "Usage: kill_python_by_string <search_string>"
+        return 1
+    fi
+
+    search_string=$1
+
+    ps aux | grep "$search_string" | awk '{print $2}' | xargs kill
+}
 
 # zsh-syntax-highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
