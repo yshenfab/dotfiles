@@ -8,7 +8,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
-      { "folke/neodev.nvim",  opts = {} }, -- additional lua configuration, makes nvim stuff amazing!
+      { "folke/neodev.nvim", opts = {} }, -- additional lua configuration, makes nvim stuff amazing!
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       -- vscode-like icons for neovim built-in lsp
@@ -103,7 +103,7 @@ return {
       { "gpt", mode = "n", desc = "preview type definition" },
       { "gpi", mode = "n", desc = "preview implementation" },
       { "gpr", mode = "n", desc = "preview references" },
-      { "gP",  mode = "n", desc = "close all preview windows" },
+      { "gP", mode = "n", desc = "close all preview windows" },
     },
     config = function()
       require("goto-preview").setup({
@@ -139,18 +139,11 @@ return {
       formatters_by_ft = {
         c = { "clang_format" },
         cpp = { "clang_format" },
-        python = { "isort", "black" },
-        -- python = function(bufnr)
-        --   if require("conform").get_formatter_info("ruff_format", bufnr).available then
-        --     return { "ruff_format" }
-        --   else
-        --     return { "isort", "black" }
-        --   end
-        -- end,
+        python = { "isort", "black" }, -- { "ruff_format" },
         markdown = { { "prettierd", "prettier" } }, -- also for javascript, typescript, json, yaml, etc.
         sh = { "shfmt" },
-        -- lua = { "stylua" },
-        ["*"] = { "codespell" },       -- "*": all filetypes.
+        lua = { "stylua" },
+        ["*"] = { "codespell" }, -- "*": all filetypes.
         ["_"] = { "trim_whitespace" }, -- "_": filetypes that don't have other formatters configured.
       },
       format_on_save = { lsp_fallback = true, async = false, timeout_ms = 500 },
@@ -160,7 +153,7 @@ return {
   -- nvim-lint (linting)
   {
     "mfussenegger/nvim-lint",
-    event = { "BufReadPre", "BufNewFile" }, -- events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lint = require("lint")
 
@@ -168,7 +161,7 @@ return {
         c = { "cpplint" },
         cpp = { "cpplint" },
         python = { "ruff" }, -- { "ruff", "pylint" },
-        markdown = { "markdownlint" },
+        -- markdown = { "markdownlint" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -180,57 +173,6 @@ return {
       })
     end,
   },
-
-  -- null-ls
-  -- {
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   config = function()
-  --     require("null-ls").setup({
-  --       sources = {
-  --         -- code actions
-  --         require("null-ls").builtins.code_actions.gitsigns,
-  --         -- completion
-  --         require("null-ls").builtins.completion.spell,
-  --         -- diagnostics
-  --         require("null-ls").builtins.diagnostics.clang_check, -- llvm project
-  --         require("null-ls").builtins.diagnostics.cppcheck,    -- static analysis
-  --         require("null-ls").builtins.diagnostics.cpplint,     -- Google C++ style guide
-  --         require("null-ls").builtins.diagnostics.ruff,        -- or flake8
-  --         -- require("null-ls").builtins.diagnostics.eslint,
-  --         -- require("null-ls").builtins.diagnostics.selene,
-  --         require("null-ls").builtins.diagnostics.markdownlint,
-  --         -- require("null-ls").builtins.diagnostics.chktex,
-  --         -- formatting
-  --         require("null-ls").builtins.formatting.clang_format,
-  --         require("null-ls").builtins.formatting.ruff,
-  --         require("null-ls").builtins.formatting.black,
-  --         -- require("null-ls").builtins.formatting.autoflake,
-  --         require("null-ls").builtins.formatting.isort, -- or config in ruff
-  --         require("null-ls").builtins.formatting.shfmt,
-  --         require("null-ls").builtins.formatting.prettierd,
-  --         require("null-ls").builtins.formatting.stylua,
-  --         -- require("null-ls").builtins.formatting.rustfmt,
-  --         -- require("null-ls").builtins.formatting.gofmt,
-  --         -- require("null-ls").builtins.formatting.latexindent,
-  --         require("null-ls").builtins.formatting.markdownlint,
-  --         require("null-ls").builtins.formatting.markdown_toc,
-  --         require("null-ls").builtins.formatting.trim_whitespace,
-  --       },
-  --     })
-  --   end,
-  -- },
-
-  -- mason-null-ls
-  -- {
-  --   "jay-babu/mason-null-ls.nvim",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   config = function()
-  --     require("mason-null-ls").setup({
-  --       automatic_setup = true,
-  --     })
-  --   end,
-  -- },
 
   -- lspsaga: beautify the Neovim built-in LSP UI
   {

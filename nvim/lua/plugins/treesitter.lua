@@ -1,21 +1,16 @@
 -- Highlight, edit, and navigate code
 return {
   "nvim-treesitter/nvim-treesitter",
-  version = false, -- last release is way too old
+  version = false,
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    init = function()
-      -- disable rtp plugin
-      require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-      load_textobjects = true
-    end,
   },
   cmd = { "TSUpdateSync" },
   keys = {
     { "<c-z>", desc = "Increment selection" },
-    { "<c-x>", desc = "Decrement selection", mode = "x" },
+    { "<bs>", desc = "Decrement selection", mode = "x" },
   },
   config = function()
     require("nvim-treesitter.configs").setup({
@@ -27,11 +22,8 @@ return {
         "cuda",
         "dockerfile",
         "python",
-        "go",
         "lua",
-        "javascript",
         "json",
-        "typescript",
         "vimdoc",
         "vim",
         "latex",
@@ -47,22 +39,21 @@ return {
       auto_install = true,
 
       highlight = { enable = true },
-      indent = { enable = true }, -- indent = { enable = true, disable = { "python" } },
+      indent = { enable = true },
       incremental_selection = {
         enable = true,
         keymaps = {
           init_selection = "<c-z>",
           node_incremental = "<c-z>",
           scope_incremental = false,
-          node_decremental = "<c-x>",
+          node_decremental = "<bs>",
         },
       },
       textobjects = {
         select = {
           enable = true,
-          lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+          lookahead = true,
           keymaps = {
-            -- You can use the capture groups defined in textobjects.scm
             ["aa"] = "@parameter.outer",
             ["ia"] = "@parameter.inner",
             ["af"] = "@function.outer",
@@ -74,30 +65,20 @@ return {
         move = {
           enable = true,
           set_jumps = true, -- whether to set jumps in the jumplist
-          goto_next_start = {
-            ["]m"] = "@function.outer",
-            ["]]"] = "@class.outer",
-          },
-          goto_next_end = {
-            ["]M"] = "@function.outer",
-            ["]["] = "@class.outer",
-          },
-          goto_previous_start = {
-            ["[m"] = "@function.outer",
-            ["[["] = "@class.outer",
-          },
-          goto_previous_end = {
-            ["[M"] = "@function.outer",
-            ["[]"] = "@class.outer",
-          },
+          goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
+          goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
+          goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
+          goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
         },
         swap = {
           enable = true,
           swap_next = {
             ["<leader>sp"] = "@parameter.inner",
+            ["<leader>sf"] = "@function.outer",
           },
           swap_previous = {
             ["<leader>sP"] = "@parameter.inner",
+            ["<leader>sF"] = "@function.outer",
           },
         },
       },

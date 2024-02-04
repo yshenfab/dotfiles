@@ -48,7 +48,7 @@ return {
   {
     "ThePrimeagen/harpoon",
     keys = {
-      "<leader><leader>",
+      "<leader>h",
       "<C-e>",
     },
     config = function()
@@ -61,7 +61,7 @@ return {
       harpoon.setup({})
 
       -- nmap { "<leader>a", require("harpoon.mark").add_file }
-      nmap({ "<leader><leader>", require("harpoon.mark").toggle_file, { desc = "toggle harpoon mark" } })
+      nmap({ "<leader>h", require("harpoon.mark").toggle_file, { desc = "toggle harpoon mark" } })
       nmap({ "<C-e>", require("harpoon.ui").toggle_quick_menu })
 
       for i = 1, 5 do

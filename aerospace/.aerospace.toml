@@ -35,9 +35,9 @@ cmd-shift-1 = 'move-node-to-workspace 1'
 cmd-shift-2 = 'move-node-to-workspace 2'
 cmd-shift-3 = 'move-node-to-workspace 3'
 cmd-shift-4 = 'move-node-to-workspace 4'
-cmd-shift-enter = 'workspace 1'
-cmd-shift-backspace = 'workspace 2'
-cmd-shift-quote = 'workspace 3'
+cmd-shift-enter = 'move-node-to-workspace 1'
+cmd-shift-backspace = 'move-node-to-workspace 2'
+cmd-shift-quote = 'move-node-to-workspace 3'
 
 # quick switch workspace
 alt-tab = 'workspace-back-and-forth'

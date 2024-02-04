@@ -1,4 +1,4 @@
--- better coding & editting
+-- better coding & editing
 return {
   -- tpope plugins
   "tpope/vim-sleuth", -- Heuristically set buffer options (shiftwidth, expandtab, tabstop, etc.)
@@ -42,9 +42,9 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "hrsh7th/cmp-nvim-lua",     -- Neovim Lua API
+      "hrsh7th/cmp-nvim-lua", -- Neovim Lua API
       "saadparwaiz1/cmp_luasnip", -- snippetes
-      "onsails/lspkind.nvim",     -- vscode-like icons for neovim built-in lsp
+      "onsails/lspkind.nvim", -- vscode-like icons for neovim built-in lsp
     },
     opts = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -105,8 +105,8 @@ return {
           { name = "nvim_lua" },
           -- AI powered autocompletion
           { name = "copilot" },
-          { name = "cmp_tabnine",  max_item_count = 3 },
-          { name = "codeium",      max_item_count = 3 },
+          { name = "cmp_tabnine", max_item_count = 3 },
+          { name = "codeium", max_item_count = 3 },
           -- latex symbols support
           { name = "latex_symbols" },
           -- org-mode
@@ -169,12 +169,12 @@ return {
   {
     "numToStr/Comment.nvim",
     keys = {
-      { "gcc", mode = "n",          desc = "Comment toggle current line" },
-      { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
-      { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
-      { "gbc", mode = "n",          desc = "Comment toggle current block" },
-      { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-      { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
+      { "gcc", mode = "n", desc = "Comment toggle current line" },
+      { "gc", mode = { "n", "o" }, desc = "Comment toggle linewise" },
+      { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
+      { "gbc", mode = "n", desc = "Comment toggle current block" },
+      { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+      { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
     },
     config = function(_, opts)
       require("Comment").setup(opts)
@@ -202,7 +202,7 @@ return {
   {
     "michaelb/sniprun",
     keys = {
-      { "<leader>cR", mode = { "n", "o" }, "<cmd>SnipRun<cr>",      desc = "Code Runner" },
+      { "<leader>cR", mode = { "n", "o" }, "<cmd>SnipRun<cr>", desc = "Code Runner" },
       { "<leader>cR", mode = { "x", "o" }, "<cmd>'<,'>SnipRun<cr>", desc = "Code Runner" },
     },
   },
