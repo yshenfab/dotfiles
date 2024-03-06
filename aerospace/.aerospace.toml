@@ -4,10 +4,10 @@ start-at-login = true
 [mode.main.binding]
 # cmd-enter = 'exec-and-forget open -n /Applications/WezTerm.app/'
 cmd-g = 'exec-and-forget open ~'
-alt-p = 'exec-and-forget open x-apple.systempreferences:'
+cmd-shift-p = 'exec-and-forget open x-apple.systempreferences:'
 
 cmd-e = 'layout tiles horizontal vertical'
-cmd-shift-e = 'layout accordion horizontal vertical'
+cmd-shift-e = 'layout v_accordion' # stacking
 
 # change focus
 cmd-h = 'focus left'
@@ -51,7 +51,7 @@ alt-f = 'fullscreen'
 cmd-shift-space = 'layout floating tiling'
 
 # reload config
-alt-r = 'reload-config'
+cmd-shift-r = 'reload-config'
 
 # monitor
 cmd-shift-left = 'move-workspace-to-monitor --wrap-around prev'

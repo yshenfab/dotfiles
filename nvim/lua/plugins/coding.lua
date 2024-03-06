@@ -7,6 +7,8 @@ return {
   -- snippets: my elves, they type so I don't have to
   {
     "L3MON4D3/LuaSnip",
+    -- version = "v2.*",
+    build = "make install_jsregexp",
     dependencies = {
       "rafamadriz/friendly-snippets", -- vscode style snippets
       config = function()

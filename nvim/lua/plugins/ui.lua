@@ -23,7 +23,7 @@ return {
     version = "*",
     event = "VeryLazy",
     keys = {
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "buffer toggle pin" },
+      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "buffer toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
     },
     config = function()
@@ -59,7 +59,7 @@ return {
     main = "ibl",
   },
 
-  -- dashbord: startup greeter
+  -- dashboard: startup greeter
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
@@ -143,7 +143,7 @@ return {
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
   -- ui components
-  { "MunifTanjim/nui.nvim",        lazy = true },
+  { "MunifTanjim/nui.nvim", lazy = true },
 
   -- auto-resize windows
   {
@@ -153,7 +153,7 @@ return {
       { "anuvyklack/middleclass" },
       { "anuvyklack/animation.nvim", enabled = false },
     },
-    keys = { { "<leader>m", "<cmd>WindowsMaximize<cr>", desc = "Zoom" } },
+    keys = { { "<leader>wz", "<cmd>WindowsMaximize<cr>", desc = "Zoom" } },
     config = function()
       vim.o.winwidth = 5
       vim.o.equalalways = false

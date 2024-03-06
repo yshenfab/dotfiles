@@ -4,7 +4,7 @@ return {
   {
     "jackMort/ChatGPT.nvim",
     cmd = { "ChatGPTActAs", "ChatGPT" },
-    opts = { api_key_cmd = "gpg --decrypt ~/gpg/openai_api_key.txt.gpg" },
+    opts = { api_key_cmd = "gpg --decrypt /Users/yang/gpg_key/openai_api_key.gpg" },
   },
 
   -- which-key: cheatsheet for pending keybinds
@@ -47,8 +47,9 @@ return {
   -- harpoon: marks
   {
     "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     keys = {
-      "<leader>h",
+      "<leader>a",
       "<C-e>",
     },
     config = function()
@@ -58,21 +59,28 @@ return {
 
       local harpoon = require("harpoon")
 
-      harpoon.setup({})
+      -- harpoon:setup({})
 
-      -- nmap { "<leader>a", require("harpoon.mark").add_file }
-      nmap({ "<leader>h", require("harpoon.mark").toggle_file, { desc = "toggle harpoon mark" } })
-      nmap({ "<C-e>", require("harpoon.ui").toggle_quick_menu })
+      -- new config
+      -- stylua: ignore
+      nmap({ "<leader>a", function() harpoon:list():append() end })
+      -- stylua: ignore
+      nmap({ "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, })
 
-      for i = 1, 5 do
-        nmap({
-          string.format("<space><space>%s", i),
-          function()
-            require("harpoon.ui").nav_file(i)
-          end,
-          { desc = string.format("navi file %s", i) },
-        })
-      end
+      -- old config
+      -- nmap({ "<leader>a", require("harpoon.mark").add_file, { desc = "add harpoon mark" } })
+      -- nmap({ "<leader>h", require("harpoon.mark").toggle_file, { desc = "toggle harpoon mark" } })
+      -- nmap({ "<C-e>", require("harpoon.ui").toggle_quick_menu })
+
+      -- for i = 1, 5 do
+      --   nmap({
+      --     string.format("<space><space>%s", i),
+      --     function()
+      --       require("harpoon.ui").nav_file(i)
+      --     end,
+      --     { desc = string.format("navi file %s", i) },
+      --   })
+      -- end
     end,
   },
 
