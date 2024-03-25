@@ -37,7 +37,7 @@ I mainly use MacOS for now, here is a brief list.
 - Editor: Neovim
 - Window Manager: AeroSpace
 - Launcher: Raycast
-- Academic: Zotero
+- Academic: Zotero, Overleaf
 - Audio/Video: mpv, ffmpeg, vlc, spotify, neteasemusic
 - Translation: bob (deepl)
 - Cloud Storage: iCloud, OneDrive
@@ -170,8 +170,8 @@ MacOS
 
 ## Academic
 
-- [Tex Live](https://www.tug.org/texlive/) -- TeX system. Check [MacTex](https://www.tug.org/mactex/) for MacOS.
-- [Zotero](https://www.zotero.org/) -- Collect, organize, annotate, cite, and share research. [Set webdav with Jianguoyun](https://help.jianguoyun.com/?p=3168).
+- [Zotero](https://www.zotero.org/) -- Collect, organize, annotate, cite, and share research. [Set webdav with Jianguoyun](https://help.jianguoyun.com/?p=3168), and many useful plugins.
+- [Tex Live](https://www.tug.org/texlive/) -- TeX system. Check [MacTex](https://www.tug.org/mactex/) for MacOS. Switched to [Overleaf](https://www.overleaf.com/).
 
 ---
 

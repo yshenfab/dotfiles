@@ -51,17 +51,19 @@ alt-f = 'fullscreen'
 cmd-shift-space = 'layout floating tiling'
 
 # reload config
-cmd-shift-r = 'reload-config'
+cmd-r = 'reload-config'
 
-# monitor
-cmd-shift-left = 'move-workspace-to-monitor --wrap-around prev'
-cmd-shift-right = 'move-workspace-to-monitor --wrap-around next'
+# multi-monitor
+cmd-left = 'focus-monitor left'
+cmd-right = 'focus-monitor right'
+cmd-shift-left = 'move-node-to-monitor left'
+cmd-shift-right = 'move-node-to-monitor right'
 
 # modes
 # resize
-cmd-r = 'mode resize'
+cmd-u = 'mode resize'
 
 [mode.resize.binding]
-j = 'resize smart -50'
-k = 'resize smart +50'
+h = 'resize smart -50'
+l = 'resize smart +50'
 esc = 'mode main'
