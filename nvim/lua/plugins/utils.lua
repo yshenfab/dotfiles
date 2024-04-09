@@ -59,28 +59,11 @@ return {
 
       local harpoon = require("harpoon")
 
-      -- harpoon:setup({})
-
-      -- new config
+      harpoon:setup()
       -- stylua: ignore
-      nmap({ "<leader>a", function() harpoon:list():append() end })
+      nmap({ "<leader>a", function() harpoon:list():add() end })
       -- stylua: ignore
-      nmap({ "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, })
-
-      -- old config
-      -- nmap({ "<leader>a", require("harpoon.mark").add_file, { desc = "add harpoon mark" } })
-      -- nmap({ "<leader>h", require("harpoon.mark").toggle_file, { desc = "toggle harpoon mark" } })
-      -- nmap({ "<C-e>", require("harpoon.ui").toggle_quick_menu })
-
-      -- for i = 1, 5 do
-      --   nmap({
-      --     string.format("<space><space>%s", i),
-      --     function()
-      --       require("harpoon.ui").nav_file(i)
-      --     end,
-      --     { desc = string.format("navi file %s", i) },
-      --   })
-      -- end
+      nmap({ "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end })
     end,
   },
 
@@ -94,7 +77,7 @@ return {
       { "<C-j>", mode = { "n", "t" }, "<cmd>NavigatorDown<cr>", desc = "Navi down" },
     },
     config = function()
-      require("Navigator").setup()
+      require("Navigator").setup({})
     end,
   },
 

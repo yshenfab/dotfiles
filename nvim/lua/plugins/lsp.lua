@@ -135,19 +135,32 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>cf",
+        function()
+          require("conform").format({ async = true, lsp_fallback = true })
+        end,
+        mode = "",
+        desc = "Code Format",
+      },
+    },
     opts = {
       formatters_by_ft = {
         c = { "clang_format" },
         cpp = { "clang_format" },
-        python = { "isort", "black" }, -- { "ruff_format" },
-        markdown = { { "prettierd", "prettier" } }, -- also for javascript, typescript, json, yaml, etc.
+        python = { "isort", "ruff_format" }, -- { "black" },
+        markdown = { "prettierd" }, -- also for javascript, typescript, json, yaml, etc.
         sh = { "shfmt" },
         lua = { "stylua" },
         ["*"] = { "codespell" }, -- "*": all filetypes.
         ["_"] = { "trim_whitespace" }, -- "_": filetypes that don't have other formatters configured.
       },
-      format_on_save = { lsp_fallback = true, async = false, timeout_ms = 500 },
+      format_on_save = { timeout_ms = 500, lsp_fallback = true, async = true },
     },
+    init = function()
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
   },
 
   -- nvim-lint (linting)
@@ -160,7 +173,7 @@ return {
       lint.linters_by_ft = {
         c = { "cpplint" },
         cpp = { "cpplint" },
-        python = { "ruff" }, -- { "ruff", "pylint" },
+        python = { "ruff" }, -- { "pylint" },
         -- markdown = { "markdownlint" },
       }
 

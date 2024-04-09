@@ -43,7 +43,7 @@ return {
   -- Codeium
   -- "Exafunction/codeium.vim", -- official plugin
   {
-    "jcdickinson/codeium.nvim",
+    "Exafunction/codeium.nvim",
     event = "InsertEnter",
     config = function()
       require("codeium").setup()
@@ -51,18 +51,18 @@ return {
   },
 
   -- Bito
-  {
-    "zhenyangze/vim-bitoai",
-    event = "VeryLazy",
-    config = function()
-      -- show in buffers list
-      vim.g.bito_buffer_name_prefix = vim.g.bito_buffer_name_prefix or "bito_history_"
-      -- change bito path if bito cli is not sys command
-      vim.g.vim_bito_path = vim.g.vim_bito_path or "bito"
-      -- change results of bito, like: "translate the comment into chinese", "write the comment in chinese"
-      vim.g.vim_bito_prompt_append = vim.g.vim_bito_prompt_append or ""
-    end,
-  },
+  -- {
+  --   "zhenyangze/vim-bitoai",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     -- show in buffers list
+  --     vim.g.bito_buffer_name_prefix = vim.g.bito_buffer_name_prefix or "bito_history_"
+  --     -- change bito path if bito cli is not sys command
+  --     vim.g.vim_bito_path = vim.g.vim_bito_path or "bito"
+  --     -- change results of bito, like: "translate the comment into chinese", "write the comment in chinese"
+  --     vim.g.vim_bito_prompt_append = vim.g.vim_bito_prompt_append or ""
+  --   end,
+  -- },
 
   -- huggingface
   -- two commands: HFccSuggestion, HFccToggleAutoSuggest
