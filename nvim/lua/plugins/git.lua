@@ -48,7 +48,7 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
     opts = {},
-    keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Git DiffView" } },
+    keys = { { "<leader>gv", "<cmd>DiffviewOpen<cr>", desc = "Git DiffView" } },
   },
 
   -- git worktree

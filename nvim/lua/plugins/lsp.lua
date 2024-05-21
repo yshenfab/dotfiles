@@ -54,17 +54,19 @@ return {
         end, "Workspace List Folders")
       end
 
-      -- mason-lspconfig
-      local mason_lspconfig = require("mason-lspconfig")
       local servers = {
+        bashls = {},
         clangd = {},
         ruff_lsp = {},
         pyright = {},
-        bashls = {},
       }
+
+      -- mason-lspconfig
+      local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
         ensure_installed = vim.tbl_keys(servers),
       })
+
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
@@ -156,7 +158,7 @@ return {
         ["*"] = { "codespell" }, -- "*": all filetypes.
         ["_"] = { "trim_whitespace" }, -- "_": filetypes that don't have other formatters configured.
       },
-      format_on_save = { timeout_ms = 500, lsp_fallback = true, async = true },
+      format_on_save = { timeout_ms = 500, lsp_fallback = true },
     },
     init = function()
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
@@ -174,7 +176,8 @@ return {
         c = { "cpplint" },
         cpp = { "cpplint" },
         python = { "ruff" }, -- { "pylint" },
-        -- markdown = { "markdownlint" },
+        markdown = { "markdownlint" },
+        -- lua = { "selene", "luacheck" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

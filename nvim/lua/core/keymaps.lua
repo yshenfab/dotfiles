@@ -53,12 +53,6 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
--- buffers (bufferline.nvim)
-map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-
 -- mapping for paste, replace a word with yanked text
 map("x", "<leader>p", [["_dP]])
 

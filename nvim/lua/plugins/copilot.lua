@@ -10,6 +10,7 @@ return {
       require("copilot").setup({})
     end,
   },
+
   {
     "zbirenbaum/copilot-cmp",
     event = "InsertEnter",

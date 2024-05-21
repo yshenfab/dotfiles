@@ -26,7 +26,7 @@ return {
         sort_case_insensitive = false,
         window = {
           position = "left",
-          width = 30,
+          width = 27,
         },
         autochdir = true,
       })

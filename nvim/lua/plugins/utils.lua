@@ -1,5 +1,10 @@
 -- utils
 return {
+  -- undotree
+  {
+    "mbbill/undotree",
+    keys = { { "<leader>tu", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree" } },
+  },
   -- ChatGPT
   {
     "jackMort/ChatGPT.nvim",

@@ -10,6 +10,10 @@ return {
     end,
   },
 
+  {
+    "mzlogin/vim-markdown-toc",
+  },
+
   -- org-mode
   -- {
   --   "nvim-orgmode/orgmode",
