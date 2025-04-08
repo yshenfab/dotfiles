@@ -40,3 +40,17 @@ vim.cmd("autocmd BufEnter * lcd %:p:h")
 --     require("lint").try_lint()
 --   end,
 -- })
+
+-- conceal markdown links
+vim.cmd([[ autocmd FileType markdown setlocal conceallevel=2 ]])
+
+-- copilot buffers
+autocmd("BufEnter", {
+  pattern = "copilot-*",
+  callback = function()
+    -- Set buffer-local options
+    vim.opt_local.relativenumber = false
+    vim.opt_local.number = false
+    vim.opt_local.conceallevel = 0
+  end,
+})

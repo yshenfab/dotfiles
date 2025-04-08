@@ -13,10 +13,85 @@ return {
 
   {
     "zbirenbaum/copilot-cmp",
-    event = "InsertEnter",
+    -- event = { "InsertEnter", "LspAttach" }, -- event = "InsertEnter",
     config = function()
       require("copilot_cmp").setup()
     end,
+  },
+
+  -- Copilot Chat
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or  "github/copilot.vim"
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+    },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    opts = {},
+    keys = {
+      { "<leader>cc", mode = { "n", "o" }, "<cmd>CopilotChat<cr>", desc = "CopilotChat" },
+      { "<leader>cp", mode = { "n", "o" }, "<cmd>CopilotChatPrompts<cr>", desc = "CopilotChatPrompts" },
+      { "<leader>cm", mode = { "n", "o" }, "<cmd>CopilotChatModels<cr>", desc = "CopilotChatModels" },
+      { "<leader>ca", mode = { "n", "o" }, "<cmd>CopilotChatAgents<cr>", desc = "CopilotChatAgents" },
+      { "<leader>tc", "<cmd>CopilotChatToggle<cr>", desc = "Toggle CopilotChat" },
+    },
+  },
+
+  -- avante
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    version = false, -- Never set this value to "*"! Never!
+    opts = {
+      provider = "openai",
+      openai = {
+        endpoint = "https://api.openai.com/v1",
+        model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+        timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+        temperature = 0,
+        max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+        --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+      },
+    },
+    build = "make",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
   },
 
   -- Tabnine
@@ -42,14 +117,44 @@ return {
   -- },
 
   -- Codeium
-  -- "Exafunction/codeium.vim", -- official plugin
   {
     "Exafunction/codeium.nvim",
     event = "InsertEnter",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
     config = function()
-      require("codeium").setup()
+      require("codeium").setup({})
     end,
   },
+
+  -- cmp-ai
+  -- {
+  --   "tzachar/cmp-ai",
+  --   dependencies = "nvim-lua/plenary.nvim",
+  --   config = function()
+  --     local cmp_ai = require("cmp_ai.config")
+  --
+  --     cmp_ai:setup({
+  --       max_lines = 100,
+  --       provider = "Ollama",
+  --       provider_options = {
+  --         model = "codellama:7b-code",
+  --       },
+  --       notify = true,
+  --       notify_callback = function(msg)
+  --         vim.notify(msg)
+  --       end,
+  --       run_on_every_keystroke = true,
+  --       ignored_file_types = {
+  --         -- default is not to ignore
+  --         -- uncomment to ignore in lua:
+  --         -- lua = true
+  --       },
+  --     })
+  --   end,
+  -- },
 
   -- Bito
   -- {

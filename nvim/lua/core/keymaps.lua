@@ -6,14 +6,6 @@ local function map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
--- local imap = function(tbl)
---     vim.keymap.set("i", tbl[1], tbl[2], tbl[3])
--- end
-
--- local nmap = function(tbl)
---     vim.keymap.set("n", tbl[1], tbl[2], tbl[3])
--- end
-
 -- Keymaps for better default experience
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
@@ -78,3 +70,18 @@ map("i", "<C-h>", "<Left>", { desc = "Move left" })
 map("i", "<C-l>", "<Right>", { desc = "Move right" })
 map("i", "<C-j>", "<Down>", { desc = "Move down" })
 map("i", "<C-k>", "<Up>", { desc = "Move up" })
+
+-- save file
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
+-- quit
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+
+-- tabs
+map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader><tab>n", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader><tab>p", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
+map("n", "<leader><tab>c", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })

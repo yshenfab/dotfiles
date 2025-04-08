@@ -20,7 +20,7 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
-    -- version = "*",
+    version = "*",
     event = "VeryLazy",
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "buffer toggle pin" },
@@ -86,6 +86,7 @@ return {
         dashboard.button("g", " " .. " Ripgrep (rg)", ":Telescope live_grep <CR>"),
         -- dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
         -- dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+        dashboard.button("p", " " .. " Projects", ":Telescope projects<CR>"),
         dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
       }

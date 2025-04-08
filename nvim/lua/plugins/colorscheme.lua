@@ -9,7 +9,20 @@ return {
       vim.cmd.colorscheme("tokyonight-moon")
     end,
   },
-  -- { "catppuccin/nvim", name = "catppuccin" },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme("catppuccin-macchiato")
+  --   end,
+  -- },
+  -- {
+  --   "Mofiqul/vscode.nvim",
+  --   config = function()
+  --     vim.cmd.colorscheme("vscode")
+  --   end,
+  -- },
   -- { "rose-pine/neovim", name = "rose-pine" },
   -- { "ellisonleao/gruvbox.nvim" },
   -- { "EdenEast/nightfox.nvim" },

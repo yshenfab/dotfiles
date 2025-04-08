@@ -109,10 +109,9 @@ return {
           { name = "copilot" },
           { name = "cmp_tabnine", max_item_count = 3 },
           { name = "codeium", max_item_count = 3 },
-          -- latex symbols support
-          { name = "latex_symbols" },
-          -- org-mode
-          { name = "orgmode" },
+          -- { name = "cmp_ai" },
+          -- { name = "latex_symbols" }, -- latex symbols support
+          -- { name = "orgmode" }, -- org-mode
         }),
         -- format
         formatting = {
@@ -129,6 +128,7 @@ return {
               copilot = "[Copilot]",
               cmp_tabnine = "[TabNine]",
               codeium = "[Codeium]",
+              -- cmp_ai = "[Cmp-ai]",
             },
             ellipsis_char = "...",
             symbol_map = { Copilot = "", TabNine = "󰚩", Codeium = "" },
@@ -187,16 +187,16 @@ return {
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
-    event = { "BufReadPost", "BufNewFile" },
-    config = true,
+    event = "VeryLazy",
+    opts = {},
     -- stylua: ignore
     keys = {
-      { "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>",                              desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>",      desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>",    desc = "Todo/Fix/Fixme" },
+      { "]t", function() require("todo-comments").jump_next() end, desc = "Next Todo Comment" },
+      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous Todo Comment" },
+      { "<leader>xt", "<cmd>Trouble todo toggle<cr>", desc = "Todo (Trouble)" },
+      { "<leader>xT", "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
     },
   },
 
@@ -209,14 +209,26 @@ return {
     },
   },
 
-  -- symbols-outline: tree-like view for symbols
+  -- outline: tree-like outline of symbols
+  -- {
+  --   "hedyhli/outline.nvim",
+  --   keys = { { "<leader>to", "<cmd>Outline<cr>", desc = "Toggle Outline" } },
+  --   cmd = "Outline",
+  --   config = function()
+  --     require("outline").setup({})
+  --   end,
+  -- },
+
+  -- aerial: code outline
   {
-    "simrat39/symbols-outline.nvim",
-    keys = { { "<leader>to", "<cmd>SymbolsOutline<cr>", desc = "Toggle Symbols Outline" } },
-    cmd = "SymbolsOutline",
-    config = function()
-      require("symbols-outline").setup()
-    end,
+    "stevearc/aerial.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    event = "VeryLazy",
+    opts = {},
+    keys = { { "<leader>ta", "<cmd>AerialToggle<cr>", desc = "Toggle Aerial" } },
   },
 
   -- motions: flash
@@ -300,7 +312,7 @@ return {
     "danymat/neogen",
     -- stylua: ignore
     keys = {
-      { "<leader>cc", function() require("neogen").generate({}) end, desc = "Neogen Comment", },
+      { "<leader>cC", function() require("neogen").generate({}) end, desc = "Neogen Comment", },
     },
     opts = { snippet_engine = "luasnip" },
   },
@@ -313,5 +325,13 @@ return {
       { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer", },
       { "<leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)", },
     },
+  },
+  -- better text objects
+  {
+    "echasnovski/mini.ai",
+    event = "VeryLazy",
+    config = function()
+      require("mini.ai").setup({})
+    end,
   },
 }

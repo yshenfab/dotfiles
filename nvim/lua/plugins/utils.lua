@@ -1,51 +1,102 @@
 -- utils
 return {
+  -- snacks: A collection of QoL plugins for Neovim
+  -- {
+  --   "folke/snacks.nvim",
+  --   priority = 1000,
+  --   lazy = false,
+  --   ---@type snacks.Config
+  --   opts = {
+  --     bigfile = { enabled = true },
+  --     dashboard = { enabled = true },
+  --     explorer = { enabled = true },
+  --     indent = { enabled = true },
+  --     input = { enabled = true },
+  --     picker = { enabled = true },
+  --     notifier = { enabled = true },
+  --     quickfile = { enabled = true },
+  --     scope = { enabled = true },
+  --     scroll = { enabled = true },
+  --     statuscolumn = { enabled = true },
+  --     words = { enabled = true },
+  --   },
+  -- },
+
+  -- yazi
+  ---@type LazySpec
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    keys = {
+      -- 👇 in this section, choose your own keymappings!
+      {
+        "<leader>-",
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi at the current file",
+      },
+      {
+        -- Open in the current working directory
+        "<leader>cw",
+        "<cmd>Yazi cwd<cr>",
+        desc = "Open the file manager in nvim's working directory",
+      },
+    },
+    ---@type YaziConfig
+    opts = {
+      -- if you want to open yazi instead of netrw, see below for more info
+      open_for_directories = false,
+      keymaps = {
+        show_help = "<f1>",
+      },
+    },
+  },
+  -- fzf-lua
+  {
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("fzf-lua").setup({})
+    end,
+  },
   -- undotree
   {
     "mbbill/undotree",
     keys = { { "<leader>tu", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree" } },
   },
   -- ChatGPT
-  {
-    "jackMort/ChatGPT.nvim",
-    cmd = { "ChatGPTActAs", "ChatGPT" },
-    opts = { api_key_cmd = "gpg --decrypt /Users/yang/gpg_key/openai_api_key.gpg" },
-  },
-
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   cmd = { "ChatGPTActAs", "ChatGPT" },
+  --   opts = { api_key_cmd = "gpg --decrypt /Users/yang/gpg_key/openai_api_key.gpg" },
+  -- },
   -- which-key: cheatsheet for pending keybinds
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
-      plugins = { spelling = true },
-      defaults = {
+      {
         mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        -- ["gz"] = { name = "+surround" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        -- ["<leader><tab>"] = { name = "+tabs" },
-        -- ["<leader>a"] = { name = "+ai" },
-        ["<leader>b"] = { name = "+buffer" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>d"] = { name = "+debug" },
-        ["<leader>da"] = { name = "+adapters" },
-        ["<leader>f"] = { name = "+find" },
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>gh"] = { name = "+hunks" },
-        ["<leader>gp"] = { name = "+goto-preview" },
-        ["<leader>o"] = { name = "+other" },
-        -- ["<leader>q"] = { name = "+quit/session" },
-        ["<leader>s"] = { name = "+search" },
-        ["<leader>t"] = { name = "+toggle" },
-        ["<leader>w"] = { name = "+workspace" },
-        ["<leader>x"] = { name = "+diagnostics/quickfix" },
+        { "<leader>b", desc = "buffer" },
+        { "<leader>c", desc = "code" },
+        { "<leader>d", desc = "debug" },
+        { "<leader>da", desc = "adapters" },
+        { "<leader>f", desc = "find" },
+        { "<leader>g", desc = "git" },
+        { "<leader>gh", desc = "hunks" },
+        { "<leader>gp", desc = "goto-preview" },
+        { "<leader>o", desc = "other" },
+        { "<leader>s", desc = "search" },
+        { "<leader>t", desc = "toggle" },
+        { "<leader>w", desc = "workspace" },
+        { "<leader>x", desc = "diagnostics/quickfix" },
+        { "[", desc = "prev" },
+        { "]", desc = "next" },
+        { "g", desc = "goto" },
       },
     },
     config = function(_, opts)
       local wk = require("which-key")
-      wk.setup(opts)
-      wk.register(opts.defaults)
+      wk.add(opts)
     end,
   },
 
@@ -53,23 +104,59 @@ return {
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
-    keys = {
-      "<leader>a",
-      "<C-e>",
+    opts = {
+      menu = {
+        width = vim.api.nvim_win_get_width(0) - 4,
+      },
+      settings = {
+        save_on_toggle = true,
+      },
     },
-    config = function()
-      local nmap = function(tbl)
-        vim.keymap.set("n", tbl[1], tbl[2], tbl[3])
+    keys = function()
+      local keys = {
+        {
+          "<leader><leader>",
+          function()
+            require("harpoon"):list():add()
+          end,
+          desc = "Harpoon File",
+        },
+        {
+          "<C-e>",
+          function()
+            local harpoon = require("harpoon")
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+          end,
+          desc = "Harpoon Quick Menu",
+        },
+      }
+
+      for i = 1, 5 do
+        table.insert(keys, {
+          "<leader>" .. i,
+          function()
+            require("harpoon"):list():select(i)
+          end,
+          desc = "Harpoon to File " .. i,
+        })
       end
-
-      local harpoon = require("harpoon")
-
-      harpoon:setup()
-      -- stylua: ignore
-      nmap({ "<leader>a", function() harpoon:list():add() end })
-      -- stylua: ignore
-      nmap({ "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end })
+      return keys
     end,
+  },
+
+  -- fast buffer navigation
+  {
+    "leath-dub/snipe.nvim",
+    keys = {
+      {
+        "<leader>bs",
+        function()
+          require("snipe").open_buffer_menu()
+        end,
+        desc = "Open Snipe buffer menu",
+      },
+    },
+    opts = {},
   },
 
   -- navigator: navigate between neovim and multiplexers (tmux, kitty, wezterm)
@@ -98,7 +185,7 @@ return {
   -- colorizer
   {
     "norcalli/nvim-colorizer.lua",
-    keys = { { "<leader>tc", "<cmd>ColorizerToggle<cr>", desc = "Toggle Colorizer" } },
+    keys = { { "<leader>tC", "<cmd>ColorizerToggle<cr>", desc = "Toggle Colorizer" } },
     -- config = function()
     --   require("colorizer").setup()
     -- end,

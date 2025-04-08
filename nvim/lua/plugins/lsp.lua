@@ -31,21 +31,47 @@ return {
           vim.keymap.set("i", keys, func, { buffer = bufnr, desc = desc })
         end
 
-        nmap("<c-s>", vim.lsp.buf.signature_help, "Signature Help")
-        imap("<c-s>", vim.lsp.buf.signature_help, "Signature Help")
+        local vmap = function(keys, func, desc)
+          if desc then
+            desc = "LSP: " .. desc
+          end
+          vim.keymap.set("v", keys, func, { buffer = bufnr, desc = desc })
+        end
 
-        nmap("<leader>cr", vim.lsp.buf.rename, "Code Rename")
-        nmap("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-
-        nmap("gd", vim.lsp.buf.definition, "Goto Definition")
+        -- stylua: ignore
+        nmap("gd", "<cmd>FzfLua lsp_definitions jump_to_single_result=true ignore_current_line=true<cr>", "Goto Definition")
+        nmap(
+          "gr",
+          "<cmd>FzfLua lsp_references jump_to_single_result=true ignore_current_line=true<cr>",
+          "Goto References"
+        )
+        nmap(
+          "gI",
+          "<cmd>FzfLua lsp_implementations jump_to_single_result=true ignore_current_line=true<cr>",
+          "Goto Implementation"
+        )
+        nmap(
+          "gy",
+          "<cmd>FzfLua lsp_typedefs jump_to_single_result=true ignore_current_line=true<cr>",
+          "Goto T[y]pe Definition"
+        )
+        -- nmap("gd", vim.lsp.buf.definition, "Goto Definition")
+        -- nmap("gr", vim.lsp.buf.references, "Goto References")
+        -- nmap("gI", vim.lsp.buf.implementation, "Goto Implementation")
+        -- nmap("gy", vim.lsp.buf.type_definition, "Goto T[y]pe Definition")
         nmap("gD", vim.lsp.buf.declaration, "Goto Declaration")
-        nmap("gT", vim.lsp.buf.type_definition, "Goto Type Definition")
         nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+        nmap("<c-y>", vim.lsp.buf.signature_help, "Signature Help")
+        imap("<c-y>", vim.lsp.buf.signature_help, "Signature Help")
 
-        nmap("gr", require("telescope.builtin").lsp_references, "Goto References")
-        nmap("gI", vim.lsp.buf.implementation, "Goto Implementation")
-        nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
-        nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_worspace_symbols, "Workspace Symbols")
+        nmap("<leader>cA", vim.lsp.buf.code_action, "Code Action")
+        nmap("<leader>cr", vim.lsp.buf.rename, "Code Rename")
+        nmap("<leader>cl", vim.lsp.codelens.run, "Run CodeLens")
+        vmap("<leader>cl", vim.lsp.codelens.run, "Run CodeLens")
+        nmap("<leader>cL", vim.lsp.codelens.refresh, "Refresh & Display CodeLens")
+
+        -- nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
+        -- nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_worspace_symbols, "Workspace Symbols")
 
         nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace Add Folder")
         nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace Remove Folder")
@@ -57,8 +83,8 @@ return {
       local servers = {
         bashls = {},
         clangd = {},
-        ruff_lsp = {},
-        pyright = {},
+        pyright = {}, -- ruff_lsp = {},
+        ruff = {},
       }
 
       -- mason-lspconfig
@@ -151,7 +177,14 @@ return {
       formatters_by_ft = {
         c = { "clang_format" },
         cpp = { "clang_format" },
-        python = { "isort", "ruff_format" }, -- { "black" },
+        python = { "isort", "black" },
+        -- python = function(bufnr)
+        --   if require("conform").get_formatter_info("ruff_format", bufnr).available then
+        --     return { "ruff_format" }
+        --   else
+        --     return { "isort", "black" }
+        --   end
+        -- end,
         markdown = { "prettierd" }, -- also for javascript, typescript, json, yaml, etc.
         sh = { "shfmt" },
         lua = { "stylua" },
@@ -176,7 +209,7 @@ return {
         c = { "cpplint" },
         cpp = { "cpplint" },
         python = { "ruff" }, -- { "pylint" },
-        markdown = { "markdownlint" },
+        -- markdown = { "markdownlint" },
         -- lua = { "selene", "luacheck" },
       }
 
