@@ -29,6 +29,7 @@ cmd-4 = 'workspace 4'
 cmd-enter = 'workspace 1'
 cmd-backspace = 'workspace 2'
 cmd-quote = 'workspace 3'
+cmd-slash = 'workspace 4'
 
 # move focused node to workspace
 cmd-shift-1 = 'move-node-to-workspace 1'
@@ -38,11 +39,12 @@ cmd-shift-4 = 'move-node-to-workspace 4'
 cmd-shift-enter = 'move-node-to-workspace 1'
 cmd-shift-backspace = 'move-node-to-workspace 2'
 cmd-shift-quote = 'move-node-to-workspace 3'
+cmd-shift-slash = 'move-node-to-workspace 4'
 
 # quick switch workspace
 alt-tab = 'workspace-back-and-forth'
-cmd-b = 'workspace prev'
-cmd-n = 'workspace next'
+# cmd-b = 'workspace prev'
+# cmd-n = 'workspace next'
 
 # fullscreen
 alt-f = 'fullscreen'
@@ -51,17 +53,21 @@ alt-f = 'fullscreen'
 cmd-shift-space = 'layout floating tiling'
 
 # reload config
-cmd-r = 'reload-config'
+# cmd-r = 'reload-config'
 
 # multi-monitor
 cmd-left = 'focus-monitor left'
 cmd-right = 'focus-monitor right'
-cmd-shift-left = 'move-node-to-monitor left'
-cmd-shift-right = 'move-node-to-monitor right'
+# cmd-shift-left = 'move-node-to-monitor left'
+# cmd-shift-right = 'move-node-to-monitor right'
+cmd-shift-left = 'move-workspace-to-monitor --wrap-around prev'
+cmd-shift-right = 'move-workspace-to-monitor --wrap-around next'
 
 # modes
 # resize
-cmd-u = 'mode resize'
+# alt-shift-minus = 'resize smart -50'
+# alt-shift-equal = 'resize smart +50'
+cmd-r = 'mode resize'
 
 [mode.resize.binding]
 h = 'resize smart -50'

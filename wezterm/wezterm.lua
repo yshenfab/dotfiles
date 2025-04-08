@@ -21,7 +21,7 @@ config.font = wezterm.font_with_fallback({
 	"nonicons",
 })
 
-config.font_size = 17.0 -- default 12.0
+config.font_size = 18.0 -- default 12.0
 
 -- default is true, has more "native" look
 config.use_fancy_tab_bar = false
@@ -73,10 +73,10 @@ config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	-- navigation
 	{ mods = "CTRL", key = "h", action = act.EmitEvent("ActivatePaneDirection-left") },
-	-- { mods = "CTRL", key = "j", action = act.EmitEvent("ActivatePaneDirection-down") },
+	{ mods = "CTRL", key = "j", action = act.EmitEvent("ActivatePaneDirection-down") },
 	{ mods = "CTRL", key = "l", action = act.EmitEvent("ActivatePaneDirection-right") },
 	-- { mods = "CTRL", key = "k", action = act.EmitEvent("ActivatePaneDirection-up") },
-	-- { mods = "ALT", key = "w", action = act.CloseCurrentTab({ confirm = true }) },
+	{ mods = "ALT", key = "w", action = act.CloseCurrentTab({ confirm = true }) },
 	{ mods = "ALT", key = "h", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ mods = "ALT", key = "v", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ mods = "ALT", key = "1", action = act.ActivateTab(0) },
@@ -87,7 +87,8 @@ config.keys = {
 	{ mods = "ALT", key = "6", action = act.ActivateTab(5) },
 	{ mods = "ALT", key = "7", action = act.ActivateTab(6) },
 	{ mods = "ALT", key = "8", action = act.ActivateTab(7) },
-	{ mods = "ALT", key = "9", action = act.ActivateTab(-1) },
+	{ mods = "ALT", key = "9", action = act.ActivateTab(8) },
+	{ mods = "ALT", key = "0", action = act.ActivateTab(-1) },
 }
 
 -- end my config
