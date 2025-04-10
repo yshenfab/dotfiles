@@ -1,19 +1,15 @@
--- Leetcode
-
 return {
-  -- "kawre/leetcode.nvim",
-  -- build = ":TSUpdate html",
-  -- dependencies = {
-  --   "nvim-telescope/telescope.nvim",
-  --   "nvim-lua/plenary.nvim", -- required by telescope
-  --   "MunifTanjim/nui.nvim",
-  --   "nvim-treesitter/nvim-treesitter",
-  --   -- "rcarriga/nvim-notify",
-  --   "nvim-tree/nvim-web-devicons",
-  -- },
-  -- opts = {
-  --   -- configuration goes here
-  --   ---@type lc.lang
-  --   lang = "python", -- cpp
-  -- },
+  {
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+    dependencies = {
+      -- "nvim-telescope/telescope.nvim",
+      "ibhagwan/fzf-lua",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      lang = "python3",
+    },
+  },
 }

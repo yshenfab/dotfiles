@@ -1,0 +1,33 @@
+# Fonts
+# font-size = 18
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Theme
+theme = Github Dark
+
+# Keybindings
+# keybind = super+alt+h=goto_split:left
+# keybind = super+alt+j=goto_split:bottom
+# keybind = super+alt+k=goto_split:top
+# keybind = super+alt+l=goto_split:right
+
+# keybind = ctrl+h=goto_split:left
+# keybind = ctrl+j=goto_split:bottom
+# keybind = ctrl+k=goto_split:top
+# keybind = ctrl+l=goto_split:right
+
+keybind = unconsumed:ctrl+k=goto_split:top
+keybind = unconsumed:ctrl+j=goto_split:bottom
+keybind = unconsumed:ctrl+h=goto_split:left
+keybind = unconsumed:ctrl+l=goto_split:right
+
+
+# Other
+macos-option-as-alt = true
+macos-non-native-fullscreen = true
+macos-titlebar-style = tabs
+window-save-state = never
+
+

@@ -2,12 +2,11 @@
 start-at-login = true
 
 [mode.main.binding]
-# cmd-enter = 'exec-and-forget open -n /Applications/WezTerm.app/'
 cmd-g = 'exec-and-forget open ~'
 cmd-shift-p = 'exec-and-forget open x-apple.systempreferences:'
 
 cmd-e = 'layout tiles horizontal vertical'
-cmd-shift-e = 'layout v_accordion' # stacking
+cmd-shift-e = 'layout v_accordion'         # stacking
 
 # change focus
 cmd-h = 'focus left'
@@ -73,3 +72,8 @@ cmd-r = 'mode resize'
 h = 'resize smart -50'
 l = 'resize smart +50'
 esc = 'mode main'
+
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+# run = ["layout tiling"]
+run = ["layout floating"]
