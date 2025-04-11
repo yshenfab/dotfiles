@@ -29,10 +29,7 @@ return {
     opts = {
       signature = { enabled = true },
       keymap = {
-        -- option 1: super-tab
-        -- preset = "super-tab",
-        -- option 2: tab to select next
-        preset = "enter",
+        preset = "enter", -- default, super-tab
         ["<Tab>"] = { "select_next", "fallback" },
         ["<S-Tab>"] = { "select_prev", "fallback" },
       },

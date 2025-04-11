@@ -4,6 +4,8 @@
 
 vim.g.mapleader = " "
 
+vim.g.snacks_animate = false
+
 vim.opt.cmdheight = 0
 
 -- vim.g.loaded_python3_provider = 0
