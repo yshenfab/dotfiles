@@ -90,3 +90,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.opt_local.conceallevel = 0
   end,
 })
+
+-- auto change current working directory
+vim.cmd("autocmd BufEnter * lcd %:p:h")

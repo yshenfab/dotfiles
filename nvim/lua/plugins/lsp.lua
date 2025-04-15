@@ -1,5 +1,17 @@
 return {
   {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters = {
+        -- Disable MD013 Line Length Warning
+        ["markdownlint-cli2"] = {
+          args = { "--config", "/Users/yang/.markdownlint-cli2.yaml", "--" },
+        },
+      },
+    },
+  },
+
+  {
     "neovim/nvim-lspconfig",
     opts = {
       setup = {
@@ -8,14 +20,8 @@ return {
           opts.capabilities.offsetEncoding = { "utf-16" }
         end,
       },
-      linters = {
-        ["markdownlint-cli2"] = {
-          args = { "--config", "/Users/yang/.markdownlint-cli2.yaml", "--" },
-        },
-      },
     },
   },
-
   -- cmp
   {
     "saghen/blink.cmp",

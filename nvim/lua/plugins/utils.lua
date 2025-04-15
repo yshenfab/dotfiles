@@ -28,7 +28,12 @@ return {
   -- {
   --   "ahmedkhalf/project.nvim",
   --   opts = {
-  --     manual_mode = false,
+  --     manual_mode = false, -- use :ProjectRoot manually
   --   },
   -- },
+  -- undotree
+  {
+    "mbbill/undotree",
+    keys = { { "<leader>uu", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree" } },
+  },
 }
